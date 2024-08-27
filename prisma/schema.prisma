@@ -17,12 +17,12 @@ model User {
   id           Int    @id @default(autoincrement())  
   name         String @db.VarChar(255)
   email        String @db.VarChar(255)
-  subscription Subscription[]
+  subscriptions Subscription[]
 }
 
 model Subscription {
-  id        Int @id @default(autoincrement())
-  idClient  Int @unique
+  id        Int     @id @unique @default(autoincrement())
+  idClient  Int     @unique
   site      String
-  user User @relation(fields: [idClient], references: [id])
+  user      User    @relation(fields: [idClient], references: [id])
 }
