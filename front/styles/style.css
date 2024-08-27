@@ -1,0 +1,57 @@
+#displeyLogin {
+  background-color: #E5E5E5;
+  height: 98vh;
+  width: 98vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#login {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#cadastro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 10em;
+  height: 10em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2.2em;
+}
+
+input {
+  border-radius: 0.3em;
+  border: 2px solid #FCA311;
+  margin-bottom: 0.3em;
+  padding: 1em;
+  font-size: 1em;
+}
+
+button {
+  border-radius: 0.3em;
+  width: 100%;
+  margin-bottom: 0.5em;
+  padding: 1em;
+  font-size: 1em;
+}
+
+.entrar {
+  background-color: #14213D;
+  color: #FFFFFF;
+}
+
+/*# sourceMappingURL=style.css.map */
