@@ -134,6 +134,61 @@
   width: 1.4em;
 }
 
+.sidebarMain {
+  margin: 5em 0em 0em 1.5em;
+  font-family: Poppins;
+}
+
+.today {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+.today img {
+  width: 1em;
+  height: 1.3em;
+}
+
+.today span {
+  font-size: 1.1em;
+  margin-left: 0.5em;
+}
+
+.readLater {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+.readLater img {
+  width: 1em;
+  height: 1.1em;
+}
+
+.readLater span {
+  font-size: 1.1em;
+  margin-left: 0.5em;
+}
+
+.feeds {
+  background-color: #E5E5E5;
+  height: 9em;
+  margin: 0.5em 1.5em 0em 0em;
+  border-radius: 5px;
+}
+
+.feeds img {
+  width: 0.9em;
+  height: 1em;
+  margin-left: 0.1em;
+}
+
+.feeds span {
+  font-size: 1.1em;
+  margin-left: 0.2em;
+}
+
 .main {
   height: 100%;
   width: 80rem;
