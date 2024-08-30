@@ -1,0 +1,14 @@
+[
+    {
+        "idClient": 1,
+        "site": "https://netflixtechblog.com/feed"
+    },
+    {
+        "idClient": 2,
+        "site": "https://diolinux.com.br/feed"
+    },
+    {
+        "idClient": 3,
+        "site": "https://www.cnnbrasil.com.br/feed/"
+    }
+]

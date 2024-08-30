@@ -1,0 +1,12 @@
+@startuml diagrama-visitante
+
+title Diagrama de Visitante
+
+( RF001 acessar como visitante) as visita
+
+client -> visita
+visita -> (RF001 acessar portal): <<include>>
+
+
+
+@enduml
