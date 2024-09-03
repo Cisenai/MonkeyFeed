@@ -6,7 +6,7 @@ const Feed = require('./controllers/feed_controller');
 const Client = require('./controllers/client')
 const Sub = require('./controllers/subscription')
 
-router.get('/netflix', Feed.getFeed);
+router.get('/feed/:feed', Feed.getFeed);
 
 router.get('/client', Client.get);
 router.get('/client/(:id)', Client.get);

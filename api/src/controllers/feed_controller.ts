@@ -3,17 +3,71 @@ import Parser from 'rss-parser';
 
 const parser: Parser = new Parser();
 
+interface Source {
+    title: string,
+    image: string,
+    link: string,
+}
+
+interface Content {
+    creator: string,
+    title: string,
+    link: string,
+    pubDate: string,
+    isoDate: string,
+    article: string,
+    summary?: string,
+}
+
+interface Data {
+    source: Source,
+    data: Content[],
+};
+
+const feeds: Record<string, string> = {
+    diolinux: 'https://diolinux.com.br/feed',
+    netflix: 'https://netflixtechblog.com/feed',
+    cnnbrasil: 'https://www.cnnbrasil.com.br/feed',
+    metropole: 'https://www.metropoles.com/feed',
+    theguardian: 'https://feeds.theguardian.com/theguardian/uk/rss',
+};
+
 const getFeed = async (req: Request, res: Response) => {
-    const articles = <any>[];
+    const feed: string = req.params.feed;
+    try {
+        const articles = <any>[];
 
-    const feed = await parser.parseURL('https://diolinux.com.br/feed');
+        const feedContent = await parser.parseURL(feeds[feed]);
 
-    feed.items.forEach((item) => {
-        console.log(item.creator);
-        articles.push(item);
-    });
+        const response: Data = {
+            source: {
+                title: feedContent.title?? '',
+                image: feedContent.image?.url?? '',
+                link: feedContent.link?? ''
+            },
+            data: [],
+        };
 
-    res.send(articles).status(200);
+        feedContent.items.forEach((item) => {
+            const article: Content = {
+                article: item['content:encoded']!,
+                creator: item.creator!,
+                isoDate: item.isoDate!,
+                link: item.link!,
+                pubDate: item.pubDate!,
+                title: item.title!,
+                summary: item.summary !== undefined ? '' : '',
+            };
+
+            response.data.push()
+        });
+
+        res.json(feedContent.items[0]).status(200).end();
+    } catch (e) {
+        console.log(e);
+        res.status(404).json({ message: 'Invalid Feed' }).end();
+    }
+
 }
 
 module.exports = { getFeed };
