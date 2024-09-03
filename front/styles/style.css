@@ -1,103 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-* {
-  padding: 0;
-  margin: 0;
-}
-
-#displeyLogin {
-  background-color: #E5E5E5;
-  height: 98vh;
-  width: 98vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#login {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#cadastro {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#login img {
-  width: 10em;
-  height: 10em;
-}
-
-#login form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 2.2em;
-}
-
-#login input {
-  border-radius: 0.3em;
-  border: 2px solid #FCA311;
-  margin-bottom: 0.3em;
-  padding: 1em;
-  font-size: 1em;
-}
-
-#login button {
-  border-radius: 0.3em;
-  width: 100%;
-  margin-bottom: 0.5em;
-  padding: 1em;
-  font-size: 1em;
-}
-
-#cadastro img {
-  width: 10em;
-  height: 10em;
-}
-
-#cadastro form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 2.2em;
-}
-
-#cadastro input {
-  border-radius: 0.3em;
-  border: 2px solid #FCA311;
-  margin-bottom: 0.3em;
-  padding: 1em;
-  font-size: 1em;
-}
-
-#cadastro button {
-  border-radius: 0.3em;
-  width: 100%;
-  margin-bottom: 0.5em;
-  padding: 1em;
-  font-size: 1em;
-}
-
-.entrar {
-  background-color: #14213D;
-  color: #FFFFFF;
-}
-
-#displeyIndex {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-}
-
 .sidebar {
+  position: fixed;
+  top: 0;
   background-color: #f5b751;
   height: 100%;
   width: 20rem;
+  left: 0;
+  overflow-y: auto;
 }
 
 .sidebarHeader {
@@ -171,7 +80,7 @@
   margin-left: 0.5em;
 }
 
-.feeds {
+.feedsDispley {
   background-color: #E5E5E5;
   height: 9em;
   margin: 0.5em 1.5em 0em 0em;
@@ -189,9 +98,166 @@
   margin-left: 0.2em;
 }
 
-.main {
+.portais {
+  margin-left: 2em;
+}
+
+.portal {
+  display: flex;
+  align-items: center;
+}
+
+.portal img {
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.3em;
+}
+
+.moreFeed {
+  font-size: 0.8em;
+}
+
+.sidebarFooter {
+  display: flex;
+  flex-direction: column;
+  margin: 23em 0em 0em 1.5em;
+  font-family: Poppins;
+}
+
+.sidebarFooter img {
+  width: 1.3em;
+  height: 1.3em;
+  margin-right: 0.5em;
+}
+
+.sidebarFooter div {
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  width: 100%;
   height: 100%;
-  width: 80rem;
+  background-color: #E5E5E5;
+  overflow-y: auto;
+}
+
+.contentInfo {
+  margin: 0em 8em 0em 8em;
+}
+
+.feedName {
+  font-size: 2em;
+  font-family: Poppins;
+  margin-bottom: 0.5em;
+}
+
+.noticia {
+  display: flex;
+  margin-top: 2em;
+}
+
+.noticiaImg {
+  width: 25em;
+  height: 8em;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  margin-right: 2em;
+}
+
+.noticiaHeader {
+  display: flex;
+  align-items: center;
+}
+
+.noticiaHeader img {
+  max-width: 3em;
+  margin-right: 1em;
+}
+
+.noticiaTitle {
+  font-size: 1.5em;
+  max-width: 60em;
+  font-family: Poppins;
+}
+
+.noticiaText {
+  font-size: 1em;
+  max-width: 70em;
+  font-family: Poppins;
+}
+
+#displeyLogin {
+  background-color: #E5E5E5;
+  height: 98vh;
+  width: 98vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#displeyLogin #login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#displeyLogin #cadastro {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#displeyLogin #login img {
+  width: 10em;
+  height: 10em;
+}
+#displeyLogin #login form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2.2em;
+}
+#displeyLogin #login input {
+  border-radius: 0.3em;
+  border: 2px solid #FCA311;
+  margin-bottom: 0.3em;
+  padding: 1em;
+  font-size: 1em;
+}
+#displeyLogin #login button {
+  border-radius: 0.3em;
+  width: 100%;
+  margin-bottom: 0.5em;
+  padding: 1em;
+  font-size: 1em;
+}
+#displeyLogin #cadastro img {
+  width: 10em;
+  height: 10em;
+}
+#displeyLogin #cadastro form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2.2em;
+}
+#displeyLogin #cadastro input {
+  border-radius: 0.3em;
+  border: 2px solid #FCA311;
+  margin-bottom: 0.3em;
+  padding: 1em;
+  font-size: 1em;
+}
+#displeyLogin #cadastro button {
+  border-radius: 0.3em;
+  width: 100%;
+  margin-bottom: 0.5em;
+  padding: 1em;
+  font-size: 1em;
+}
+#displeyLogin .entrar {
+  background-color: #14213D;
+  color: #FFFFFF;
 }
 
 .header {
@@ -231,10 +297,20 @@
   height: 100%;
 }
 
-.content {
-  width: 100%;
-  height: 93%;
-  background-color: #E5E5E5;
+* {
+  padding: 0;
+  margin: 0;
+}
+
+#displeyIndex {
+  height: 100vh;
+  display: flex;
+  padding-left: 20rem;
+}
+
+.main {
+  height: 100%;
+  width: 80rem;
 }
 
 /*# sourceMappingURL=style.css.map */

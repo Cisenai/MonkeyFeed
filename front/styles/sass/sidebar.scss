@@ -1,0 +1,119 @@
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    background-color: #f5b751;
+    height: 100%;
+    width: 20rem;
+    left: 0;
+    // display: block;
+    overflow-y: auto;
+    // z-index: 1;
+}
+    .sidebarHeader {
+        width: 100%;
+        height: 7%;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        // background-color: antiquewhite;
+    }
+        .sidebarConta {
+            width: 87%;
+            display: flex;
+        }
+            .sidebarConta span {
+                font-family: Poppins;
+                text-decoration: underline;
+                font-size: 1.3em;
+                margin-left: 0.5em;
+            }
+            .sidebarConta img {
+                margin-left: 1.5em;
+                width: 1.8em;
+            }
+
+        .sidebarExit button {
+            background-color: #f5b751;
+            border: 0;
+        }
+            .sidebarExit img {
+                width: 1.4em;
+            }
+    .sidebarMain {
+        margin: 5em 0em 0em 1.5em;
+        font-family: Poppins;
+    }
+        .today {
+            display: flex;
+            justify-items: center;
+            align-items: center;
+        }
+            .today img {
+                width: 1em;
+                height: 1.3em;
+            }
+            .today span {
+                font-size: 1.1em;
+                margin-left: 0.5em;
+            }
+
+        .readLater {
+            display: flex;
+            justify-items: center;
+            align-items: center;
+        }
+            .readLater img {
+                width: 1em;
+                height: 1.1em;
+            }
+            .readLater span {
+                font-size: 1.1em;
+                margin-left: 0.5em;
+            }
+        .feedsDispley {
+            background-color: colors.$cinza;
+            height: 9em;
+            margin: 0.5em 1.5em 0em 0em;
+            border-radius: 5px;
+        }
+            .feeds img {
+                width: 0.9em;
+                height: 1em;
+                margin-left: 0.1em;
+            }
+            .feeds span {
+                font-size: 1.1em;
+                margin-left: 0.2em;
+            }
+            .portais {
+                margin-left: 2em;
+            }
+                .portal {
+                    display: flex;
+                    align-items: center;
+                    
+                }
+                    .portal img {
+                        width: 1.2em;
+                        height: 1.2em;
+                        margin-right: 0.3em;
+                    }
+                    .moreFeed {
+                        font-size: 0.8em;
+                    }
+    .sidebarFooter {
+        display: flex;
+        flex-direction: column;
+        margin: 23em 0em 0em 1.5em;
+        font-family: Poppins;
+    }
+        .sidebarFooter img {
+            width: 1.3em;
+            height: 1.3em;
+            margin-right: 0.5em;
+        }
+        .sidebarFooter div{
+            display: flex;
+            align-items: center;
+        }

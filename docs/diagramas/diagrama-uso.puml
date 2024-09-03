@@ -1,12 +1,27 @@
-@startuml diagrama-visitante
+@startuml diagrama-de-uso
 
-title Diagrama de Visitante
+title Diagrama de Uso
 
-( RF001 acessar como visitante) as visita
+(registrar paciente) as registrar
+(agendar consulta) as agendar
+recepcionista as client 
 
-client -> visita
-visita -> (RF001 acessar portal): <<include>>
+client -> registrar
+registrar -> (atualizar dados do paciente): <<extend>>
+registrar --> agendar: <<extend>>
+agendar -> (cancelar consulta): <<extend>>
 
+medico as medico
+(registar diagnostico) as diagnostico
 
+medico -> (consultar agenda): <<extend>>
+medico -> (consultar historico do paciente): <<extend>
+medico --> diagnostico: <<extend>>
+diagnostico -> (prescrever medicamneto): <<extend>>
+
+paciente as paciente
+paciente -> (agendar consulta): <<extend>>
+paciente -> (cancelar consultas): <<extend>>
+paciente --> (consultar historico do medico): <<extend>>
 
 @enduml

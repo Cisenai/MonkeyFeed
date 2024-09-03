@@ -1,0 +1,73 @@
+#displeyLogin {
+    background-color: colors.$cinza;
+    height: 98vh;
+    width: 98vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    #login {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #cadastro {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #login img {
+        width: 10em;
+        height: 10em;
+    }
+    #login form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 2.2em;
+    }
+    #login input {
+        border-radius: 0.3em;
+        border: 2px solid colors.$amarelo;
+        margin-bottom: 0.3em;
+        padding: 1em;
+        font-size: 1em;
+    }
+    #login button {
+        border-radius: 0.3em;
+        width: 100%;
+        margin-bottom: 0.5em;
+        padding: 1em;
+        font-size: 1em;
+    }
+    #cadastro img {
+        width: 10em;
+        height: 10em;
+    }
+    #cadastro form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 2.2em;
+    }
+    #cadastro input {
+        border-radius: 0.3em;
+        border: 2px solid colors.$amarelo;
+        margin-bottom: 0.3em;
+        padding: 1em;
+        font-size: 1em;
+    }
+    #cadastro button {
+        border-radius: 0.3em;
+        width: 100%;
+        margin-bottom: 0.5em;
+        padding: 1em;
+        font-size: 1em;
+    }
+    .entrar {
+        background-color: colors.$azul_escuro;
+        color: colors.$branco;
+    }
+}
