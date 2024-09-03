@@ -1,0 +1,23 @@
+@startuml
+
+class Usuario {
+    +id: String
+    +email: String
+    +senha: String
+    +apelido: String
+    +login(): void
+    +acessarSite(): void
+}
+
+class Inscricao {
+    +realizarInscricao(usuario: Usuario): void
+}
+
+class Site {
+    +acessar(usuario: Usuario): void
+}
+
+Usuario --> Site : faz login e acessa
+Site --> Inscricao : permite inscrição
+
+@enduml

@@ -9,6 +9,7 @@ const getFeed = async (req: Request, res: Response) => {
     const feed = await parser.parseURL('https://diolinux.com.br/feed');
 
     feed.items.forEach((item) => {
+        console.log(item.creator);
         articles.push(item);
     });
 
