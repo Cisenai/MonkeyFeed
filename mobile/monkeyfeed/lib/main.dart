@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:monkeyfeed/screens/login.dart';
+import 'package:monkeyfeed/screens/auth/login.dart';
+import 'package:monkeyfeed/screens/auth/register.dart';
+import 'package:monkeyfeed/screens/home.dart';
 import 'package:monkeyfeed/theme/light_theme.dart';
 
 void main() {
@@ -20,6 +22,8 @@ class MainApp extends StatelessWidget {
       initialRoute: '/login',
       routes: {
         '/login': (context) => const LoginScreen(),
+        '/register': (context) => const RegisterScreen(),
+        '/home': (context) => const HomeScreen(),
       },
     );
   }

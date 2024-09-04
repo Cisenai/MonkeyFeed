@@ -5,6 +5,15 @@ class LightTheme {
     brightness: Brightness.light,
     fontFamily: 'Poppins',
     scaffoldBackgroundColor: const Color(0xFFE5E5E5),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Color(0xFFFFFFFF),
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+        fontSize: 32,
+        color: Color(0xFF000000),
+        fontWeight: FontWeight.bold
+      ),
+    ),
     colorScheme: const ColorScheme.light(
       primary: Color(0xFF000000),
       secondary: Color(0xFF14213D),

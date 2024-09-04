@@ -29,7 +29,15 @@ class _TextInputToggleState extends State<TextInputToggle> {
         controller: widget.controller,
         validator: widget.validator,
         obscureText: obscureText,
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.primary,
+          fontSize: 20,
+        ),
         decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 15,
+          ),
           hintText: widget.hintText,
           hintStyle: TextStyle(
             fontSize: 24,
@@ -37,17 +45,28 @@ class _TextInputToggleState extends State<TextInputToggle> {
           ),
           filled: true,
           fillColor: Theme.of(context).colorScheme.onSurface,
-          border: OutlineInputBorder(
+          enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
             borderSide: BorderSide(
               color: Theme.of(context).colorScheme.tertiary,
               width: 3,
             ),
           ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(5),
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.secondary,
+              width: 3,
+            ),
+          ),
           suffixIcon: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                obscureText = !obscureText;
+              });
+            },
             icon: Icon(
-              obscureText ? Icons.visibility_off : Icons.visibility,
+              !obscureText ? Icons.visibility_off : Icons.visibility,
               size: 28,
               color: Theme.of(context).colorScheme.onSecondaryFixed,
             ),
