@@ -23,3 +23,9 @@ flutter:
 
   assets:
     - assets/
+    - fonts/
+  
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: fonts/Poppins-Regular.ttf
