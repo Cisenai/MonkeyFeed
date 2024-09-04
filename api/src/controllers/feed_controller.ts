@@ -15,7 +15,6 @@ interface Content {
     link: string,
     pubDate: string,
     isoDate: string,
-    article: string,
     summary?: string,
 }
 
@@ -37,7 +36,7 @@ const getFeed = async (req: Request, res: Response) => {
     try {
         const articles = <any>[];
 
-        const feedContent = await parser.parseURL(feeds[feed]);
+        const feedContent = await parser.parseURL(`https://@${[feed]}/feed`);
 
         const response: Data = {
             source: {
@@ -50,19 +49,18 @@ const getFeed = async (req: Request, res: Response) => {
 
         feedContent.items.forEach((item) => {
             const article: Content = {
-                article: item['content:encoded']!,
                 creator: item.creator!,
                 isoDate: item.isoDate!,
                 link: item.link!,
                 pubDate: item.pubDate!,
                 title: item.title!,
-                summary: item.summary !== undefined ? '' : '',
+                summary: item.contentSnippet!,
             };
 
-            response.data.push()
+            response.data.push(article)
         });
-
-        res.json(feedContent.items[0]).status(200).end();
+        res.json(response).status(200).end();
+        
     } catch (e) {
         console.log(e);
         res.status(404).json({ message: 'Invalid Feed' }).end();
@@ -70,4 +68,4 @@ const getFeed = async (req: Request, res: Response) => {
 
 }
 
-module.exports = { getFeed };
+module.exports = { getFeed, };
