@@ -8,6 +8,7 @@ const Sub = require('./controllers/subscription')
 
 router.get('/feed/:feed', Feed.getFeed);
 
+router.post('/login', Client.login);
 router.get('/client', Client.get);
 router.get('/client/(:id)', Client.get);
 router.post('/client', Client.create);

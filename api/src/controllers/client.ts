@@ -1,7 +1,29 @@
 import { PrismaClient } from '@prisma/client';
+import { subscribe } from 'diagnostics_channel';
 import { Request, Response } from 'express';
 
 const prisma = new PrismaClient();
+
+const login = async (req: Request, res: Response) => {
+    const { email, password } = req.body;
+    try {
+        const user = await prisma.user.findFirst({
+        where: {
+            email: email,
+            password: password
+        },
+        include: {
+            subscriptions: true,
+        }
+        
+    });
+    console.log(user);
+    // window.location.href = 'http://127.0.0.1:5500/front/index.html';
+    res.json(user).status(200).end();
+    } catch (e) {
+        res.json({ message: "Email or paassword incorrect" }).status(401).end();
+    }
+}
 
 const get = async (req: Request, res: Response) => {
     if (req.params.id === undefined) {
@@ -54,4 +76,5 @@ module.exports = {
     create,
     update,
     del,
+    login,
 }

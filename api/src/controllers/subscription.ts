@@ -19,6 +19,7 @@ const get = async (req: Request, res: Response) => {
 }
 
 const create = async (req: Request, res: Response) => {
+    console.log(req.body);
     const sub = await prisma.subscription.create({
         data: req.body,
     });

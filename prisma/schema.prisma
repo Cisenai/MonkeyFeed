@@ -4,7 +4,7 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
-generator client {
+generator client {2
   provider = "prisma-client-js"
 }
 
@@ -14,15 +14,16 @@ datasource db {
 }
 
 model User {
-  id           Int    @id @default(autoincrement())  
-  name         String @db.VarChar(255)
-  email        String @db.VarChar(255)
+  id            Int    @id @default(autoincrement())  
+  name          String @db.VarChar(255)
+  email         String @db.VarChar(255)
+  password      String @db.VarChar(255)
   subscriptions Subscription[]
 }
 
 model Subscription {
   id        Int     @id @unique @default(autoincrement())
-  idClient  Int     @unique
+  idClient  Int     
   site      String
   user      User    @relation(fields: [idClient], references: [id])
 }
