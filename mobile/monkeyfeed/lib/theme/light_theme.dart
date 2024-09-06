@@ -10,9 +10,13 @@ class LightTheme {
       centerTitle: true,
       titleTextStyle: TextStyle(
         fontSize: 32,
+        fontFamily: 'Poppins',
         color: Color(0xFF000000),
-        fontWeight: FontWeight.bold
+        fontWeight: FontWeight.w700
       ),
+    ),
+    drawerTheme: const DrawerThemeData(
+      backgroundColor: Color(0xFFFFFFFF),
     ),
     colorScheme: const ColorScheme.light(
       primary: Color(0xFF000000),

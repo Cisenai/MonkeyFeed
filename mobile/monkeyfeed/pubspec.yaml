@@ -12,6 +12,7 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.4.1
   http: ^1.2.2
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:
@@ -29,3 +30,5 @@ flutter:
     - family: Poppins
       fonts:
         - asset: fonts/Poppins-Regular.ttf
+        - asset: fonts/Poppins-Bold.ttf
+          weight: 700

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:monkeyfeed/main.dart';
+import 'package:monkeyfeed/provider/user_provider.dart';
 import 'package:monkeyfeed/widget/button.dart';
 import 'package:monkeyfeed/widget/outlined_button.dart';
 import 'package:monkeyfeed/widget/text_input.dart';
 import 'package:monkeyfeed/widget/text_input_toggle.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -17,6 +19,23 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  void _login() {
+    try {
+      Provider.of<UserProvider>(context, listen: false)
+          .login(_emailController.text, _passwordController.text);
+      navigatorKey.currentState?.pushReplacementNamed('/feed');
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController.text = 'jorgeamaro@email.com';
+    _passwordController.text = 'jorge123';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +65,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       margin: const EdgeInsets.symmetric(vertical: 7.5),
                     ),
                     Button(
-                      onPressed: () => navigatorKey.currentState?.pushReplacementNamed('/home'),
+                      onPressed: () => navigatorKey.currentState
+                          ?.pushReplacementNamed('/home'),
                       text: 'Entrar',
                       margin: const EdgeInsets.symmetric(vertical: 7.5),
                     ),
@@ -54,8 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               OutlinedFormButton(
-                onPressed: () =>
-                    navigatorKey.currentState?.pushNamed('/register'),
+                onPressed: _login,
                 text: 'Cadastre-se',
               ),
             ],

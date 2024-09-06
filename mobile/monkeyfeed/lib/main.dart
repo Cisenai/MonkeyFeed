@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:monkeyfeed/provider/user_provider.dart';
 import 'package:monkeyfeed/screens/auth/login.dart';
 import 'package:monkeyfeed/screens/auth/register.dart';
-import 'package:monkeyfeed/screens/home.dart';
+import 'package:monkeyfeed/screens/feed.dart';
 import 'package:monkeyfeed/theme/light_theme.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => UserProvider(),
+    child: const MainApp(),
+  ));
 }
 
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -23,7 +28,7 @@ class MainApp extends StatelessWidget {
       routes: {
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegisterScreen(),
-        '/home': (context) => const HomeScreen(),
+        '/feed': (context) => const FeedScreen(),
       },
     );
   }
