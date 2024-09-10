@@ -10,9 +10,36 @@
     <div class="sidebar">
         <div class="sidebarHeader">
             <div class="sidebarConta">
+               
+            </div>
+            <button class="sidebarConta" id="usernameBtn">
                 <img src="assets/monkey-icon.png" alt="">
                 <span>Username</span>
-            </div>
+            </button>
+            
+
+
+<!-- Modal de Usuário -->
+<div id="usernameModal" class="modal">
+    <div class="modal-content">
+        <span id="closeUsernameModal" class="close">&times;</span>
+        <div class="modal-header">
+            <img src="assets/monkey-icon.png" alt="User Icon" class="modal-icon">
+            <h2>Username</h2>
+        </div>
+        <div class="modal-body">
+            <p>Email: username@gmail.com</p>
+            <p>Senha: ********</p>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-btn">Change</button>
+            <button class="modal-btn">Logout</button>
+            <button class="modal-btn">Delete</button>
+        </div>
+    </div>
+</div>
+
+
             <div class="sidebarExit">
                 <button>
                     <img src="assets/exit.png" alt="">
@@ -25,8 +52,7 @@
                 <span><b>Today</b></span>
             </div>
             <!-- <div class="readLater">
-                <img src="assets/readlater.png" alt="">
-                <span><b>Read Later</b></span>
+                
             </div> -->
             <div class="feedsDispley">
                 <div class="feeds">
@@ -150,6 +176,28 @@
                     <button type="submit" class="send-btn">Send</button>
                 </form>
             `;
+            // Pegando o botão de username e o modal
+const usernameBtn = document.getElementById("usernameBtn");
+const usernameModal = document.getElementById("usernameModal");
+const closeUsernameModal = document.getElementById("closeUsernameModal");
+
+// Quando clicar no username, abre o modal
+usernameBtn.onclick = function() {
+    usernameModal.style.display = "flex";
+}
+
+// Quando clicar no "x", fecha o modal
+closeUsernameModal.onclick = function() {
+    usernameModal.style.display = "none";
+}
+
+// Fecha o modal se o usuário clicar fora do modal
+window.onclick = function(event) {
+    if (event.target == usernameModal) {
+        usernameModal.style.display = "none";
+    }
+}
+
         }
 
         // Função para fechar o modal
@@ -161,6 +209,27 @@
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
+            }
+        }
+          // Modal de Username
+          const usernameBtn = document.getElementById("usernameBtn");
+        const usernameModal = document.getElementById("usernameModal");
+        const closeUsernameModal = document.getElementById("closeUsernameModal");
+
+        // Quando clicar no username, abre o modal
+        usernameBtn.onclick = function() {
+            usernameModal.style.display = "flex";
+        }
+
+        // Quando clicar no "x", fecha o modal
+        closeUsernameModal.onclick = function() {
+            usernameModal.style.display = "none";
+        }
+
+        // Fecha o modal se o usuário clicar fora do modal
+        window.onclick = function(event) {
+            if (event.target == usernameModal) {
+                usernameModal.style.display = "none";
             }
         }
     </script>

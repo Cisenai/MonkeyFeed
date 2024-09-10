@@ -33,3 +33,25 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+  // Modal de Username
+  const usernameBtn = document.getElementById("usernameBtn");
+  const usernameModal = document.getElementById("usernameModal");
+  const closeUsernameModal = document.getElementById("closeUsernameModal");
+
+  // Quando clicar no username, abre o modal
+  usernameBtn.onclick = function() {
+      usernameModal.style.display = "flex";
+  }
+
+  // Quando clicar no "x", fecha o modal
+  closeUsernameModal.onclick = function() {
+      usernameModal.style.display = "none";
+  }
+
+  // Fecha o modal se o usuário clicar fora do modal
+  window.onclick = function(event) {
+      if (event.target == usernameModal) {
+          usernameModal.style.display = "none";
+      }
+  }
