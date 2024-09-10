@@ -1,5 +1,7 @@
 const entrar = document.getElementById('formLogin');
 
+const user = {};
+
 entrar.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -20,6 +22,7 @@ entrar.addEventListener('submit', (event) => {
             .then(data => {
                 console.log(data);
                 if (data !== null) {
+                    user = data;
                     window.location.href = 'index.html';
                 }
 
@@ -30,3 +33,4 @@ entrar.addEventListener('submit', (event) => {
 
 });
 
+module.exports = { user };
