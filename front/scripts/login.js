@@ -8,17 +8,25 @@ entrar.addEventListener('submit', (event) => {
         password: entrar.password.value
     }
 
-    fetch('http://localhost:3000/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-        .then(response => response.json())
-        .then(data => console.log(data))
 
-    // console.log(data);
+        fetch('http://localhost:3001/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data !== null) {
+                    window.location.href = 'index.html';
+                }
+
+            })    
+            .catch (error => {
+                console.error('Erro:', error);
+            });
 
 });
 
