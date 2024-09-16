@@ -3,6 +3,7 @@ import 'package:monkeyfeed/provider/user_provider.dart';
 import 'package:monkeyfeed/screens/auth/login.dart';
 import 'package:monkeyfeed/screens/auth/register.dart';
 import 'package:monkeyfeed/screens/feed.dart';
+import 'package:monkeyfeed/screens/profile.dart';
 import 'package:monkeyfeed/theme/light_theme.dart';
 import 'package:provider/provider.dart';
 
@@ -29,6 +30,7 @@ class MainApp extends StatelessWidget {
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegisterScreen(),
         '/feed': (context) => const FeedScreen(),
+        '/profile': (context) => const ProfileScreen(),
       },
     );
   }

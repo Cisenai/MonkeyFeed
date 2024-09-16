@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:monkeyfeed/model/new.dart';
 import 'package:monkeyfeed/services/news_service.dart';
+import 'package:monkeyfeed/widget/feed_app_bar.dart';
 import 'package:monkeyfeed/widget/news_widget.dart';
 
 class FeedScreen extends StatefulWidget {
@@ -14,7 +15,7 @@ class _FeedScreenState extends State<FeedScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: FeedAppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -26,28 +27,6 @@ class _FeedScreenState extends State<FeedScreen> {
             const Text('Feed'),
           ],
         ),
-        leading: Builder(
-          builder: (context) => IconButton(
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-            icon: Icon(
-              Icons.menu,
-              size: 32,
-              color: Theme.of(context).colorScheme.tertiary,
-            ),
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.search,
-              size: 32,
-              color: Theme.of(context).colorScheme.tertiary,
-            ),
-          ),
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),

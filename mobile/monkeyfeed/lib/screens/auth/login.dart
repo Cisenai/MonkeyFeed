@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monkeyfeed/home.dart';
 import 'package:monkeyfeed/main.dart';
 import 'package:monkeyfeed/provider/user_provider.dart';
 import 'package:monkeyfeed/widget/button.dart';
@@ -24,7 +25,10 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       Provider.of<UserProvider>(context, listen: false)
           .login(_emailController.text, _passwordController.text);
-      navigatorKey.currentState?.pushReplacementNamed('/feed');
+
+      navigatorKey.currentState?.pushReplacement(
+        MaterialPageRoute(builder: (context) => const Home()),
+      );
     } catch (e) {
       print(e);
     }
@@ -65,8 +69,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       margin: const EdgeInsets.symmetric(vertical: 7.5),
                     ),
                     Button(
-                      onPressed: () => navigatorKey.currentState
-                          ?.pushReplacementNamed('/home'),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          _login();
+                        }
+                      },
                       text: 'Entrar',
                       margin: const EdgeInsets.symmetric(vertical: 7.5),
                     ),

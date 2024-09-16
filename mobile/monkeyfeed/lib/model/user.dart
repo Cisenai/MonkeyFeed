@@ -15,7 +15,7 @@ class User {
     return switch (json) {
       {
         'id': int id,
-        'nome': String nome,
+        'name': String nome,
         'email': String email,
         'subscriptions': List subscriptions,
       } =>
