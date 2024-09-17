@@ -1,6 +1,6 @@
 const entrar = document.getElementById('formLogin');
 
-const user = {};
+let user = {};
 
 entrar.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -21,8 +21,9 @@ entrar.addEventListener('submit', (event) => {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                if (data !== null) {
+                if (data) {
                     user = data;
+                    window.localStorage.setItem('user', JSON.stringify(user));
                     window.location.href = 'index.html';
                 }
 
@@ -32,5 +33,3 @@ entrar.addEventListener('submit', (event) => {
             });
 
 });
-
-module.exports = { user };

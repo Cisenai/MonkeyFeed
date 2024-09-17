@@ -14,7 +14,7 @@
             </div>
             <button class="sidebarConta" id="usernameBtn">
                 <img src="assets/monkey-icon.png" alt="">
-                <span>Username</span>
+                <span id="username"></span>
             </button>
             
 
@@ -32,19 +32,11 @@
             <p>Senha: ********</p>
         </div>
         <div class="modal-footer">
-            <button class="modal-btn">Change</button>
             <button class="modal-btn">Logout</button>
             <button class="modal-btn">Delete</button>
         </div>
     </div>
 </div>
-
-
-            <div class="sidebarExit">
-                <button>
-                    <img src="assets/exit.png" alt="">
-                </button>
-            </div>
         </div>
         <div class="sidebarMain">
             <div class="today">
@@ -58,26 +50,8 @@
                 <div class="feeds">
                     <img src="assets/feed.png" alt="">
                     <span><b>Feeds</b></span>
-                    <span class="n"><b>142</b></span>
                 </div>
-                <div class="portais">
-                    <div class="portal">
-                        <img src="assets/portal.png" alt="">
-                        <span>Star Wars News</span>
-                    </div>
-                    <div class="portal">
-                        <img src="assets/portal.png" alt="">
-                        <span>Star Wars News</span>
-                    </div>
-                    <div class="portal">
-                        <img src="assets/portal.png" alt="">
-                        <span>Star Wars News</span>
-                    </div>
-                    <div class="portal">
-                        <img src="assets/portal.png" alt="">
-                        <span>Star Wars News</span>
-                    </div>
-                    <span class="moreFeed"><b>138 More Feed</b></span>
+                <div class="portais" id="portais">
                 </div>
             </div>
         </div>
@@ -85,10 +59,6 @@
                 <img src="assets/github.png" alt="">
                 <span>GitHub</span>
             </a>
-            <button class="footerButton" id="settingsBtn">
-                <img src="assets/config.png" alt="">
-                <span>Setting</span>
-            </button>
             <button class="footerButton" id="feedbackBtn">
                 <img src="assets/feedback.png" alt="">
                 <span>Feedback</span>
@@ -145,23 +115,28 @@
 
     <script>
         // Pegando os botões e o modal
-        const settingsBtn = document.getElementById("settingsBtn");
+        // const settingsBtn = document.getElementById("settingsBtn");
         const feedbackBtn = document.getElementById("feedbackBtn");
         const modal = document.getElementById("modal");
         const modalBody = document.getElementById("modalBody");
         const closeBtn = document.querySelector(".close");
 
         // Funções para abrir o modal com conteúdo específico
-        settingsBtn.onclick = function() {
-            modal.style.display = "flex";
-            modalBody.innerHTML = "<h2>Configurações</h2><p>Aqui você pode ajustar suas preferências.</p>";
-        }
+        // settingsBtn.onclick = function() {
+        //     modal.style.display = "flex";
+        //     modalBody.innerHTML = "<h2>Configurações</h2><p>Aqui você pode ajustar suas preferências.</p>";
+        // }
+
+        // console.log(closeBtn);
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        };
 
         feedbackBtn.onclick = function() {
             modal.style.display = "flex";
             modalBody.innerHTML = `
                 <h2 class="modal-title">
-                    <img src="assets/feedback-icon.png" alt="Feedback Icon" class="modal-icon"> Feedback
+                    <img src="assets/feedback-icon.png" alt="Feedback Icon" class="modal-icon closeFeedback"> Feedback
                 </h2>
                 <form id="feedbackForm">
                     <label for="email">Email</label>
@@ -176,10 +151,15 @@
                     <button type="submit" class="send-btn">Send</button>
                 </form>
             `;
+
+        
             // Pegando o botão de username e o modal
 const usernameBtn = document.getElementById("usernameBtn");
 const usernameModal = document.getElementById("usernameModal");
 const closeUsernameModal = document.getElementById("closeUsernameModal");
+const closeFeedback = document.querySelector(".closeFeedback");
+
+
 
 // Quando clicar no username, abre o modal
 usernameBtn.onclick = function() {
@@ -212,7 +192,7 @@ window.onclick = function(event) {
             }
         }
           // Modal de Username
-          const usernameBtn = document.getElementById("usernameBtn");
+        const usernameBtn = document.getElementById("usernameBtn");
         const usernameModal = document.getElementById("usernameModal");
         const closeUsernameModal = document.getElementById("closeUsernameModal");
 
@@ -234,5 +214,5 @@ window.onclick = function(event) {
         }
     </script>
 </body>
-<script src="script.js"></script>
+<script src="scripts/showUser.js"></script>
 </html>

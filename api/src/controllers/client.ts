@@ -21,7 +21,7 @@ const login = async (req: Request, res: Response) => {
     // window.location.href = 'http://127.0.0.1:5500/front/index.html';
     res.json(user).status(200).end();
     } catch (e) {
-        res.json({ message: "Email or paassword incorrect" }).status(401).end();
+        res.json({ message: "Email or password incorrect" }).status(401).end();
     }
 }
 

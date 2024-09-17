@@ -29,13 +29,14 @@ const create = async (req: Request, res: Response) => {
 
 const update = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const { idClient, site } =req.body;
+    const { idClient, link, nome } =req.body;
 
     const sub = await prisma.subscription.update({
         where: { id: parseInt(id) },
         data: {
             idClient,
-            site,
+            link,
+            nome
         }
     });
 

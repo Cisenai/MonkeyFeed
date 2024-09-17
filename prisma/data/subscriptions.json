@@ -1,14 +1,22 @@
 [
     {
         "idClient": 1,
-        "site": "https://netflixtechblog.com/feed"
+        "link": "https://netflixtechblog.com/feed",
+        "nome": "netflix"
+    },
+    {
+        "idClient": 1,
+        "link": "https://horadoterror.com/feed",
+        "nome": "horadoterror"
     },
     {
         "idClient": 2,
-        "site": "https://diolinux.com.br/feed"
+        "link": "https://diolinux.com.br/feed",
+        "nome": "diolinux"
     },
     {
         "idClient": 3,
-        "site": "https://www.cnnbrasil.com.br/feed/"
+        "link": "https://www.cnnbrasil.com.br/feed/",
+        "nome": "cnnbrasil"
     }
 ]
