@@ -9,56 +9,49 @@
 <body id="displeyIndex">
     <div class="sidebar">
         <div class="sidebarHeader">
-            <div class="sidebarConta">
-               
-            </div>
+
             <button class="sidebarConta" id="usernameBtn">
                 <img src="assets/monkey-icon.png" alt="">
                 <span id="username"></span>
             </button>
-            
+        </div>
 
+        <!-- Modal de Usuário -->
+        <div id="usernameModal" class="modal">
+            <div class="modal-content">
+                <span id="closeUsernameModal" class="close">&times;</span>
+                <div class="modal-header">
+                    <img src="assets/monkey-icon.png" alt="User Icon" class="modal-icon">
+                    <h2>Username</h2>
+                </div>
+                <div class="modal-body">
+                    <p>Email: username@gmail.com</p>
+                    <p>Senha: ********</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-btn">Logout</button>
+                    <button class="modal-btn">Delete</button>
+                </div>
+            </div>
+        </div>
 
-<!-- Modal de Usuário -->
-<div id="usernameModal" class="modal">
-    <div class="modal-content">
-        <span id="closeUsernameModal" class="close">&times;</span>
-        <div class="modal-header">
-            <img src="assets/monkey-icon.png" alt="User Icon" class="modal-icon">
-            <h2>Username</h2>
-        </div>
-        <div class="modal-body">
-            <p>Email: username@gmail.com</p>
-            <p>Senha: ********</p>
-        </div>
-        <div class="modal-footer">
-            <button class="modal-btn">Logout</button>
-            <button class="modal-btn">Delete</button>
-        </div>
-    </div>
-</div>
-        </div>
         <div class="sidebarMain">
             <div class="today">
                 <img src="assets/today.png" alt="">
                 <span><b>Today</b></span>
             </div>
-            <!-- <div class="readLater">
-                
-            </div> -->
             <div class="feedsDispley">
                 <div class="feeds">
                     <img src="assets/feed.png" alt="">
                     <span><b>Feeds</b></span>
                 </div>
-                <div class="portais" id="portais">
-                </div>
+                <div class="portais" id="portais"></div>
             </div>
         </div>
+
         <div class="sidebarFooter">
-                <img src="assets/github.png" alt="">
-                <span>GitHub</span>
-            </a>
+            <img src="assets/github.png" alt="">
+            <span>GitHub</span>
             <button class="footerButton" id="feedbackBtn">
                 <img src="assets/feedback.png" alt="">
                 <span>Feedback</span>
@@ -84,135 +77,84 @@
                     <div class="noticiacontent">
                         <div class="noticiaHeader">
                             <img src="assets/monkey-icon.png" alt="">
-                            <span class="noticiaTitle">Lorem ipsum odor amet, consectetuer adipiscing elit.</span>
+                            <span class="noticiaTitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
                         </div>
-                        <div class="noticiaText">Lorem ipsum odor amet, consectetuer adipiscing elit. Aliquet ridiculus etiam feugiat interdum velit congue bibendum rutrum gravida semper ligula ullamcorper a elit porta elit, sem laoreet facilisis dictum lectus sodales.</div>
+                        <div class="noticiaText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet ridiculus etiam feugiat interdum velit congue bibendum rutrum gravida semper ligula.</div>
                     </div>
                 </div>
+
                 <div class="noticia">
                     <div class="noticiaImg"></div>
                     <div class="noticiacontent">
                         <div class="noticiaHeader">
                             <img src="assets/monkey-icon.png" alt="">
-                            <span class="noticiaTitle">Lorem ipsum odor amet, consectetuer adipiscing elit.</span>
+                            <span class="noticiaTitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
                         </div>
-                        <div class="noticiaText">Lorem ipsum odor amet, consectetuer adipiscing elit. Aliquet ridiculus etiam feugiat interdum velit congue bibendum rutrum gravida semper ligula ullamcorper a elit porta elit, sem laoreet facilisis dictum lectus sodales.</div>
+                        <div class="noticiaText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet ridiculus etiam feugiat interdum velit congue bibendum rutrum gravida semper ligula.</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal -->
-    <div id="modal" class="modal">
+    <!-- Modal de Feedback -->
+    <div id="feedbackModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="modalBody">
-                <!-- Aqui será atualizado com conteúdo específico para cada botão -->
-            </div>
+            <span id="closeFeedbackModal" class="close">&times;</span>
+            <h2>Feedback</h2>
+            <form id="feedbackForm">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
+
+                <label for="description">Description</label>
+                <textarea id="description" name="description" placeholder="Enter description" required></textarea>
+
+                <button type="submit" class="send-btn">Send</button>
+            </form>
         </div>
     </div>
 
     <script>
-        // Pegando os botões e o modal
-        // const settingsBtn = document.getElementById("settingsBtn");
-        const feedbackBtn = document.getElementById("feedbackBtn");
-        const modal = document.getElementById("modal");
-        const modalBody = document.getElementById("modalBody");
-        const closeBtn = document.querySelector(".close");
-
-        // Funções para abrir o modal com conteúdo específico
-        // settingsBtn.onclick = function() {
-        //     modal.style.display = "flex";
-        //     modalBody.innerHTML = "<h2>Configurações</h2><p>Aqui você pode ajustar suas preferências.</p>";
-        // }
-
-        // console.log(closeBtn);
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-        };
-
-        feedbackBtn.onclick = function() {
-            modal.style.display = "flex";
-            modalBody.innerHTML = `
-                <h2 class="modal-title">
-                    <img src="assets/feedback-icon.png" alt="Feedback Icon" class="modal-icon closeFeedback"> Feedback
-                </h2>
-                <form id="feedbackForm">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
-
-                    <label for="subject">Subject</label>
-                    <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
-
-                    <label for="description">Description</label>
-                    <textarea id="description" name="description" placeholder="Enter description" required></textarea>
-
-                    <button type="submit" class="send-btn">Send</button>
-                </form>
-            `;
-
-        
-            // Pegando o botão de username e o modal
-const usernameBtn = document.getElementById("usernameBtn");
-const usernameModal = document.getElementById("usernameModal");
-const closeUsernameModal = document.getElementById("closeUsernameModal");
-const closeFeedback = document.querySelector(".closeFeedback");
-
-
-
-// Quando clicar no username, abre o modal
-usernameBtn.onclick = function() {
-    usernameModal.style.display = "flex";
-}
-
-// Quando clicar no "x", fecha o modal
-closeUsernameModal.onclick = function() {
-    usernameModal.style.display = "none";
-}
-
-// Fecha o modal se o usuário clicar fora do modal
-window.onclick = function(event) {
-    if (event.target == usernameModal) {
-        usernameModal.style.display = "none";
-    }
-}
-
-        }
-
-        // Função para fechar o modal
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // Fechar o modal ao clicar fora dele
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-          // Modal de Username
+        // Modal de Username
         const usernameBtn = document.getElementById("usernameBtn");
         const usernameModal = document.getElementById("usernameModal");
         const closeUsernameModal = document.getElementById("closeUsernameModal");
 
-        // Quando clicar no username, abre o modal
         usernameBtn.onclick = function() {
             usernameModal.style.display = "flex";
-        }
+        };
 
-        // Quando clicar no "x", fecha o modal
         closeUsernameModal.onclick = function() {
             usernameModal.style.display = "none";
-        }
+        };
 
-        // Fecha o modal se o usuário clicar fora do modal
         window.onclick = function(event) {
             if (event.target == usernameModal) {
                 usernameModal.style.display = "none";
             }
-        }
+        };
+
+        // Modal de Feedback
+        const feedbackBtn = document.getElementById("feedbackBtn");
+        const feedbackModal = document.getElementById("feedbackModal");
+        const closeFeedbackModal = document.getElementById("closeFeedbackModal");
+
+        feedbackBtn.onclick = function() {
+            feedbackModal.style.display = "flex";
+        };
+
+        closeFeedbackModal.onclick = function() {
+            feedbackModal.style.display = "none";
+        };
+
+        window.onclick = function(event) {
+            if (event.target == feedbackModal) {
+                feedbackModal.style.display = "none";
+            }
+        };
     </script>
 </body>
-<script src="scripts/showUser.js"></script>
 </html>

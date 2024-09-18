@@ -11,25 +11,24 @@ entrar.addEventListener('submit', (event) => {
     }
 
 
-        fetch('http://localhost:3001/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
+    fetch('http://localhost:3001/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if (data) {
+                user = data;
+                window.localStorage.setItem('user', JSON.stringify(user));
+                window.location.href = 'index.html';
+            }
+
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                if (data) {
-                    user = data;
-                    window.localStorage.setItem('user', JSON.stringify(user));
-                    window.location.href = 'index.html';
-                }
-
-            })    
-            .catch (error => {
-                console.error('Erro:', error);
-            });
-
+        .catch(error => {
+            console.error('Erro:', error);
+        });
 });

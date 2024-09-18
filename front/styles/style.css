@@ -565,6 +565,7 @@ textarea {
   cursor: pointer;
   color: white;
   font-size: 16px;
+  transition: background-color linear 200ms
 }
 
 .sidebarConta img {
@@ -579,7 +580,7 @@ textarea {
 }
 
 .sidebarConta:hover {
-  background-color: #2f3640; /* Efeito de hover */
+  background-color: white; /* Efeito de hover */
 }
 /* Estilo do modal */
 .modal {
@@ -643,4 +644,15 @@ textarea {
 
 .modal-btn:hover {
   background-color: #ff7f50;
+}
+/* Remover o contorno ao passar o mouse sobre as imagens */
+img {
+  outline: none;
+  border: none;
+}
+
+/* Estilização específica para imagens no header */
+.header img {
+  outline: none;
+  border: none;
 }

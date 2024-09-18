@@ -16,6 +16,7 @@ interface Content {
     pubDate: string,
     isoDate: string,
     summary?: string,
+    body: string,
 }
 
 interface Data {
@@ -55,10 +56,12 @@ const getFeed = async (req: Request, res: Response) => {
                 pubDate: item.pubDate!,
                 title: item.title!,
                 summary: item.contentSnippet!,
+                body: item['content:encoded']!,
             };
 
             response.data.push(article)
         });
+        console.log(feedContent);
         res.json(response).status(200).end();
         
     } catch (e) {
