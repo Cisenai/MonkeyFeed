@@ -63,7 +63,6 @@ const getFeed = async (req: Request, res: Response) => {
 
             response.data.push(article)
         });
-        console.log(feedContent);
         res.json(response).status(200).end();
         
     } catch (e) {
