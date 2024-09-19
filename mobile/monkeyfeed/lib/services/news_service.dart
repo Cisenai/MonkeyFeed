@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 class NewsService {
   static Future<List<New>> getNews() async {
-    final response = await http.get(Uri.parse('$apiUrl/feed/diolinux.com.br'));
+    final response = await http.get(Uri.parse('$apiUrl/feed/diolinux'));
 
     if (response.statusCode == 200) {
       final body = jsonDecode(response.body) as Map<String, dynamic>;

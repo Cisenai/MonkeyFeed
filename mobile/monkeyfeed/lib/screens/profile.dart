@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monkeyfeed/model/user.dart';
+import 'package:monkeyfeed/provider/theme_provider.dart';
 import 'package:monkeyfeed/provider/user_provider.dart';
 import 'package:monkeyfeed/widget/button.dart';
 import 'package:monkeyfeed/widget/feed_app_bar.dart';
@@ -16,9 +17,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   User? user;
 
-  final TextEditingController _nomeController = TextEditingController();
-
-  bool _darkMode = false;
+  final TextEditingController _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -68,33 +67,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.dark_mode,
-                      size: 32,
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: SwitchListTile(
-                        value: _darkMode,
-                        title: Text(
-                          'Tema Escuro',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
-                        ),
-                        contentPadding: EdgeInsets.zero,
-                        onChanged: (bool value) {
-                          setState(() {
-                            _darkMode = value;
-                          });
-                        },
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.dark_mode,
+                        size: 32,
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: SwitchListTile(
+                          value: context.read<ThemeProvider>().darkMode,
+                          title: Text(
+                            'Tema Escuro',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                          ),
+                          contentPadding: EdgeInsets.zero,
+                          onChanged: (bool value) {
+                            setState(() {
+                              context.read<ThemeProvider>().darkMode = value;
+                            });
+                            context.read<ThemeProvider>().toggleTheme();
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Text(
                   'Suas Informações',
@@ -104,97 +107,144 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Nome',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Theme.of(context).colorScheme.primary,
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Nome',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                user!.nome,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  showBottomSheet(
+                                    context: context,
+                                    builder: (context) {
+                                      return EditModal(
+                                        controller: _nameController,
+                                      );
+                                    },
+                                  );
+                                },
+                                icon: Icon(
+                                  Icons.edit,
+                                  size: 32,
+                                  color: Theme.of(context).colorScheme.tertiary,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          user!.nome,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Theme.of(context).colorScheme.primary,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Email',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
                           ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: Text(
-                                    'Editar',
-                                    style: TextStyle(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w700,
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                    ),
-                                  ),
-                                  content: TextInput(
-                                    controller: _nomeController,
-                                    validator: (value) => null,
-                                    hintText: user!.nome,
-                                  ),
-                                  actions: [
-                                    Button(onPressed: () {}, text: 'Cancelar'),
-                                    Button(onPressed: () {}, text: 'Aplicar'),
-                                  ],
-                                );
-                              },
-                            );
-                          },
-                          icon: Icon(
-                            Icons.edit,
-                            size: 32,
-                            color: Theme.of(context).colorScheme.tertiary,
+                          Row(
+                            children: [
+                              Text(
+                                user!.email,
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.edit,
+                                  size: 32,
+                                  color: Theme.of(context).colorScheme.tertiary,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Email',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Theme.of(context).colorScheme.primary,
+                        ],
                       ),
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          user!.email,
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Theme.of(context).colorScheme.primary),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.edit,
-                            size: 32,
-                            color: Theme.of(context).colorScheme.tertiary,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+class EditModal extends StatelessWidget {
+  const EditModal({
+    super.key,
+    required this.controller,
+  });
+
+  final TextEditingController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.35,
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.75,
+                  height: 5,
+                  decoration: BoxDecoration(
+                    color:
+                        Theme.of(context).colorScheme.primary.withOpacity(0.25),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ),
+              ),
+              Text(
+                'Editar',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              TextInput(
+                controller: controller,
+                validator: (value) => null,
+                hintText: Provider.of<UserProvider>(context).user.nome,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Button(onPressed: () {}, text: 'Cancelar'),
+                  ),
+                  Expanded(
+                    child: Button(onPressed: () {}, text: 'Aplicar'),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
