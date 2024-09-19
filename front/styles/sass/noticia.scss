@@ -1,7 +1,9 @@
+@import 'colors';
+
 .content {
     width: 100%;
     height: 100%;
-    background-color: colors.$cinza;
+    background-color: $cinza;
     overflow-y: auto;
 }
 
@@ -17,14 +19,15 @@
 
 .noticia {
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 2em;
 }
 
-.noticiaImg {
-    width: 25em;
-    height: 8em;
-    background-color: colors.$branco;
-    border-radius: 10px;
+.noticiaImg img {
+    width: 17em;
+    height: 9em;
+    border-radius: 15px;
     margin-right: 2em;
 }
 

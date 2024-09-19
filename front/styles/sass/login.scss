@@ -1,5 +1,7 @@
+@import 'colors';
+
 #displeyLogin {
-    background-color: colors.$cinza;
+    background-color: $cinza;
     height: 98vh;
     width: 98vw;
     display: flex;
@@ -30,7 +32,7 @@
     }
     #login input {
         border-radius: 0.3em;
-        border: 2px solid colors.$amarelo;
+        border: 2px solid $amarelo;
         margin-bottom: 0.3em;
         padding: 1em;
         font-size: 1em;
@@ -54,7 +56,7 @@
     }
     #cadastro input {
         border-radius: 0.3em;
-        border: 2px solid colors.$amarelo;
+        border: 2px solid $amarelo;
         margin-bottom: 0.3em;
         padding: 1em;
         font-size: 1em;
@@ -67,7 +69,7 @@
         font-size: 1em;
     }
     .entrar {
-        background-color: colors.$azul_escuro;
-        color: colors.$branco;
+        background-color: $azul_escuro;
+        color: $branco;
     }
 }

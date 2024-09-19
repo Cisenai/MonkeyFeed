@@ -1,7 +1,9 @@
+@import 'colors';
+
 .header {
     width: 100%;
     height: 7%;
-    background-color: colors.$branco;
+    background-color: $branco;
     display: flex;
     justify-content: center;
     align-items: center;
