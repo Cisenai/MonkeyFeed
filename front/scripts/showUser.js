@@ -11,7 +11,7 @@ for (let i in user['subscriptions']) {
     portais.innerHTML += `
         <div class="portal">
             <img src="assets/portal.png" alt="">
-            <span>${user['subscriptions'][i].nome}</span>
+            <span class="portalName">${user['subscriptions'][i].nome}</span>
         </div>
     `
 };

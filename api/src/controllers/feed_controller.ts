@@ -1,6 +1,10 @@
 import { Request, Response } from 'express';
 import Parser from 'rss-parser';
 
+import { PrismaClient } from '@prisma/client';
+
+const prisma: PrismaClient = new PrismaClient();
+
 const parser: Parser = new Parser();
 
 interface Source {
@@ -24,20 +28,18 @@ interface Data {
     data: Content[],
 };
 
-const feeds: Record<string, string> = {
-    diolinux: 'https://diolinux.com.br/feed',
-    netflix: 'https://netflixtechblog.com/feed',
-    cnnbrasil: 'https://www.cnnbrasil.com.br/feed',
-    metropole: 'https://www.metropoles.com/feed',
-    theguardian: 'https://feeds.theguardian.com/theguardian/uk/rss',
-};
-
 const getFeed = async (req: Request, res: Response) => {
     const feed: string = req.params.feed;
     try {
         const articles = <any>[];
 
-        const feedContent = await parser.parseURL(`https://@${[feed]}/feed`);
+        const sub = await prisma.subscription.findFirst({
+            where: {
+                nome: feed
+            }
+        });
+
+        const feedContent = await parser.parseURL(sub?.link!);
 
         const response: Data = {
             source: {
