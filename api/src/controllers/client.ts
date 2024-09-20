@@ -55,6 +55,9 @@ const update = async (req: Request, res: Response) => {
 
     const user = await prisma.user.update({
         where: { id: parseInt(id) },
+        include: {
+            subscriptions: true,
+        },
         data: { name: name, email: email, }
     });
 
