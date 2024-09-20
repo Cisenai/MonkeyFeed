@@ -12,13 +12,13 @@ router.post('/login', Client.login);
 router.get('/client', Client.get);
 router.get('/client/(:id)', Client.get);
 router.post('/client', Client.create);
-router.put('/client/(:id)', Client.update);
+router.patch('/client/(:id)', Client.update);
 router.delete('/client/(:id)', Client.del);
 
 router.get('/subs', Sub.get);
 router.get('/subs/(:id)', Sub.get);
 router.post('/subs', Sub.create);
-router.put('/subs/(:id)', Sub.update);
+router.patch('/subs/(:id)', Sub.update);
 router.delete('/subs/(:id)', Sub.del);
 
 router.get('/', (req: Request, res: Response) => {
