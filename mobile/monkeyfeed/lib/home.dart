@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:monkeyfeed/screens/feed.dart';
 import 'package:monkeyfeed/screens/profile.dart';
-import 'package:monkeyfeed/screens/subscriptions.dart';
+import 'package:monkeyfeed/screens/subscription.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -12,7 +12,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final List<Widget> _screens = const [
-    SubscriptionsScreen(),
+    SubscriptionScreen(),
     FeedScreen(),
     ProfileScreen(),
   ];

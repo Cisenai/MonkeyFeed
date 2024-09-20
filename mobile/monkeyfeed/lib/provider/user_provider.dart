@@ -16,4 +16,9 @@ class UserProvider with ChangeNotifier {
     User newUser = await UserService.login(email: email, password: password);
     user = newUser;
   }
+
+  void updateUser(Map<String, dynamic> data) async {
+    User newUser = await UserService.updateUser(id: user.id, data: data);
+    user = newUser;
+  }
 }

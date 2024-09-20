@@ -75,6 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         }
                       },
                       text: 'Entrar',
+                      color: Theme.of(context).colorScheme.secondary,
                       margin: const EdgeInsets.symmetric(vertical: 7.5),
                     ),
                   ],

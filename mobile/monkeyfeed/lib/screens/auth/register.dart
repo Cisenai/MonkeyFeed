@@ -55,6 +55,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     Button(
                       onPressed: () {},
                       text: 'Cadastrar',
+                      color: Theme.of(context).colorScheme.secondary,
                       margin: const EdgeInsets.symmetric(vertical: 7.5),
                     ),
                   ],

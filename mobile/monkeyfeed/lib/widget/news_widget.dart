@@ -46,35 +46,35 @@ class NewsWidget extends StatelessWidget {
             ),
           ),
           // Actions
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.favorite,
-                  size: 35,
-                  color: Theme.of(context).colorScheme.tertiary,
-                ),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.share,
-                  size: 35,
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.bookmark,
-                  size: 35,
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-              ),
-            ],
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.end,
+          //   children: [
+          //     IconButton(
+          //       onPressed: () {},
+          //       icon: Icon(
+          //         Icons.favorite,
+          //         size: 35,
+          //         color: Theme.of(context).colorScheme.tertiary,
+          //       ),
+          //     ),
+          //     IconButton(
+          //       onPressed: () {},
+          //       icon: Icon(
+          //         Icons.share,
+          //         size: 35,
+          //         color: Theme.of(context).colorScheme.secondary,
+          //       ),
+          //     ),
+          //     IconButton(
+          //       onPressed: () {},
+          //       icon: Icon(
+          //         Icons.bookmark,
+          //         size: 35,
+          //         color: Theme.of(context).colorScheme.secondary,
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
     );

@@ -30,4 +30,21 @@ class UserService {
       throw Exception('Invalid email or password.');
     }
   }
+
+  static Future<User> updateUser({
+    required int id,
+    required Map<String, dynamic> data,
+  }) async {
+    final response = await http.patch(
+      Uri.parse('$apiUrl/client/$id'),
+      headers: {'content-type': 'application/json'},
+      body: jsonEncode(data),
+    );
+
+    if (response.statusCode == 202) {
+      return User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+    } else {
+      throw Exception('Could not update user.');
+    }
+  }
 }

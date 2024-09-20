@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monkeyfeed/main.dart';
 import 'package:monkeyfeed/model/user.dart';
 import 'package:monkeyfeed/provider/theme_provider.dart';
 import 'package:monkeyfeed/provider/user_provider.dart';
@@ -18,6 +19,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
   User? user;
 
   final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+
+  void _editUser({
+    required String field,
+    required String value,
+  }) async {
+    final Map<String, dynamic> data = {
+      field: value,
+    };
+
+    try {
+      Provider.of<UserProvider>(context, listen: false).updateUser(data);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('$field atualizado com sucesso')),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Erro ao atualizar $field')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +159,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     context: context,
                                     builder: (context) {
                                       return EditModal(
+                                        field: 'name',
                                         controller: _nameController,
+                                        onEdit: (field, value) => _editUser(
+                                          field: field,
+                                          value: value,
+                                        ),
                                       );
                                     },
                                   );
@@ -166,12 +194,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               Text(
                                 user!.email,
                                 style: TextStyle(
-                                    fontSize: 16,
-                                    color:
-                                        Theme.of(context).colorScheme.primary),
+                                  fontSize: 16,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
                               ),
                               IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  showBottomSheet(
+                                    context: context,
+                                    builder: (context) {
+                                      return EditModal(
+                                        field: 'email',
+                                        controller: _emailController,
+                                        onEdit: (field, value) => _editUser(
+                                          field: field,
+                                          value: value,
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
                                 icon: Icon(
                                   Icons.edit,
                                   size: 32,
@@ -195,54 +237,89 @@ class _ProfileScreenState extends State<ProfileScreen> {
 }
 
 class EditModal extends StatelessWidget {
-  const EditModal({
+  EditModal({
     super.key,
+    required this.field,
     required this.controller,
+    required this.onEdit,
   });
 
+  final String field;
   final TextEditingController controller;
+  final Function(String, String) onEdit;
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.35,
       child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.75,
-                  height: 5,
-                  decoration: BoxDecoration(
-                    color:
-                        Theme.of(context).colorScheme.primary.withOpacity(0.25),
-                    borderRadius: BorderRadius.circular(5),
+        child: Form(
+          key: _formKey,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.75,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context)
+                          .colorScheme
+                          .primary
+                          .withOpacity(0.25),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
                   ),
                 ),
-              ),
-              Text(
-                'Editar',
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              TextInput(
-                controller: controller,
-                validator: (value) => null,
-                hintText: Provider.of<UserProvider>(context).user.nome,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Button(onPressed: () {}, text: 'Cancelar'),
+                Text(
+                  'Editar',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  child: TextInput(
+                    controller: controller,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor seu nome';
+                      } 
+                      return null;
+                    },
+                    hintText: Provider.of<UserProvider>(context).user.nome,
                   ),
-                  Expanded(
-                    child: Button(onPressed: () {}, text: 'Aplicar'),
-                  ),
-                ],
-              )
-            ],
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Button(
+                        onPressed: () => navigatorKey.currentState?.pop(),
+                        text: 'Cancelar',
+                        color: Theme.of(context).colorScheme.secondary,
+                        margin: const EdgeInsets.only(right: 5),
+                      ),
+                    ),
+                    Expanded(
+                      child: Button(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            onEdit(field, controller.text);
+                            controller.text = '';
+                            navigatorKey.currentState?.pop();
+                          }
+                        },
+                        text: 'Aplicar',
+                        color: Theme.of(context).colorScheme.tertiary,
+                        margin: const EdgeInsets.only(left: 5),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),

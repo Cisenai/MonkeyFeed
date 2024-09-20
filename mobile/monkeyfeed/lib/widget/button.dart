@@ -5,12 +5,14 @@ class Button extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.text,
+    required this.color,
     this.margin = EdgeInsets.zero,
   });
 
   final Function()? onPressed;
   final String text;
   final EdgeInsets margin;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class Button extends StatelessWidget {
       child: TextButton(
         onPressed: onPressed,
         style: TextButton.styleFrom(
-          backgroundColor: Theme.of(context).colorScheme.secondary,
+          backgroundColor: color,
           minimumSize: const Size(
             double.infinity,
             double.minPositive,
