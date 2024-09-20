@@ -1,18 +1,18 @@
 const contentInfo = document.getElementById('contentInfo');
 const feedName = document.getElementById('feedName');
+const today = document.getElementById('today');
 
-const redirectWeb = (link) => {
-    // window.location.href = link;
-    window.open(link)
-    console.log("ok ok ok");
+const fetchFeed = async (namePortal) => {
+    const urlFeed = `http://localhost:3001/feed/${namePortal}`;
+    const response = await fetch(urlFeed);  
+    const data = await response.json();
+    return data;
 }
 
 const showSubscriptions = async (namePortal) => {
     console.log(namePortal);
 
-    const urlFeed = `http://localhost:3001/feed/${namePortal}`;
-    const response = await fetch(urlFeed);  
-    const data = await response.json();
+    const data = await fetchFeed(namePortal);
     
     console.log(data.data[0]);
     console.log(data.source);
@@ -44,8 +44,33 @@ const showSubscriptions = async (namePortal) => {
 }
 
 document.addEventListener('click', function(e) {
-    // console.log(e.target);
     if (e.target.classList.contains('portalName')) {
         showSubscriptions(e.target.textContent);
     };
 });
+
+const showToday = async () => {
+    console.log(user);
+
+    for (let sub in user.subscriptions) {
+        const portalName = user.subscriptions[sub].nome;
+        // console.log(portalName);
+
+        const data = await fetchFeed(portalName);
+        // console.log(data);
+
+        for (let i in data.data) {
+
+            const dataPubli = data.data[i].isoDate;
+            const dataToday = new Date();
+            const dataComparada = new Date(dataPubli);
+            
+            if (dataComparada.toDateString() === dataToday.toDateString()) {
+                console.log('A data está no dia de hoje!');
+                console.log(dataPubli);
+            };
+        };
+    };
+};
+
+today.addEventListener('click', showToday());
