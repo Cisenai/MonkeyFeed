@@ -2,7 +2,9 @@ const contentInfo = document.getElementById('contentInfo');
 const feedName = document.getElementById('feedName');
 
 const redirectWeb = (link) => {
-    window.location.href = link;
+    // window.location.href = link;
+    window.open(link)
+    console.log("ok ok ok");
 }
 
 const showSubscriptions = async (namePortal) => {
@@ -14,26 +16,26 @@ const showSubscriptions = async (namePortal) => {
     
     console.log(data.data[0]);
     console.log(data.source);
-    console.log(data.source.image);
 
-    const icon = data.source.image || "assets/monkey-icon.png";
+    const icon = "assets/monkey-icon.png";
     
     feedName.textContent = data.source.title;
     for (let i in data.data) {
-
-        let link = data.data[i].link;
+        
+        const link = data.data[i].link;
+        const summary = data.data[i].summary || " ";
         
         contentInfo.innerHTML += `
-            <div class="noticia">
+            <div class="noticia" onclick="window.open('${link}')">
                     <div class="noticiaImg">
                         <img src="assets/imgNews.jpg" alt="">
                     </div>
                     <div class="noticiacontent">
                         <div class="noticiaHeader">
                             <img src="${icon}" alt="">
-                            <span class="noticiaTitle">${data.data[i].title}</span>
+                            <span class="noticiaTitle" >${data.data[i].title}</span>
                         </div>
-                        <div class="noticiaText">${data.data[i].summary}</div>
+                        <div class="noticiaText">${summary}</div>
                     </div>
                 </div>
         `
