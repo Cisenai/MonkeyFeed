@@ -4,6 +4,7 @@ import 'package:monkeyfeed/model/subscription.dart';
 import 'package:monkeyfeed/model/user.dart';
 import 'package:monkeyfeed/provider/feed_provider.dart';
 import 'package:monkeyfeed/provider/user_provider.dart';
+import 'package:monkeyfeed/services/subscriptions_service.dart';
 import 'package:monkeyfeed/widget/button.dart';
 import 'package:monkeyfeed/widget/feed_app_bar.dart';
 import 'package:monkeyfeed/widget/modal_separator.dart';
@@ -25,13 +26,45 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _siteController = TextEditingController();
 
-  void _addFeed() {}
+  void _addFeed() async {
+    final Map<String, dynamic> data = {
+      'idClient': user!.id,
+      'nome': _nameController.text,
+      'link': _siteController.text,
+    };
+
+    try {
+      final User newUser =
+          await SubscriptionsService.addSubscription(data: data);
+
+      setState(() {
+        Provider.of<UserProvider>(context, listen: false).user = newUser;
+      });
+
+      navigatorKey.currentState?.pop();
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  void _deleteSub(int subId) async {
+    try {
+      final User newUser = await SubscriptionsService.removeSubscription(
+          userId: user!.id, subId: subId);
+
+      setState(() {
+        Provider.of<UserProvider>(context, listen: false).user = newUser;
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     user = context.read<UserProvider>().user;
     return Scaffold(
-      appBar: const FeedAppBar(title: Text('Perfil')),
+      appBar: const FeedAppBar(title: Text('Inscrições')),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
@@ -47,6 +80,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Form(
+                            key: _formKey,
                             child: Column(
                               children: [
                                 const ModalSeparator(),
@@ -99,7 +133,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                                             _addFeed();
                                           }
                                         },
-                                        text: 'Aplicar',
+                                        text: 'Adicionar',
                                         color: Theme.of(context)
                                             .colorScheme
                                             .tertiary,
@@ -144,6 +178,15 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(3)),
                       ),
+                      trailing: IconButton(
+                        onPressed: () => _deleteSub(sub.id),
+                        icon: Icon(
+                          Icons.close,
+                          size: 36,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
+                      contentPadding: const EdgeInsets.only(left: 15, right: 5),
                     ),
                   );
                 },

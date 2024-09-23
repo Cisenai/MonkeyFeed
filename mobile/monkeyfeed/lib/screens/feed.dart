@@ -41,7 +41,16 @@ class _FeedScreenState extends State<FeedScreen> {
               return const Center(child: CircularProgressIndicator());
             }
             if (snapshot.hasError) {
-              return Text('${snapshot.error}');
+              return Center(
+                child: Text(
+                  'Site inválido ou não possui um sistema de Feed.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+              );
             } else {
               final data = snapshot.data!;
               return ListView.builder(
@@ -51,8 +60,7 @@ class _FeedScreenState extends State<FeedScreen> {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 5),
                     child: NewsWidget(
-                      title: news.title,
-                      summary: news.summary?? '',
+                      news: news,
                     ),
                   );
                 },

@@ -15,25 +15,13 @@ class FeedAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: title,
-      leading: Builder(
-        builder: (context) => IconButton(
-          onPressed: () {
-            Scaffold.of(context).openDrawer();
-          },
-          icon: Icon(
-            Icons.menu,
-            size: 32,
-            color: Theme.of(context).colorScheme.tertiary,
-          ),
-        ),
-      ),
       actions: [
         IconButton(
           onPressed: () {},
           icon: Icon(
             Icons.search,
             size: 32,
-            color: Theme.of(context).colorScheme.tertiary,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
       ],

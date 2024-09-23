@@ -43,6 +43,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
+  void _logout() {
+    navigatorKey.currentState?.pushReplacementNamed('/login');
+  }
+
   @override
   Widget build(BuildContext context) {
     user = Provider.of<UserProvider>(context).user;
@@ -226,6 +230,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ],
                       ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: TextButton(
+                          onPressed: _logout,
+                          child: Text(
+                            'Sair da sua Conta',
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -275,7 +289,7 @@ class EditModal extends StatelessWidget {
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Por favor seu nome';
-                      } 
+                      }
                       return null;
                     },
                     hintText: 'Digite aqui...',
@@ -306,7 +320,7 @@ class EditModal extends StatelessWidget {
                       ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ),

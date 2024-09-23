@@ -82,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               OutlinedFormButton(
-                onPressed: _login,
+                onPressed: () => navigatorKey.currentState?.pushReplacementNamed('/register'),
                 text: 'Cadastre-se',
               ),
             ],
