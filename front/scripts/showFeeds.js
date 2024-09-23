@@ -16,8 +16,7 @@ const showSubscriptions = async (namePortal) => {
 
     const icon = "assets/monkey-icon.png";
     
-    console.log(data.source.title);
-    feedName.textContent = data.source.title;
+    contentInfo.innerHTML = `<span class="feedName" id="feedName">${data.source.title}</span>`;
     for (let i in data.data) {
         
         const link = data.data[i].link;
@@ -49,8 +48,8 @@ document.addEventListener('click', function(e) {
 
 const showToday = async () => {
     contentInfo.innerHTML = "";
-    feedName.textContent = "Today";
-
+    
+    contentInfo.innerHTML = `<span class="feedName" id="feedName">Today</span>`;
     for (let sub in user.subscriptions) {
         const portalName = user.subscriptions[sub].nome;
         // console.log(portalName);

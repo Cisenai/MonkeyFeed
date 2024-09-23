@@ -5,11 +5,6 @@
         "nome": "netflix"
     },
     {
-        "idClient": 1,
-        "link": "https://horadoterror.com/feed",
-        "nome": "horadoterror"
-    },
-    {
         "idClient": 2,
         "link": "https://diolinux.com.br/feed",
         "nome": "diolinux"
@@ -18,5 +13,20 @@
         "idClient": 3,
         "link": "https://www.cnnbrasil.com.br/feed/",
         "nome": "cnnbrasil"
-    }
+    },
+    {
+		"idClient": 1,
+		"link": "https://theintercept.com/feed",
+		"nome": "the intercept"
+	},
+	{
+		"idClient": 1,
+		"link": "https://xadrezverbal.com/feed/",
+		"nome": "xadrez verbal"
+	},
+	{
+		"idClient": 1,
+		"link": "https://feeds.theguardian.com/theguardian/world/rss",
+		"nome": "the guardian"
+	}
 ]
