@@ -69,6 +69,8 @@
   border-radius: 6px;
   border: 2px solid #14213D;
   background-color: white;
+  padding: 0.5em 1em;
+  cursor: pointer;
 }
 
 .today img {
@@ -124,11 +126,14 @@
 .portal {
   display: flex;
   align-items: center;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 .portalName {
   font-size: 1.0em;
   margin-left: 0.5em;
+  font-family: Poppins;
 
 }
 
@@ -165,12 +170,15 @@
 .content {
   width: 100%;
   height: 100%;
-  background-color: #E5E5E5;
+  background-color: #faead6;
   overflow-y: auto;
+  border-radius: 10px;
+  border: 3px solid #14213D;
+
 }
 
 .contentInfo {
-  margin: 0em 8em 0em 8em;
+  margin: 0em 5em 0em 8em;
 }
 
 .feedName {
@@ -183,11 +191,12 @@
   display: flex;
   align-items: center;
   margin-top: 2em;
+  cursor: pointer;
 }
 
 .noticiaImg img {
-  width: 17em;
-  height: 9em;
+  width: 19em;
+  height: 10em;
   border-radius: 15px;
   margin-right: 2em;
 }
@@ -195,6 +204,7 @@
 .noticiaHeader {
   display: flex;
   align-items: center;
+  height: 7em;
 }
 
 .noticiaHeader img {
@@ -313,19 +323,19 @@
 }
 
 .header2 {
-  width: 1fr;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 4.5em;
 }
 
 .header2 img {
-  width: 2em;
+  width: 3.5em;
 }
 
 .header2 span {
-  font-size: 1.7em;
+  font-size: 40px;
   font-family: Poppins;
   margin-left: 0.3em;
 }
@@ -341,9 +351,10 @@
 }
 
 #displeyIndex {
-  height: 100vh;
+  height: 100%;    
   display: flex;
-  padding-left: 20rem;
+  padding-left: 30rem;
+  width: 100%;
 }
 
 .main {
