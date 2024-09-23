@@ -44,10 +44,10 @@ const update = async (req: Request, res: Response) => {
 }
 
 const del = async (req: Request, res: Response) => {
-    const { id } = req.params;
+    const { id, idClient } = req.body;
 
     const sub = await prisma.subscription.delete({
-        where: { id: parseInt(id) }
+        where: { id: parseInt(id), idClient: parseInt(idClient) }
     });
 
     res.status(202).json(sub).end();

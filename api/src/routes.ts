@@ -19,7 +19,7 @@ router.get('/subs', Sub.get);
 router.get('/subs/(:id)', Sub.get);
 router.post('/subs', Sub.create);
 router.patch('/subs/(:id)', Sub.update);
-router.delete('/subs/(:id)', Sub.del);
+router.delete('/subs', Sub.del);
 
 router.get('/', (req: Request, res: Response) => {
     res.send("Everything's fine");
