@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @use 'colors';
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -7,111 +8,125 @@
   height: 100%;
   width: 20rem;
   left: 0;
-  overflow-y: auto; }
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 1em;
+}
 
 .sidebarHeader {
-  width: 100%;
-  height: 7%;
   display: flex;
   align-items: center;
-  justify-items: center; }
+  justify-items: center;
+  margin: 0px 1em;
+  margin-top: 1em;
+}
 
 .sidebarConta {
-  width: 87%;
-  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 6px;
   border: 2px solid #14213D;
-  padding: 0.5em 1em;
   background-color: white;
+  width: 100%;
+  padding: 0.5em;
 }
 
 .sidebarConta span {
   font-family: Poppins;
   text-decoration: underline;
   font-size: 1.3em;
-  margin-left: 0.5em; }
+  margin-left: 0.5em;
+}
 
 .sidebarConta img {
-  margin-left: 1.5em;
-  width: 30px; }
+  width: 30px;
+}
 
 .sidebarExit button {
   background-color: #f5b751;
-  border: 0; }
+  border: 0;
+}
 
 .sidebarExit img {
-  width: 1.4em; }
+  width: 1.4em;
+}
 
 .sidebarMain {
-  margin: 5em 0em 0em 1.5em;
+  margin: 0px 1em;;
   font-family: Poppins;
-  width: 86%;
-  height: 30px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-  border: 2px solid #14213D;
-  background-color: white; }
-  
+  flex-direction: column;
+  gap: 1em;
+}
+
 .today {
   display: flex;
   justify-items: center;
   align-items: center;
- }
+  border-radius: 6px;
+  border: 2px solid #14213D;
+  background-color: white;
+}
 
 .today img {
   width: 20px;
-  height: 20px; }
+  height: 20px;
+}
 
 .today span {
   font-size: 1.1em;
-  margin-left: 0.5em; }
+  margin-left: 0.5em;
+}
 
 .readLater {
   display: flex;
   justify-items: center;
-  align-items: center; }
+  align-items: center;
+}
 
 .readLater img {
   width: 1em;
-  height: 1.1em; }
+  height: 1.1em;
+}
 
 .readLater span {
   font-size: 1.1em;
-  margin-left: 0.5em; }
+  margin-left: 0.5em;
+}
 
 .feedsDispley {
-  margin: 20em 1.8em 0em 1.0em;
-  width: 100%;
   height: 200px;
   border: 2px solid #14213D;
   border-radius: 6px;
   padding: 0.5em 1em;
-  background-color: white; }
+  background-color: white;
+}
 
 .feeds img {
   width: 30px;
   height: 20px;
-  margin-left: 0.1em; }
+  margin-left: 0.1em;
+}
 
 .feeds span {
   font-size: 1.4em;
   margin-left: 0.2em;
   font-weight: bold;
- }
+}
 
 .portais {
-  margin-left: 2em; }
+  margin-left: 2em;
+}
 
 .portal {
   display: flex;
   align-items: center;
- }
-.portalName{
+}
+
+.portalName {
   font-size: 1.0em;
   margin-left: 0.5em;
 
@@ -120,72 +135,84 @@
 .portal img {
   width: 20px;
   height: 20px;
-  margin-right: 0.3em; }
+  margin-right: 0.3em;
+}
 
 .moreFeed {
-  font-size: 0.8em; }
+  font-size: 0.8em;
+}
 
 .sidebarFooter {
-  width: 120px;
-  height: 55px;
   border: 2px solid #14213D;
   border-radius: 6px;
   padding: 0.5em 1em;
   background-color: white;
-  margin: 23em 0em 0em 1.5em;
-  font-family: Poppins; }
+  margin: 0px 1em;
+  font-family: Poppins;
+}
 
 .sidebarFooter img {
   width: 1.3em;
   height: 1.3em;
-  margin-right: 0.5em; }
+  margin-right: 0.5em;
+}
 
 .sidebarFooter div {
   display: flex;
-  align-items: center; }
+  align-items: center;
+}
 
 .content {
   width: 100%;
   height: 100%;
   background-color: #E5E5E5;
-  overflow-y: auto; }
+  overflow-y: auto;
+}
 
 .contentInfo {
-  margin: 0em 8em 0em 8em; }
+  margin: 0em 8em 0em 8em;
+}
 
 .feedName {
   font-size: 2em;
   font-family: Poppins;
-  margin-bottom: 0.5em; }
+  margin-bottom: 0.5em;
+}
 
 .noticia {
   display: flex;
   align-items: center;
-  margin-top: 2em; }
+  margin-top: 2em;
+}
 
 .noticiaImg img {
   width: 17em;
   height: 9em;
   border-radius: 15px;
-  margin-right: 2em; }
+  margin-right: 2em;
+}
 
 .noticiaHeader {
   display: flex;
-  align-items: center; }
+  align-items: center;
+}
 
 .noticiaHeader img {
   max-width: 3em;
-  margin-right: 1em; }
+  margin-right: 1em;
+}
 
 .noticiaTitle {
   font-size: 1.5em;
   max-width: 60em;
-  font-family: Poppins; }
+  font-family: Poppins;
+}
 
 .noticiaText {
   font-size: 1em;
   max-width: 70em;
-  font-family: Poppins; }
+  font-family: Poppins;
+}
 
 #displeyLogin {
   background-color: #E5E5E5;
@@ -193,60 +220,83 @@
   width: 98vw;
   display: flex;
   justify-content: center;
-  align-items: center; }
-  #displeyLogin #login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; }
-  #displeyLogin #cadastro {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; }
-  #displeyLogin #login img {
-    width: 10em;
-    height: 10em; }
-  #displeyLogin #login form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 2.2em; }
-  #displeyLogin #login input {
-    border-radius: 0.3em;
-    border: 2px solid #FCA311;
-    margin-bottom: 0.3em;
-    padding: 1em;
-    font-size: 1em; }
-  #displeyLogin #login button {
-    border-radius: 0.3em;
-    width: 100%;
-    margin-bottom: 0.5em;
-    padding: 1em;
-    font-size: 1em; }
-  #displeyLogin #cadastro img {
-    width: 10em;
-    height: 10em; }
-  #displeyLogin #cadastro form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 2.2em; }
-  #displeyLogin #cadastro input {
-    border-radius: 0.3em;
-    border: 2px solid #FCA311;
-    margin-bottom: 0.3em;
-    padding: 1em;
-    font-size: 1em; }
-  #displeyLogin #cadastro button {
-    border-radius: 0.3em;
-    width: 100%;
-    margin-bottom: 0.5em;
-    padding: 1em;
-    font-size: 1em; }
-  #displeyLogin .entrar {
-    background-color: #14213D;
-    color: #FFFFFF; }
+  align-items: center;
+}
+
+#displeyLogin #login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#displeyLogin #cadastro {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#displeyLogin #login img {
+  width: 10em;
+  height: 10em;
+}
+
+#displeyLogin #login form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2.2em;
+}
+
+#displeyLogin #login input {
+  border-radius: 0.3em;
+  border: 2px solid #FCA311;
+  margin-bottom: 0.3em;
+  padding: 1em;
+  font-size: 1em;
+}
+
+#displeyLogin #login button {
+  border-radius: 0.3em;
+  width: 100%;
+  margin-bottom: 0.5em;
+  padding: 1em;
+  font-size: 1em;
+}
+
+#displeyLogin #cadastro img {
+  width: 10em;
+  height: 10em;
+}
+
+#displeyLogin #cadastro form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2.2em;
+}
+
+#displeyLogin #cadastro input {
+  border-radius: 0.3em;
+  border: 2px solid #FCA311;
+  margin-bottom: 0.3em;
+  padding: 1em;
+  font-size: 1em;
+}
+
+#displeyLogin #cadastro button {
+  border-radius: 0.3em;
+  width: 100%;
+  margin-bottom: 0.5em;
+  padding: 1em;
+  font-size: 1em;
+}
+
+#displeyLogin .entrar {
+  background-color: #14213D;
+  color: #FFFFFF;
+}
 
 .header {
   width: 100%;
@@ -254,42 +304,51 @@
   background-color: #FFFFFF;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+}
 
 .header1 {
   width: 1fr;
-  height: 100%; }
+  height: 100%;
+}
 
 .header2 {
   width: 1fr;
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+}
 
 .header2 img {
-  width: 2em; }
+  width: 2em;
+}
 
 .header2 span {
   font-size: 1.7em;
   font-family: Poppins;
-  margin-left: 0.3em; }
+  margin-left: 0.3em;
+}
 
 .header3 {
   width: 1fr;
-  height: 100%; }
+  height: 100%;
+}
 
 * {
   padding: 0;
-  margin: 0; }
+  margin: 0;
+}
 
 #displeyIndex {
   height: 100vh;
   display: flex;
-  padding-left: 20rem; }
+  padding-left: 20rem;
+}
 
 .main {
   height: 100%;
-  width: 80rem; }
+  width: 80rem;
+}
 
 /*# sourceMappingURL=style.css.map */
