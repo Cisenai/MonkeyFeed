@@ -10,15 +10,13 @@ const fetchFeed = async (namePortal) => {
 }
 
 const showSubscriptions = async (namePortal) => {
-    console.log(namePortal);
+    contentInfo.innerHTML = "";
 
     const data = await fetchFeed(namePortal);
-    
-    console.log(data.data[0]);
-    console.log(data.source);
 
     const icon = "assets/monkey-icon.png";
     
+    console.log(data.source.title);
     feedName.textContent = data.source.title;
     for (let i in data.data) {
         
@@ -41,7 +39,7 @@ const showSubscriptions = async (namePortal) => {
         `
     };
     
-}
+};
 
 document.addEventListener('click', function(e) {
     if (e.target.classList.contains('portalName')) {
@@ -50,7 +48,8 @@ document.addEventListener('click', function(e) {
 });
 
 const showToday = async () => {
-    console.log(user);
+    contentInfo.innerHTML = "";
+    feedName.textContent = "Today";
 
     for (let sub in user.subscriptions) {
         const portalName = user.subscriptions[sub].nome;
@@ -59,6 +58,7 @@ const showToday = async () => {
         const data = await fetchFeed(portalName);
         // console.log(data);
 
+        const icon = "assets/monkey-icon.png";
         for (let i in data.data) {
 
             const dataPubli = data.data[i].isoDate;
@@ -66,11 +66,28 @@ const showToday = async () => {
             const dataComparada = new Date(dataPubli);
             
             if (dataComparada.toDateString() === dataToday.toDateString()) {
-                console.log('A data está no dia de hoje!');
-                console.log(dataPubli);
+                // console.log(dataPubli);
+
+                const link = data.data[i].link;
+                const summary = data.data[i].summary || " ";
+                
+                contentInfo.innerHTML += `
+                    <div class="noticia" onclick="window.open('${link}')">
+                            <div class="noticiaImg">
+                                <img src="assets/imgNews.jpg" alt="">
+                            </div>
+                            <div class="noticiacontent">
+                                <div class="noticiaHeader">
+                                    <img src="${icon}" alt="">
+                                    <span class="noticiaTitle" >${data.data[i].title}</span>
+                                </div>
+                                <div class="noticiaText">${summary}</div>
+                            </div>
+                        </div>
+                `
             };
         };
     };
 };
 
-today.addEventListener('click', showToday());
+today.addEventListener('click', showToday);
