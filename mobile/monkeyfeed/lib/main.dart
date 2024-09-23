@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monkeyfeed/provider/feed_provider.dart';
 import 'package:monkeyfeed/provider/theme_provider.dart';
 import 'package:monkeyfeed/provider/user_provider.dart';
 import 'package:monkeyfeed/screens/auth/login.dart';
@@ -14,6 +15,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (context) => UserProvider()),
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
+        ChangeNotifierProvider(create: (context) => FeedProvider()),
       ],
       child: const MainApp(),
     ),

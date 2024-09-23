@@ -13,7 +13,7 @@ class New {
   final String link;
   final String pubDate;
   final DateTime isoDate;
-  final String summary;
+  final String? summary;
 
   factory New.fromJson(Map<String, dynamic> json) {
     return switch (json) {
@@ -23,7 +23,6 @@ class New {
         'link': String link,
         'pubDate': String pubDate,
         'isoDate': String isoDate,
-        'summary': String summary,
       } =>
         New(
           creator: creator,
@@ -31,7 +30,7 @@ class New {
           link: link,
           pubDate: pubDate,
           isoDate: DateTime.parse(isoDate),
-          summary: summary,
+          summary: json['summary']?? '',
         ),
       _ => throw const FormatException('Could not get new.'),
     };

@@ -5,6 +5,7 @@ import 'package:monkeyfeed/provider/theme_provider.dart';
 import 'package:monkeyfeed/provider/user_provider.dart';
 import 'package:monkeyfeed/widget/button.dart';
 import 'package:monkeyfeed/widget/feed_app_bar.dart';
+import 'package:monkeyfeed/widget/modal_separator.dart';
 import 'package:monkeyfeed/widget/text_input.dart';
 import 'package:provider/provider.dart';
 
@@ -62,6 +63,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     borderRadius: BorderRadius.circular(100),
                   ),
                 ),
+                const SizedBox(height: 10),
                 Text(
                   user!.nome,
                   style: TextStyle(
@@ -261,20 +263,7 @@ class EditModal extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 15),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.75,
-                    height: 5,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context)
-                          .colorScheme
-                          .primary
-                          .withOpacity(0.25),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                  ),
-                ),
+                const ModalSeparator(),
                 Text(
                   'Editar',
                   style: Theme.of(context).textTheme.titleMedium,
@@ -289,7 +278,7 @@ class EditModal extends StatelessWidget {
                       } 
                       return null;
                     },
-                    hintText: Provider.of<UserProvider>(context).user.nome,
+                    hintText: 'Digite aqui...',
                   ),
                 ),
                 Row(

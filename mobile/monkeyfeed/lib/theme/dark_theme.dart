@@ -26,6 +26,13 @@ class DarkTheme {
       onSurface: Color(0xFF000000),
       onSecondaryFixed: Color(0xFF14213D),
     ),
+    textTheme: const TextTheme(
+      titleMedium: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w700,
+        color: Color(0xFFFFFFFF),
+      ),
+    ),
   );
 
   ThemeData get theme => _theme;
