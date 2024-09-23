@@ -90,4 +90,4 @@ const showToday = async () => {
     };
 };
 
-today.addEventListener('click', showToday);
+today.addEventListener('click', showToday); 
