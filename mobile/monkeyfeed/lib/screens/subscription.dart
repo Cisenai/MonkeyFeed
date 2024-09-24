@@ -3,6 +3,7 @@ import 'package:monkeyfeed/main.dart';
 import 'package:monkeyfeed/model/subscription.dart';
 import 'package:monkeyfeed/model/user.dart';
 import 'package:monkeyfeed/provider/feed_provider.dart';
+import 'package:monkeyfeed/provider/navigation_provider.dart';
 import 'package:monkeyfeed/provider/user_provider.dart';
 import 'package:monkeyfeed/services/subscriptions_service.dart';
 import 'package:monkeyfeed/widget/button.dart';
@@ -42,6 +43,10 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
       });
 
       navigatorKey.currentState?.pop();
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Inscrição adicionada com sucesso!')),
+      );
     } catch (e) {
       print(e);
     }
@@ -55,6 +60,10 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
       setState(() {
         Provider.of<UserProvider>(context, listen: false).user = newUser;
       });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Inscrição apagada com sucesso!')),
+      );
     } catch (e) {
       print(e);
     }
@@ -167,9 +176,13 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 5),
                     child: ListTile(
-                      onTap: () =>
-                          Provider.of<FeedProvider>(context, listen: false)
-                              .feed = sub.nome,
+                      onTap: () {
+                        Provider.of<FeedProvider>(context, listen: false).feed =
+                            sub.nome;
+                        setState(() {
+                          Provider.of<NavigationProvider>(context, listen: false).currentScreen = 1;
+                        });
+                      },
                       title: Text(
                         sub.nome.toUpperCase(),
                         style: Theme.of(context).textTheme.titleMedium,

@@ -15,6 +15,18 @@ class DarkTheme {
         fontWeight: FontWeight.w700,
       ),
     ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: Color(0xFF000000),
+    ),
+    snackBarTheme: const SnackBarThemeData(
+      backgroundColor: Color(0xFFE5E5E5),
+      actionTextColor: Color(0xFF14213D),
+      contentTextStyle: TextStyle(
+        fontFamily: 'Poppins',
+        fontWeight: FontWeight.w700,
+        color: Color(0xFF14213D),
+      ),
+    ),
     drawerTheme: const DrawerThemeData(
       backgroundColor: Color(0xFF000000),
     ),

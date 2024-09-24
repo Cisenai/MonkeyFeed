@@ -9,6 +9,12 @@ import 'package:monkeyfeed/widget/modal_separator.dart';
 import 'package:monkeyfeed/widget/text_input.dart';
 import 'package:provider/provider.dart';
 
+extension StringExtension on String {
+    String capitalize() {
+      return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
+    }
+}
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
@@ -34,7 +40,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       Provider.of<UserProvider>(context, listen: false).updateUser(data);
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('$field atualizado com sucesso')),
+        SnackBar(content: Text('${field.capitalize()} atualizado com sucesso')),
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -236,7 +242,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           onPressed: _logout,
                           child: Text(
                             'Sair da sua Conta',
-                            style: Theme.of(context).textTheme.titleMedium,
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
                           ),
                         ),
                       ),

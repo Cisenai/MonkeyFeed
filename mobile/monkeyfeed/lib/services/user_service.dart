@@ -47,4 +47,20 @@ class UserService {
       throw Exception('Could not update user.');
     }
   }
+
+  static Future<void> registerUser({
+    required Map<String, dynamic> data,
+  }) async {
+    final response = await http.post(
+      Uri.parse('$apiUrl/client'),
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: jsonEncode(data),
+    );
+
+    if (response.statusCode != 202) {
+      throw Exception('Could not create new user.');
+    }
+  }
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:monkeyfeed/provider/navigation_provider.dart';
 import 'package:monkeyfeed/screens/feed.dart';
 import 'package:monkeyfeed/screens/profile.dart';
 import 'package:monkeyfeed/screens/subscription.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -17,17 +19,18 @@ class _HomeState extends State<Home> {
     ProfileScreen(),
   ];
 
-  int _currentScreen = 1;
+  int? _currentScreen;
 
   @override
   Widget build(BuildContext context) {
+    _currentScreen = Provider.of<NavigationProvider>(context).currentScreen;
     return Scaffold(
-      body: _screens[_currentScreen],
+      body: _screens[_currentScreen!],
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentScreen,
+        currentIndex: _currentScreen!,
         onTap: (index) {
           setState(() {
-            _currentScreen = index;
+            Provider.of<NavigationProvider>(context, listen: false).currentScreen = index;
           });
         },
         items: const [

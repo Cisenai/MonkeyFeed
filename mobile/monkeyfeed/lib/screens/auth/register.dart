@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monkeyfeed/main.dart';
+import 'package:monkeyfeed/services/user_service.dart';
 import 'package:monkeyfeed/widget/button.dart';
 import 'package:monkeyfeed/widget/outlined_button.dart';
 import 'package:monkeyfeed/widget/text_input.dart';
@@ -18,6 +19,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
+
+  void _registerUser() async {
+    final Map<String, dynamic> data = {
+      'name': _nameController.text,
+      'email': _emailController.text,
+      'password': _passwordController.text,
+    };
+
+    await UserService.registerUser(data: data);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Usuário criado com sucesso!')),
+    );
+
+    navigatorKey.currentState?.pushReplacementNamed('/login');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +70,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       margin: const EdgeInsets.symmetric(vertical: 7.5),
                     ),
                     Button(
-                      onPressed: () {},
+                      onPressed: _registerUser,
                       text: 'Cadastrar',
                       color: Theme.of(context).colorScheme.secondary,
                       margin: const EdgeInsets.symmetric(vertical: 7.5),
