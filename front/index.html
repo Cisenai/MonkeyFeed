@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/modal.css">
-    <title>Document</title>
+    <title>Monkeyfeed</title>
 </head>
 <body id="displeyIndex">
     <div class="sidebar">
@@ -23,19 +23,28 @@
                 <span id="closeUsernameModal" class="close">&times;</span>
                 <div class="modal-header">
                     <img src="assets/monkey-icon.png" alt="User Icon" class="modal-icon">
-                    <h2>Username</h2>
+                    <span id="usernameModalName"></span>
                 </div>
                 <div class="modal-body">
-                    <p>Email: username@gmail.com</p>
-                    <p>Senha: ********</p>
+                    <span id="usernameModalEmail">Email: username@gmail.com</span>
                 </div>
                 <div class="modal-footer">
-                    <button class="modal-btn">Logout</button>
-                    <button class="modal-btn">Delete</button>
+                    <button class="modal-btn" id="logoutBtn">Logout</button>
+                    <button class="modal-btn" id="deleteUserBtn">Delete</button>
+                    <style>
+                        .modal-btn {
+                            padding: 0.5em;
+                            margin: 0em 0.5em 0em 0.5em;
+                            background-color: #FCA311;
+                            color: white;
+                            font-weight: bold;
+                        } 
+                    </style>
                 </div>
             </div>
         </div>
 
+        
         <div class="sidebarMain">
             <div class="today" id="today">
                 <img src="assets/today.png" alt="">
@@ -45,11 +54,12 @@
                 <div class="feeds">
                     <img src="assets/feed.png" alt="">
                     <span><b>Feeds</b></span>
+                    <button id="addFeedBtn"><img src="assets/add.svg" alt=""></button>
                 </div>
                 <div class="portais" id="portais"></div>
             </div>
         </div>
-
+        
         <div class="sidebarFooter">
             <img src="assets/github.png" alt="">
             <span>GitHub</span>
@@ -57,6 +67,33 @@
                 <img src="assets/feedback.png" alt="">
                 <span>Feedback</span>
             </button>
+        </div>
+
+        <div id="feedAddModal" class="modal">
+            <div class="modal-content">
+                <span id="closeFeedModal" class="close">&times;</span>
+                <div class="modal-header">
+                    <img src="assets/monkey-icon.png" alt="User Icon" class="modal-icon">
+                    <span>Add Feed</span>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <input type="text" placeholder="Title">
+                        <input type="text" placeholder="URL">
+                        <button type="submit" class="modal-btn">Add</button>
+                        <style>
+                            .modal-btn {
+                                padding: 0.5em;
+                                margin: 0em 0.5em 0em 0.5em;
+                                background-color: #FCA311;
+                                color: white;
+                                font-weight: bold;
+                            } 
+                        </style>
+                    </form>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 
@@ -134,8 +171,27 @@
                 feedbackModal.style.display = "none";
             }
         };
+
+        const addFeedBtn = document.getElementById("addFeedBtn");
+        const feedAddModal = document.getElementById("feedAddModal");
+        const closeFeedModal = document.getElementById("closeFeedModal");
+
+        addFeedBtn.onclick = function() {
+            feedAddModal.style.display = "flex";
+        };
+
+        closeFeedModal.onclick = function() {
+            feedAddModal.style.display = "none";
+        };
+
+        window.onclick = function(event) {
+            if (event.target == feedAddModal) {
+                feedAddModal.style.display = "none";
+            }
+        };
     </script>
 </body>
 <script src="scripts/showUser.js"></script>
 <script type="module" src="scripts/showFeeds.js"></script>
+<script src="scripts/editUser.js"></script>
 </html>
