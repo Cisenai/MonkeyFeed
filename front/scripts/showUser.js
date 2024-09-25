@@ -12,7 +12,7 @@ for (let i in user['subscriptions']) {
         <div class="portal">
             <img src="assets/portal.png" alt="">
             <span class="portalName">${user['subscriptions'][i].nome}</span>
-            <button>X</button>
+            <button class="deletePortal">X</button>
         </div>
     `
 };
