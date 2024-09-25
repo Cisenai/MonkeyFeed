@@ -23,6 +23,26 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: relative;
 }
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#description {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
 .modal-content h2{
     color: #14213D;
     margin-bottom: 10px;
@@ -109,4 +129,14 @@
     padding: 2em;
 }
 
+#addFeedBtn {
+    outline: none;
+    border: 0px;
+    background-color: transparent;
+    margin-left: 8em;
+}         
 
+a {
+    text-decoration: none; 
+    color: #000;
+}

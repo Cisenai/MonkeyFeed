@@ -62,7 +62,9 @@
         
         <div class="sidebarFooter">
             <img src="assets/github.png" alt="">
-            <span>GitHub</span>
+            <a href="https://github.com/Cisenai/MonkeyFeed" target="_blank">
+                <span>GitHub</span>
+              </a>
             <button class="footerButton" id="feedbackBtn">
                 <img src="assets/feedback.png" alt="">
                 <span>Feedback</span>
@@ -77,10 +79,10 @@
                     <span>Add Feed</span>
                 </div>
                 <div class="modal-body">
-                    <form action="">
-                        <input type="text" placeholder="Title">
-                        <input type="text" placeholder="URL">
-                        <button type="submit" class="modal-btn">Add</button>
+                    <form action="" id="sendFormSub">
+                        <input type="text" name="title" placeholder="Title" required>
+                        <input type="text" name="url" placeholder="URL" required>
+                        <button type="submit" class="modal-btn" >Add</button>
                         <style>
                             .modal-btn {
                                 padding: 0.5em;
@@ -128,7 +130,7 @@
                 <label for="description">Description</label>
                 <textarea id="description" name="description" placeholder="Enter description" required></textarea>
 
-                <button type="submit" class="send-btn">Send</button>
+                <button type="submit" class="send-btn modal-btn" >Send</button>
             </form>
         </div>
     </div>
@@ -194,4 +196,5 @@
 <script src="scripts/showUser.js"></script>
 <script type="module" src="scripts/showFeeds.js"></script>
 <script src="scripts/editUser.js"></script>
+<script src="scripts/editFeeds.js"></script>
 </html>
