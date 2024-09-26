@@ -4,15 +4,32 @@ const portais = document.getElementById('portais');
 
 console.log(user);
 username.textContent = user.name;
+const subs = user['subscriptions'];
 
-for (let i in user['subscriptions']) {
-    console.log(user['subscriptions'][i].nome);
+for (let i in subs) {
+    const sub = subs[i];
 
-    portais.innerHTML += `
+    const newPortal = document.createElement('div');
+
+    newPortal.innerHTML = `
         <div class="portal">
             <img src="assets/portal.png" alt="">
-            <span class="portalName">${user['subscriptions'][i].nome}</span>
+            <span class="portalName">${sub.nome}</span>
             <button class="deletePortal">X</button>
         </div>
-    `
+    `;
+
+    const delButton = newPortal.querySelector('.deletePortal');
+
+    delButton.addEventListener('click', async () => {
+        console.log(sub.id);
+        await fetch(`http://localhost:3001/subs/${sub.id}`, {
+            method: 'DELETE',
+        });
+        subs.splice(i, 1);
+        newPortal.remove();
+        localStorage.setItem('user', JSON.stringify(user));
+    });
+
+    portais.append(newPortal);
 };

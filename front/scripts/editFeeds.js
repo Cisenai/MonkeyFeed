@@ -1,5 +1,4 @@
 const sendFormSub = document.getElementById("sendFormSub");
-const deletePortal = document.querySelectorAll(".deletePortal");
 
 sendFormSub.addEventListener('submit', async () => {
     event.preventDefault();
@@ -25,7 +24,7 @@ sendFormSub.addEventListener('submit', async () => {
 
     if (data2) {
         portais.innerHTML += `
-            <div class="portal">
+            <div class="portal" id="${data2.id}>
                 <img src="assets/portal.png" alt="">
                 <span class="portalName">${data2.nome}</span>
                 <button class="deletePortal">X</button>
@@ -36,20 +35,4 @@ sendFormSub.addEventListener('submit', async () => {
     };
 
     // window.location.reload();
-});
-
-
-
-
-
-deletePortal.forEach((portal) => {
-    portal.target.addEventListener('click', async (event) => {
-        try {
-            const portalName = document.querySelector('.portalName').textContent;
-            
-            console.log(portalName);
-        } catch (error) {
-            console.error(error);
-        }
-    });
 });
