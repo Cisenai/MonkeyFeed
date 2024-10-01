@@ -34,14 +34,9 @@ class SubscriptionsService {
     required int userId,
     required int subId,
   }) async {
-    final body = {
-      'id': subId,
-      'idClient': userId,
-    };
     final response = await http.delete(
-      Uri.parse('$apiUrl/subs'),
+      Uri.parse('$apiUrl/subs/$subId'),
       headers: {'content-type': 'application/json'},
-      body: jsonEncode(body),
     );
 
     if (response.statusCode == 202) {

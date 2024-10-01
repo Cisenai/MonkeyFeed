@@ -55,7 +55,9 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
   void _deleteSub(int subId) async {
     try {
       final User newUser = await SubscriptionsService.removeSubscription(
-          userId: user!.id, subId: subId);
+        userId: user!.id,
+        subId: subId,
+      );
 
       setState(() {
         Provider.of<UserProvider>(context, listen: false).user = newUser;
@@ -180,7 +182,9 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                         Provider.of<FeedProvider>(context, listen: false).feed =
                             sub.nome;
                         setState(() {
-                          Provider.of<NavigationProvider>(context, listen: false).currentScreen = 1;
+                          Provider.of<NavigationProvider>(context,
+                                  listen: false)
+                              .currentScreen = 1;
                         });
                       },
                       title: Text(
