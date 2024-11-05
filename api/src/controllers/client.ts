@@ -1,24 +1,27 @@
 import { PrismaClient } from '@prisma/client';
 import { subscribe } from 'diagnostics_channel';
 import { Request, Response } from 'express';
+const bcrypt = require('bcrypt');
 
 const prisma = new PrismaClient();
 
+const saltRounds = 10;
+
 const login = async (req: Request, res: Response) => {
     const { email, password } = req.body;
+    const passwordHash = bcrypt.hash(password, saltRounds);
+
     try {
         const user = await prisma.user.findFirst({
         where: {
             email: email,
-            password: password
+            password: passwordHash
         },
         include: {
             subscriptions: true,
         }
         
     });
-    // console.log(user);
-    // window.location.href = 'http://127.0.0.1:5500/front/index.html';
     res.json(user).status(200).end();
     } catch (e) {
         res.json({ message: "Email or password incorrect" }).status(401).end();
@@ -43,10 +46,22 @@ const get = async (req: Request, res: Response) => {
 }
 
 const create = async (req: Request, res: Response) => {
-    const user = await prisma.user.create({
-        data: req.body,
-    });
-    res.status(202).json(user).end();
+    const { email, password, name } = req.body;
+    const passwordHash = await bcrypt.hash(password, saltRounds);
+
+    try {
+        const user = await prisma.user.create({
+            data: {
+                password: passwordHash,
+                email: email,
+                name: name,
+            },
+        });
+        res.status(202).json(user).end();
+    } catch (e) {
+        return res.status(400).json({ message: e });
+    }
+
 }
 
 const update = async (req: Request, res: Response) => {
