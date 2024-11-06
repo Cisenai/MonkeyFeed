@@ -1,17 +1,26 @@
 const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
-
-const clients = require('./data/clients.json');
-const subscriptions = require('./data/subscriptions.json');
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+const prisma = new PrismaClient().$extends({
+    query: {
+        user: {
+            $allOperations({ operation, args, query }) {
+                if (['create', 'update'].includes(operation) && args['data']['password']) {
+                    args['data']['password'] = bcrypt.hashSync(args['data']['password'], saltRounds);
+                }
+                return query(args);
+            }
+        }
+    }
+});
+
+const clients = require('./data/clients.json');
+const subscriptions = require('./data/subscriptions.json');
+
 async function main() {
     for (const u of clients) {
-        const passwordHash = bcrypt.hash(u.password, saltRounds);
-        u.password = (await passwordHash).toString();
-        console.log(u.password);
         await prisma.user.create({
             data: u,
         });
