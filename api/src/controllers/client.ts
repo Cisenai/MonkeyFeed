@@ -1,6 +1,12 @@
 import { PrismaClient } from '@prisma/client';
 import { subscribe } from 'diagnostics_channel';
 import { Request, Response } from 'express';
+
+require('dotenv').config();
+
+process.env.JWT_SECRET = "um-ninho-de-mafagafos-tinha-sete-mafagafinhos.-quem-desmafagar-esses-mafagafinhos-bom-desmagafigador-sera";
+
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const prisma = new PrismaClient();
@@ -9,22 +15,34 @@ const saltRounds = 10;
 
 const login = async (req: Request, res: Response) => {
     const { email, password } = req.body;
-    const passwordHash = bcrypt.hash(password, saltRounds);
 
     try {
         const user = await prisma.user.findFirst({
-        where: {
-            email: email,
-            password: passwordHash
-        },
-        include: {
-            subscriptions: true,
+            where: {
+                email: email,
+            },
+            include: {
+                subscriptions: true,
+            }
+        });
+
+        if (!user) {
+            throw Error('Email or password incorrect');
         }
-        
-    });
-    res.json(user).status(200).end();
-    } catch (e) {
-        res.json({ message: "Email or password incorrect" }).status(401).end();
+    
+        const isMatch = bcrypt.compareSync(password, user.password);
+    
+        if (isMatch) {
+            console.log(process.env.JWT_SECRET);
+            const token = jwt.sign(req.body, process.env.JWT_SECRET, {
+                expiresIn: '2 days',
+            });
+            res.json({ user: user, authToken: token}).status(200).end();
+        } else {
+            throw Error('Email or password incorrect');
+        }
+    } catch (err) {
+        res.json({ message: `${err}` }).status(401).end();
     }
 }
 
