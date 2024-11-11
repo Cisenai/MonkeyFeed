@@ -14,7 +14,7 @@ datasource db {
 }
 
 model User {
-  id            Int    @id @default(autoincrement())  
+  id            String @id @default(uuid())  
   name          String @db.VarChar(255)
   email         String @db.VarChar(255) @unique
   password      String @db.VarChar(255)
@@ -22,9 +22,25 @@ model User {
 }
 
 model Subscription {
-  id        Int     @id @unique @default(autoincrement())
-  idClient  Int     
+  id        String @id @default(uuid())  
+  idClient  String     
   link      String
   nome      String
   user      User    @relation(fields: [idClient], references: [id])
+}
+
+model Provider {
+  id        String @id @default(uuid())  
+  nome      String
+  link      String?
+  news      New[]
+}
+
+model New {
+  id          String @id @default(uuid())  
+  idProvider  String
+  provider    Provider @relation(fields: [idProvider], references: [id])
+  manchete    String
+  text        String
+  image       String?
 }
