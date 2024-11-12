@@ -30,17 +30,17 @@ model Subscription {
 }
 
 model Provider {
-  id        String @id @default(uuid())  
-  nome      String
-  link      String?
+  id        String  @id @default(uuid())  
+  name      String  @unique
+  link      String? @unique
   news      New[]
 }
 
 model New {
-  id          String @id @default(uuid())  
+  id          String   @id @default(uuid())  
   idProvider  String
   provider    Provider @relation(fields: [idProvider], references: [id])
-  manchete    String
+  title       String
   text        String
   image       String?
 }

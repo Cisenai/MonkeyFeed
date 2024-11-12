@@ -18,13 +18,35 @@ const prisma = new PrismaClient().$extends({
 
 const clients = require('./data/clients.json');
 const subscriptions = require('./data/subscriptions.json');
+const providers = require('./data/provider.json');
+const news = require('./data/news.json');
 
 async function main() {
     for (const u of clients) {
-        await prisma.user.create({
-            data: u,
+        try {
+            await prisma.user.create({
+                data: u,
+            });
+            console.log(`Created User`);
+        } catch (e) {
+            console.log("Failed to create Provider: ${p.name}");
+        }
+    }
+    for (const s of subscriptions) {
+        await prisma.subscription.create({
+            data: s,
         });
-        console.log(`Created User`);
+        console.log(`Created Subscription`);
+    }
+    for (const p of providers) {
+        try {
+            await prisma.provider.create({
+                data: p,
+            });
+            console.log(`Created Provider`);
+        } catch (e) {
+            console.log("Failed to create Provider: ${p.name}");
+        }
     }
     for (const s of subscriptions) {
         await prisma.subscription.create({

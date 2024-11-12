@@ -1,32 +1,32 @@
 [
     {
-        "idClient": 1,
+        "idClient": "90f1a0d3-8e42-464a-b45b-b7b2a812e879",
         "link": "https://netflixtechblog.com/feed",
         "nome": "netflix"
     },
     {
-        "idClient": 2,
+        "idClient": "a2708c91-5700-4d71-8944-4729f77d0404",
         "link": "https://diolinux.com.br/feed",
         "nome": "diolinux"
     },
     {
-        "idClient": 3,
+        "idClient": "e79ea274-a3ea-4a2f-8a40-5f591040f701",
         "link": "https://www.cnnbrasil.com.br/feed/",
         "nome": "cnnbrasil"
     },
     {
-		"idClient": 1,
+		"idClient": "90f1a0d3-8e42-464a-b45b-b7b2a812e879",
 		"link": "https://theintercept.com/feed",
 		"nome": "the intercept"
 	},
 	{
-		"idClient": 1,
+		"idClient": "90f1a0d3-8e42-464a-b45b-b7b2a812e879",
 		"link": "https://xadrezverbal.com/feed/",
 		"nome": "xadrez verbal"
 	},
 	{
-		"idClient": 1,
-		"link": "https://feeds.theguardian.com/theguardian/world/rss",
+		"idClient": "90f1a0d3-8e42-464a-b45b-b7b2a812e879",
+		"link": "https://feeds.theguardian.com/theguardworld/rss",
 		"nome": "the guardian"
 	}
 ]
