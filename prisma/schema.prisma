@@ -14,7 +14,7 @@ datasource db {
 }
 
 model User {
-  id            String @id @default(uuid())  
+  id            String @id @default(uuid())
   name          String @db.VarChar(255)
   email         String @db.VarChar(255) @unique
   password      String @db.VarChar(255)
@@ -30,7 +30,7 @@ model Subscription {
 }
 
 model Provider {
-  id        String  @id @default(uuid())  
+  id        String  @id @default(uuid())
   name      String  @unique
   link      String? @unique
   news      New[]

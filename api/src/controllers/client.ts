@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client';
-import { subscribe } from 'diagnostics_channel';
 import { Request, Response } from 'express';
 
 require('dotenv').config();
@@ -53,7 +52,7 @@ const get = async (req: Request, res: Response) => {
     } else {
         const user = await prisma.user.findFirst({
             where: {
-                id: parseInt(req.params.id),
+                id: req.params.id,
             },
             include: {
                 subscriptions: true,
@@ -79,32 +78,37 @@ const create = async (req: Request, res: Response) => {
     } catch (e) {
         return res.status(400).json({ message: e });
     }
-
 }
 
 const update = async (req: Request, res: Response) => {
     const { id } = req.params;
     const { name, email } = req.body;
 
-    const user = await prisma.user.update({
-        where: { id: parseInt(id) },
-        include: {
-            subscriptions: true,
-        },
-        data: { name: name, email: email, }
-    });
+    try {
+        const user = await prisma.user.update({
+            where: { id: id },
+            include: {
+                subscriptions: true,
+            },
+            data: { name: name, email: email, }
+        });
 
-    res.status(202).json(user).end();
+        res.status(202).json(user).end();
+    } catch (e) {
+        res.status(400).json({ message: `${e}`}).end();
+    }
 }
 
 const del = async (req: Request, res: Response) => {
     const { id } = req.params;
-
-    const user = await prisma.user.delete({
-        where: { id: parseInt(id) },
-    });
-
-    res.status(202).json(user).end();
+    try {
+        const user = await prisma.user.delete({
+            where: { id: id },
+        });
+        res.status(202).json(user).end();
+    } catch (e) {
+        res.status(400).json({ message: `${e}`}).end();
+    }
 }
 
 module.exports = {
