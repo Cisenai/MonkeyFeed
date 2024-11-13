@@ -37,8 +37,8 @@ const create = async (req: Request, res: Response) => {
 }
 
 const update = async (req: Request, res: Response) => {
-    const { id } = req.params;
     try {
+        const { id } = req.params;
         const news = await prisma.new.update({
             where: { id: id },
             data: req.body,
@@ -50,8 +50,8 @@ const update = async (req: Request, res: Response) => {
 }
 
 const del = async (req: Request, res: Response) => {
-    const { id } = req.params;
     try {
+        const { id } = req.params;
         const news = await prisma.new.delete({
             where: { id: id },
         });

@@ -13,9 +13,8 @@ const prisma = new PrismaClient();
 const saltRounds = 10;
 
 const login = async (req: Request, res: Response) => {
-    const { email, password } = req.body;
-
     try {
+        const { email, password } = req.body;
         const user = await prisma.user.findFirst({
             where: {
                 email: email,
@@ -63,10 +62,10 @@ const get = async (req: Request, res: Response) => {
 }
 
 const create = async (req: Request, res: Response) => {
-    const { email, password, name } = req.body;
-    const passwordHash = await bcrypt.hash(password, saltRounds);
-
     try {
+        const { email, password, name } = req.body;
+        const passwordHash = await bcrypt.hash(password, saltRounds);
+
         const user = await prisma.user.create({
             data: {
                 password: passwordHash,
@@ -74,17 +73,21 @@ const create = async (req: Request, res: Response) => {
                 name: name,
             },
         });
-        res.status(202).json(user).end();
+        res.status(202).json({
+            id: user.id,
+            name: user.name,
+            email: user.email,
+        }).end();
     } catch (e) {
         return res.status(400).json({ message: e });
     }
 }
 
 const update = async (req: Request, res: Response) => {
-    const { id } = req.params;
-    const { name, email } = req.body;
-
     try {
+        const { id } = req.params;
+        const { name, email } = req.body;
+
         const user = await prisma.user.update({
             where: { id: id },
             include: {
@@ -93,15 +96,19 @@ const update = async (req: Request, res: Response) => {
             data: { name: name, email: email, }
         });
 
-        res.status(202).json(user).end();
+        res.status(202).json({
+            id: user.id,
+            name: user.name,
+            email: user.email,
+        }).end();
     } catch (e) {
         res.status(400).json({ message: `${e}`}).end();
     }
 }
 
 const del = async (req: Request, res: Response) => {
-    const { id } = req.params;
     try {
+        const { id } = req.params;
         const user = await prisma.user.delete({
             where: { id: id },
         });

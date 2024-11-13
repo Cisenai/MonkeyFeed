@@ -40,8 +40,8 @@ const create = async (req: Request, res: Response) => {
 }
 
 const update = async (req: Request, res: Response) => {
-    const { id } = req.params;
     try {
+        const { id } = req.params;
         const provider = await prisma.provider.update({
             where: { id: id },
             data: req.body,
@@ -53,8 +53,8 @@ const update = async (req: Request, res: Response) => {
 }
 
 const del = async (req: Request, res: Response) => {
-    const { id } = req.params;
     try {
+        const { id } = req.params;
         const provider = await prisma.provider.delete({
             where: { id: id },
         });
