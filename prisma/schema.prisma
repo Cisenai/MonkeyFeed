@@ -25,7 +25,7 @@ model Subscription {
   id        String @id @default(uuid())  
   idClient  String     
   link      String
-  nome      String
+  name      String
   user      User    @relation(fields: [idClient], references: [id])
 }
 
