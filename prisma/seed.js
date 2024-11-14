@@ -40,7 +40,6 @@ async function main() {
     }
     for (const p of providers) {
         try {
-            console.log(p);
             await prisma.provider.create({
                 data: p,
             });
@@ -56,6 +55,7 @@ async function main() {
             });
             console.log(`Created News`);
         } catch (e) {
+            console.log(e);
             console.log(`Failed to create News: ${n.name}`);
         }
     }
