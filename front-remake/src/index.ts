@@ -6,14 +6,15 @@ const path = require('path');
 const PORT = 3000;
 
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 app.get('/', (req: Request, res: Response) => {
-	res.render('./front-remake/src/index', {
+	res.render('index', {
 		name: 'EJS Template'
-	})
+	});
 });
 
 app.listen(PORT, () => {
-	console.log(`App is listening on port: ${PORT}`)
+	console.log(`[server]: App is running on http://localhost:${PORT}/`);
 });
 

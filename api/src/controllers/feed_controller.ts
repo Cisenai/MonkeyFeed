@@ -35,7 +35,7 @@ const getFeed = async (req: Request, res: Response) => {
 
         const sub = await prisma.subscription.findFirst({
             where: {
-                nome: feed
+                name: feed
             }
         });
 
