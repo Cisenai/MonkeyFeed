@@ -1,0 +1,55 @@
+@import 'colors';
+
+$button-size: 0.5em 0.75em;
+$delay: 150ms;
+
+.primary-btn {
+  background-color: $blue;
+
+  width: inherit;
+
+  padding: $button-size;
+  cursor: pointer;
+
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+
+  border: 5px solid $blue;
+  border-radius: 5px;
+
+  transition: background-color $delay ease-in-out;
+}
+
+.primary-btn:active {
+  background-color: lighten($blue, 5%);
+  border-color: lighten($blue, 5%);
+}
+
+.outlined-btn {
+  background-color: transparent;
+
+  width: inherit;
+
+  padding: $button-size;
+  cursor: pointer;
+
+  font-size: 1em;
+  font-weight: bold;
+  color: $blue;
+  text-align: center;
+  text-decoration: none;
+
+  border: 5px solid $blue;
+  border-radius: 5px;
+  box-shadow: 0px -5px 2px $gray inset;
+
+  transition: background-color $delay ease-in-out;
+}
+
+.outlined-btn:active {
+  background-color: rgba($gray, 0.5);
+}
+

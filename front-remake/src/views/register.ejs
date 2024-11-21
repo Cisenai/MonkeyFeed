@@ -9,11 +9,12 @@
 </head>
 <body>
   <main class="container" style="height: 100vh">
-    <form id="login-form" class="login-form">
+    <form id="register-form" class="login-form">
       <div class="greetings">
         <img class="monkey-icon" src="/assets/icons/monkey-icon.png" alt="MonkeyFeed Logo">
-        <p>Notícias de primeira mão para você!</p>
+        <p>Crie sua conta e aproveite as notícias!</p>
       </div>
+      <input class="text-input" type="text" name="name" placeholder="Nome" required>
       <input class="text-input" type="email" name="email" placeholder="Email" required>
       <div class="toggle-eye">
         <input type="password" name="password" placeholder="Senha" required>
@@ -21,14 +22,20 @@
           <img src="/assets/icons/visibility.svg" alt="">
         </button>
       </div>
+      <div class="toggle-eye">
+        <input type="password" placeholder="Confirme sua senha" required>
+        <button class="eye" type="button">
+          <img src="/assets/icons/visibility.svg" alt="">
+        </button>
+      </div>
       <div class="btn-container">
-        <button class="primary-btn" type="submit">Entrar</button>     
-        <a href="<%= signupLink %>" class="outlined-btn" type="button">
-          Não possui uma conta?
-        </a> 
+        <button class="primary-btn" type="submit">Cadastrar</button>     
+        <a href="<%= loginLink %>" class="outlined-btn" type="button">
+	  Já possui uma conta?
+	</a>
       </div>
     </form>
   </main>
 </body>
-<script src="/scripts/login.js"></script>
+<script src="/scripts/register.js"></script>
 </html>

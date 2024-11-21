@@ -10,6 +10,9 @@
   "author": "Bruno-Otavio",
   "license": "MIT",
   "dependencies": {
+    "axios": "^1.7.7",
+    "cookie-session": "^2.1.0",
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
     "path": "^0.12.7",
@@ -17,6 +20,7 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
+    "@types/express-session": "^1.18.0",
     "@types/node": "^22.5.0",
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
