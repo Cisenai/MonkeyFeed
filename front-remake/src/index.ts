@@ -1,4 +1,9 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express, } from 'express';
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const cors = require('cors');
 
 const app: Express = express();
 const path = require('path');
@@ -30,11 +35,11 @@ app.use(cookieSession({
 	saveUninitialized: false,
 }));
 
+app.use(cors());
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
-
 
 app.listen(PORT, () => {
 	console.log(`[server]: App is running on http://localhost:${PORT}/`);
 });
-

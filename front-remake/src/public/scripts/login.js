@@ -1,7 +1,7 @@
 const form = document.querySelector('#login-form');
 const apiUrl = 'http://localhost:3000/login';
 
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', async (event) => {
 	event.preventDefault();
 
 	const email = event.target.email.value;
@@ -12,16 +12,13 @@ form.addEventListener('submit', (event) => {
 		password: password,
 	};
 
-	fetch(apiUrl, {
+	await fetch(apiUrl, {
 		method: "POST",
-		headers: { "Content-Type": "application/json" },
+		headers: { 
+			'Accept': 'application/json', 
+			"Content-Type": "application/json", 
+		},
 		body: JSON.stringify(data),
-	})
-		.then((res) => {
-			console.log(res);
-		})
-		.catch((err) => {
-			console.log(err);
-		});
+	});
 });
 

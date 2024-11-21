@@ -15,6 +15,7 @@ const saltRounds = 10;
 const login = async (req: Request, res: Response) => {
     try {
         const { email, password } = req.body;
+        console.log(req.body);
         const user = await prisma.user.findFirst({
             where: {
                 email: email,

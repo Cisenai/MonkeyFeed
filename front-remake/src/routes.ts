@@ -26,8 +26,15 @@ router.get('/login', (req: Request, res: Response) => {
 });
 
 router.post('/login', async (req: Request, res: Response) => {
-	const response = await axios.post(`${apiUrl}/login`, req.body);
-	console.log(response.data);
+	console.log(req.body);
+	fetch(`${apiUrl}/login`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(req.body),
+	});
+	res.status(200).end();
 });
 
 router.get('/signup', (req: Request, res: Response) => {
