@@ -1,56 +1,56 @@
 [
   {
-    "idProvider": "",
+    "idProvider": "2fddfd7d-1cfb-411e-89f6-a446d565b6b1",
     "title": "Manchete 1",
     "text": "Text 1",
-    "image": null,
+    "image": null
   },
   {
-    "idProvider": "",
+    "idProvider": "2fddfd7d-1cfb-411e-89f6-a446d565b6b1",
     "title": "Manchete 2",
     "text": "Text 2",
-    "image": null,
+    "image": null
   },
   {
-    "idProvider": "",
+    "idProvider": "2fddfd7d-1cfb-411e-89f6-a446d565b6b1",
     "title": "Manchete 3",
     "text": "Text 3",
-    "image": null,
+    "image": null
   },
   {
-    "idProvider": "",
+    "idProvider": "bf82c046-1995-4892-b2d3-6d5522013fd3",
     "title": "Manchete 1",
     "text": "Text 1",
-    "image": null,
+    "image": null
   },
   {
-    "idProvider": "",
+    "idProvider": "bf82c046-1995-4892-b2d3-6d5522013fd3",
     "title": "Manchete 2",
     "text": "Text 2",
-    "image": null,
+    "image": null
   },
   {
-    "idProvider": "",
+    "idProvider": "bf82c046-1995-4892-b2d3-6d5522013fd3",
     "title": "Manchete 3",
     "text": "Text 3",
-    "image": null,
+    "image": null
   },
   {
-    "idProvider": "",
+    "idProvider": "e600eda4-bb9a-459c-8315-301cecdd5276",
     "title": "Manchete 1",
     "text": "Text 1",
-    "image": null,
+    "image": null
   },
   {
-    "idProvider": "",
+    "idProvider": "e600eda4-bb9a-459c-8315-301cecdd5276",
     "title": "Manchete 2",
     "text": "Text 2",
-    "image": null,
+    "image": null
   },
   {
-    "idProvider": "",
+    "idProvider": "e600eda4-bb9a-459c-8315-301cecdd5276",
     "title": "Manchete 3",
     "text": "Text 3",
-    "image": null,
-  },
+    "image": null
+  }
 ]

@@ -1,9 +1,8 @@
 import { PrismaClient } from '@prisma/client';
 import { Request, Response } from 'express';
+import dotenv from 'dotenv';
 
-require('dotenv').config();
-
-process.env.JWT_SECRET = "um-ninho-de-mafagafos-tinha-sete-mafagafinhos.-quem-desmafagar-esses-mafagafinhos-bom-desmagafigador-sera";
+dotenv.config();
 
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -15,14 +14,9 @@ const saltRounds = 10;
 const login = async (req: Request, res: Response) => {
     try {
         const { email, password } = req.body;
-        console.log(req.body);
         const user = await prisma.user.findFirst({
-            where: {
-                email: email,
-            },
-            include: {
-                subscriptions: true,
-            }
+            where: { email: email, },
+            include: { subscriptions: true, }
         });
 
         if (!user) {
@@ -30,12 +24,22 @@ const login = async (req: Request, res: Response) => {
         }
     
         const isMatch = bcrypt.compareSync(password, user.password);
-    
+
         if (isMatch) {
-            const token = jwt.sign(req.body, process.env.JWT_SECRET, {
-                expiresIn: '2 days',
-            });
-            res.json({ user: user, authToken: token}).status(200).end();
+            const token = jwt.sign(
+                { name: user.name, email: user.email, },
+                process.env.JWT_SECRET, 
+                { expiresIn: '1d', },
+            );
+            res.json({ 
+                user: {
+                    name: user.name,
+                    email: user.email,
+                    image: user.image,
+                    subscriptions: user.subscriptions,
+                }, 
+                authToken: token,
+            }).status(200).end();
         } else {
             throw Error('Email or password incorrect');
         }
@@ -46,16 +50,16 @@ const login = async (req: Request, res: Response) => {
 
 const get = async (req: Request, res: Response) => {
     if (req.params.id === undefined) {
-        const user = await prisma.user.findMany({ include: { subscriptions: true } });
+        const user = await prisma.user.findMany({ 
+            omit: { password: true, },
+            include: { subscriptions: true } 
+        });
         res.status(200).json(user).end();
     } else {
         const user = await prisma.user.findFirst({
-            where: {
-                id: req.params.id,
-            },
-            include: {
-                subscriptions: true,
-            }
+            omit: { password: true, },
+            where: { id: req.params.id, },
+            include: { subscriptions: true, }
         });
         res.status(200).json(user).end();
     }

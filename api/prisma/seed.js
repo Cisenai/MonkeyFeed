@@ -29,7 +29,7 @@ async function main() {
             });
             console.log(`Created User`);
         } catch (e) {
-            console.log("Failed to create Provider: ${p.name}");
+            console.log(`Failed to create User: ${u.name}`);
         }
     }
     for (const s of subscriptions) {

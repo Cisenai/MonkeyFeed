@@ -2,16 +2,19 @@
     {
         "name": "Jorge Amaro",
         "email": "jorgeamaro@email.com",
-        "password": "jorge123"
+        "password": "jorge123",
+        "image": null
     },
     {
         "name": "Maria Joaquina",
         "email": "mariajoa@email.com",
-        "password": "maria123"
+        "password": "maria123",
+        "image": null
     },
     {
         "name": "Roger That",
         "email": "thatroger@email.com",
-        "password": "roger123"
+        "password": "roger123",
+        "image": null
     }
 ]

@@ -6,6 +6,7 @@
 
 generator client {2
   provider = "prisma-client-js"
+  previewFeatures = ["omitApi"]
 }
 
 datasource db {
@@ -18,6 +19,7 @@ model User {
   name          String @db.VarChar(255)
   email         String @db.VarChar(255) @unique
   password      String @db.VarChar(255)
+  image         String?
   subscriptions Subscription[]
 }
 
