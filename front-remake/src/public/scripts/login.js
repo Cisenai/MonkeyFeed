@@ -11,14 +11,22 @@ form.addEventListener('submit', async (event) => {
 		email: email,
 		password: password,
 	};
+	try {
+		const response = await fetch(apiUrl, {
+			method: "POST",
+			headers: { 
+				'Accept': 'application/json', 
+				"Content-Type": "application/json", 
+			},
+			body: JSON.stringify(data),
+		});
 
-	await fetch(apiUrl, {
-		method: "POST",
-		headers: { 
-			'Accept': 'application/json', 
-			"Content-Type": "application/json", 
-		},
-		body: JSON.stringify(data),
-	});
+		if (response.ok) {
+			const result = await response.json();
+			window.location.href = result.redirect;
+		}
+	} catch (err) {
+		console.error(err);
+	}
 });
 
