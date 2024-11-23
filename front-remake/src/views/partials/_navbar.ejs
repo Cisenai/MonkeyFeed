@@ -1,0 +1,19 @@
+<link rel="stylesheet" type="text/css" href="/style/navbar.css">
+<nav class='navbar'>
+<div class="menu">
+  <img class="menu-icon" src="/assets/icons/menu.svg" alt="menu-icon">
+  <img class="monkey-icon" src="/assets/icons/monkey-icon.png" alt="monkey-icon">
+</div>
+<ul class="links">
+  <li><a href="#">Novidades</a></li>
+  <li><a href="#">Provedores</a></li>
+</ul>
+<div class="profile">
+  <p><%= username %></p>
+  <img src="/assets/icons/account_circle.svg" alt="profile-icon">
+</div>
+<script>
+	const profile = document.querySelector('.profile'); 
+	profile.addEventListener('click', () => window.location.href = '/profile');
+</script>
+</nav>

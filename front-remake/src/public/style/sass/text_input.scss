@@ -1,15 +1,13 @@
-@import 'colors';
-
 $input-size: 0.65em 0.75em;
 
 .text-input {
-  border: 5px solid $yellow;
+  border: 5px solid var(--yellow);
   border-radius: 5px;
 
   padding: $input-size;
   font-size: 1rem;
 
-  box-shadow: 0px -5px 2px $gray inset;
+  box-shadow: 0px -5px 2px var(--gray) inset;
 }
 
 .text-input:focus {
@@ -30,12 +28,12 @@ $input-size: 0.65em 0.75em;
 
     padding: $input-size;
 
-    border: 5px solid $yellow;
+    border: 5px solid var(--yellow);
     border-left-width: 0px;
 
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    box-shadow: -1px -5px 2px $gray inset;
+    box-shadow: -1px -5px 2px var(--gray) inset;
 
     cursor: pointer;
 
@@ -53,7 +51,7 @@ $input-size: 0.65em 0.75em;
   }
 
   input {
-    border: 5px solid $yellow;
+    border: 5px solid var(--yellow);
     border-right-width: 0px;
 
     width: 100%;
@@ -66,7 +64,7 @@ $input-size: 0.65em 0.75em;
     padding-right: 0px;
     font-size: 1rem;
 
-    box-shadow: 1px -5px 2px $gray inset;
+    box-shadow: 1px -5px 2px var(--gray) inset;
   }
 
   input:focus {

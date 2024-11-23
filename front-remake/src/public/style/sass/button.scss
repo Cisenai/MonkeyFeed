@@ -1,10 +1,10 @@
-@import 'colors';
+@use 'sass:color';
 
 $button-size: 0.5em 0.75em;
 $delay: 150ms;
 
 .primary-btn {
-  background-color: $blue;
+  background-color: var(--blue);
 
   width: inherit;
 
@@ -17,15 +17,15 @@ $delay: 150ms;
   text-align: center;
   text-decoration: none;
 
-  border: 5px solid $blue;
+  border: 5px solid var(--blue);
   border-radius: 5px;
 
   transition: background-color $delay ease-in-out;
 }
 
 .primary-btn:active {
-  background-color: lighten($blue, 5%);
-  border-color: lighten($blue, 5%);
+  background-color: color.adjust(#14213D, $lightness: 5%);
+  border-color: color.adjust(#14213D, $lightness: 5%);
 }
 
 .outlined-btn {
@@ -38,18 +38,18 @@ $delay: 150ms;
 
   font-size: 1em;
   font-weight: bold;
-  color: $blue;
+  color: var(--blue);
   text-align: center;
   text-decoration: none;
 
-  border: 5px solid $blue;
+  border: 5px solid var(--blue);
   border-radius: 5px;
-  box-shadow: 0px -5px 2px $gray inset;
+  box-shadow: 0px -5px 2px var(--gray) inset;
 
   transition: background-color $delay ease-in-out;
 }
 
 .outlined-btn:active {
-  background-color: rgba($gray, 0.5);
+  background-color: rgba(var(--gray), 0.5);
 }
 

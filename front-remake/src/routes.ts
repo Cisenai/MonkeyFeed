@@ -72,5 +72,13 @@ router.get('/home', (req: Request, res: Response) => {
 	});
 });
 
+router.get('/profile', (req: Request, res: Response) => {
+	res.render('profile', {
+		title: 'MonkeyFeed | Profile',
+		username: req.session.name!,
+		userImage: req.session.image!,
+	});
+});
+
 module.exports = router;
 
