@@ -17,10 +17,10 @@ const PORT = process.env.PORT || 3000;
 
 declare module 'express-session' {
 	interface SessionData {
-		name: string;
-		email: string;
-		image: string;
-		authToken: string;
+		name: string | null;
+		email: string | null;
+		image: string | null;
+		authToken: string | null;
 		loggedIn: boolean;
 	}
 }

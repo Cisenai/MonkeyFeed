@@ -69,8 +69,8 @@
 }
 
 .primary-btn:active {
-  background-color: #1a2b50;
-  border-color: #1a2b50;
+  background-color: rgb(26.2962962963, 43.3888888889, 80.2037037037);
+  border-color: rgb(26.2962962963, 43.3888888889, 80.2037037037);
 }
 
 .outlined-btn {
@@ -131,6 +131,14 @@
 .login-form .greetings .monkey-icon {
   width: 125px;
   height: 125px;
+}
+
+.error-message {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #E82A2A;
+  margin-top: 1em;
+  text-align: center;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -1,0 +1,9 @@
+.navbar {
+  display: flex;
+}
+.navbar .monkey-icon {
+  width: 100px;
+  height: 100px;
+}
+
+/*# sourceMappingURL=navbar.css.map */

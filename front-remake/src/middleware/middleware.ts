@@ -12,12 +12,10 @@ const checkLoggedIn = (req: Request, res: Response, next: NextFunction) => {
 		jwt.verify(authToken, process.env.JWT_SECRET, (err: any, decoded: any) => {
 			if (err) {
 				if (err.message === 'jwt expired') {
-					req.session.destroy((destroyErr: any) => {
-						res.redirect('/login');
-					});
+					res.redirect('/signout');
 				} else {
 					console.log(err);
-					res.redirect('/login');
+					next();
 				}
 			} else {
 				if (req.originalUrl === '/login' || req.originalUrl === '/signup') {
@@ -28,6 +26,9 @@ const checkLoggedIn = (req: Request, res: Response, next: NextFunction) => {
 		});
 
 	} else {
+		if (req.originalUrl === '/login' || req.originalUrl === '/signup') {
+			return next();
+		}
 		res.redirect('/login');
 	}
 }

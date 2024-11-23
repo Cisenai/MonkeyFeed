@@ -1,6 +1,25 @@
 const form = document.querySelector('#login-form');
 const apiUrl = 'http://localhost:3000/login';
 
+const toggleEye = document.querySelector('.toggle-eye');
+const input = toggleEye.querySelector('input');
+const button = toggleEye.querySelector('button');
+
+let isEyeChecked = false;
+
+button.addEventListener('click', (event) => {
+	isEyeChecked = !isEyeChecked;
+	const eye = event.target;
+
+	if (isEyeChecked) {
+		eye.src = '/assets/icons/visibility_off.svg';
+		input.type = 'text';
+	} else {
+		eye.src = '/assets/icons/visibility.svg';
+		input.type = 'password';
+	}
+});
+
 form.addEventListener('submit', async (event) => {
 	event.preventDefault();
 
@@ -11,6 +30,7 @@ form.addEventListener('submit', async (event) => {
 		email: email,
 		password: password,
 	};
+
 	try {
 		const response = await fetch(apiUrl, {
 			method: "POST",
@@ -21,12 +41,23 @@ form.addEventListener('submit', async (event) => {
 			body: JSON.stringify(data),
 		});
 
-		if (response.ok) {
-			const result = await response.json();
-			window.location.href = result.redirect;
+		if (!response.ok) {
+			throw Error(`HTTP Error: Status: ${response.status}`);
 		}
+
+		const result = await response.json();
+		window.location.href = result.redirect;
 	} catch (err) {
-		console.error(err);
+		const errorMessage = document.createElement('div');
+		errorMessage.classList.add('error-message');
+
+		errorMessage.innerHTML = `
+			<p>Email ou senha errados!</p>
+		`;
+
+		if (form.lastElementChild.className !== errorMessage.className) {
+			form.append(errorMessage);
+		}
 	}
 });
 
