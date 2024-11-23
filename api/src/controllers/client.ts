@@ -22,7 +22,7 @@ const login = async (req: Request, res: Response) => {
         if (!user) {
             throw Error('Email or password incorrect');
         }
-    
+
         const isMatch = bcrypt.compareSync(password, user.password);
 
         if (isMatch) {
@@ -82,8 +82,8 @@ const create = async (req: Request, res: Response) => {
             name: user.name,
             email: user.email,
         }).end();
-    } catch (e) {
-        return res.status(400).json({ message: e });
+    } catch (err) {
+        return res.status(400).json({ message: `${err}` });
     }
 }
 
@@ -129,3 +129,4 @@ module.exports = {
     del,
     login,
 }
+
