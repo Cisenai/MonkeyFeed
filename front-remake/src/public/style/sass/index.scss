@@ -70,3 +70,22 @@ img {
   text-align: center;
 }
 
+.profile-image {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2em;
+}
+
+.edit-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 30%;
+
+  .actions {
+    display: flex;  
+    gap: 0.5em;
+    width: 100%;
+  }
+}
+

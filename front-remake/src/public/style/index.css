@@ -93,6 +93,31 @@
   background-color: rgba(var(--gray), 0.5);
 }
 
+.file-btn {
+  width: 187px;
+  overflow: hidden;
+}
+
+.file-btn::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.file-btn::before {
+  content: "Selecione sua Imagem";
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.red {
+  background-color: var(--red);
+  border-color: var(--red);
+}
+
+.red:active {
+  background-color: rgb(224.281779661, 24.218220339, 24.218220339);
+  border-color: rgb(224.281779661, 24.218220339, 24.218220339);
+}
+
 :root {
   --blue: #14213D;
   --yellow: #FCA311;
@@ -153,6 +178,24 @@ img {
   color: var(--red);
   margin-top: 1em;
   text-align: center;
+}
+
+.profile-image {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2em;
+}
+
+.edit-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 30%;
+}
+.edit-info .actions {
+  display: flex;
+  gap: 0.5em;
+  width: 100%;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -53,3 +53,28 @@ $delay: 150ms;
   background-color: rgba(var(--gray), 0.5);
 }
 
+.file-btn {
+  width: 187px;
+  overflow: hidden;
+}
+
+.file-btn::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.file-btn::before {
+  content: 'Selecione sua Imagem';
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.red {
+  background-color: var(--red);
+  border-color: var(--red);
+}
+
+.red:active {
+  background-color: color.adjust(#E82A2A, $lightness: -5%);
+  border-color: color.adjust(#E82A2A, $lightness: -5%);
+}
+
