@@ -17,7 +17,12 @@
     <section class="edit-info">
       <input class="text-input" type="text" name="name" placeholder="<%= username %>">
       <input class="text-input" type="email" name="email" placeholder="<%= email %>">
-      <input class="text-input" type="password" name="password" placeholder="Troque sua senha">
+      <div class="toggle-eye">
+        <input type="password" name="password" placeholder="Troque sua Senha" >
+        <button class="eye" type="button">
+          <img src="/assets/icons/visibility.svg" alt="">
+        </button>
+      </div>
       <div class="actions">
         <button class="primary-btn red" type="button">Cancelar</button>
         <button class="primary-btn" type="submit">Salvar</button>

@@ -1,31 +1,31 @@
 [
     {
-        "idClient": "24cab4cd-636d-46a7-a912-cf2a60aa3110",
+        "idClient": "1e469162-639a-4e3b-bce5-3f67214b0d5f",
         "link": "https://netflixtechblog.com/feed",
         "name": "netflix"
     },
     {
-        "idClient": "f579916f-f4cb-408f-b260-f0995ba2d4b9",
+        "idClient": "58f523b9-c01c-4d35-99d5-e478af09f5e8",
         "link": "https://diolinux.com.br/feed",
         "name": "diolinux"
     },
     {
-        "idClient": "fda0e60b-82c8-4d67-a742-a1e39190d641",
+        "idClient": "73cc673f-21c5-47e2-98e0-4ac84abd9424",
         "link": "https://www.cnnbrasil.com.br/feed/",
         "name": "cnnbrasil"
     },
     {
-		"idClient": "24cab4cd-636d-46a7-a912-cf2a60aa3110",
+		"idClient": "1e469162-639a-4e3b-bce5-3f67214b0d5f",
 		"link": "https://theintercept.com/feed",
 		"name": "the intercept"
 	},
 	{
-		"idClient": "24cab4cd-636d-46a7-a912-cf2a60aa3110",
+		"idClient": "1e469162-639a-4e3b-bce5-3f67214b0d5f",
 		"link": "https://xadrezverbal.com/feed/",
 		"name": "xadrez verbal"
 	},
 	{
-		"idClient": "24cab4cd-636d-46a7-a912-cf2a60aa3110",
+		"idClient": "1e469162-639a-4e3b-bce5-3f67214b0d5f",
 		"link": "https://feeds.theguardian.com/theguardworld/rss",
 		"name": "the guardian"
 	}

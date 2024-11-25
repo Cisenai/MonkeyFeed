@@ -81,5 +81,13 @@ router.get('/profile', (req: Request, res: Response) => {
 	});
 });
 
+router.post('/profile/update', async (req: Request, res: Response) => {
+	try {
+		const response = await axios.patch(`${apiUrl}/client`, req.body);
+
+			
+	}
+});
+
 module.exports = router;
 
