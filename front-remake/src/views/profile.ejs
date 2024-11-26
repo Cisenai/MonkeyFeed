@@ -14,7 +14,7 @@
       <img src="<%= userImage %>" alt="image-profile">
       <input class="outlined-btn file-btn" type="file" name="image-file" value="Mudar Imagem">
     </section>
-    <section class="edit-info">
+    <form class="edit-info">
       <input class="text-input" type="text" name="name" placeholder="<%= username %>">
       <input class="text-input" type="email" name="email" placeholder="<%= email %>">
       <div class="toggle-eye">
@@ -27,7 +27,8 @@
         <button class="primary-btn red" type="button">Cancelar</button>
         <button class="primary-btn" type="submit">Salvar</button>
       </div>
-    </section>
+    </form>
   </main>
 </body>
+<script src="/scripts/profile.js"></script>
 </html>

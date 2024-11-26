@@ -83,10 +83,27 @@ router.get('/profile', (req: Request, res: Response) => {
 
 router.post('/profile/update', async (req: Request, res: Response) => {
 	try {
-		const response = await axios.patch(`${apiUrl}/client`, req.body);
+		for (const key in req.body) {
+			if (req.body[key] === undefined || req.body[key] === '') {
+				delete req.body[key];
+			}
+		}
 
-			
+		console.log(req.body);
+
+		// const response = await axios.patch(`${apiUrl}/client`, req.body);
+
+	} catch (err) {
+		console.log(err);
+		res.send(400).json({ message: `${err}` }).end();
 	}
+});
+
+// 404 Page
+router.all('*', (req: Request, res: Response) => {
+	res.status(404).render('not_found', {
+		title: 'MonkeyFeed | Page not Found'
+	});
 });
 
 module.exports = router;

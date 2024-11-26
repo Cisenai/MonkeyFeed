@@ -52,7 +52,7 @@ form.addEventListener('submit', async (event) => {
 		errorMessage.classList.add('error-message');
 
 		errorMessage.innerHTML = `
-			<p>Email ou senha errados!</p>
+			<p>Email ou senha incorretos!</p>
 		`;
 
 		if (form.lastElementChild.className !== errorMessage.className) {

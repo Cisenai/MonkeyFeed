@@ -12,7 +12,13 @@ const checkLoggedIn = (req: Request, res: Response, next: NextFunction) => {
 		jwt.verify(authToken, process.env.JWT_SECRET, (err: any, decoded: any) => {
 			if (err) {
 				if (err.message === 'jwt expired') {
-					res.redirect('/signout');
+					req.session.name = null;
+					req.session.email = null;
+					req.session.image = null;
+					req.session.authToken = null;
+					req.session.loggedIn = false;
+					res.redirect('/login');
+					// res.redirect('/signout');
 				} else {
 					console.log(err);
 					next();
