@@ -90,14 +90,13 @@ const create = async (req: Request, res: Response) => {
 const update = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
-        const { name, email } = req.body;
 
         const user = await prisma.user.update({
             where: { id: id },
             include: {
                 subscriptions: true,
             },
-            data: { name: name, email: email, }
+            data: req.body,
         });
 
         res.status(202).json({

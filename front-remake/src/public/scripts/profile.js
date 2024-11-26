@@ -1,7 +1,8 @@
 const form = document.querySelector('.edit-info');
+const cancelButton = document.querySelector('.red');
 const apiUrl = 'http://localhost:3000/profile/update';
 
-form.addEventListener('submit', async (event) => {
+form.addEventListener('submit', (event) => {
 	event.preventDefault();
 
 	const name = event.target.name.value;
@@ -14,8 +15,8 @@ form.addEventListener('submit', async (event) => {
 		password: password,
 	};
 
-	await fetch(apiUrl, {
-		methord: 'POST',
+	fetch(apiUrl, {
+		method: 'PATCH',
 		headers: {
 			'Accept': 'application/json', 
 			'Content-Type': 'application/json',
@@ -24,3 +25,7 @@ form.addEventListener('submit', async (event) => {
 	}).catch((err) => console.log(err));
 });
 
+cancelButton.addEventListener('click', (event) => {
+	const inputs = document.querySelectorAll('input');
+	inputs.forEach((input) => input.value = '');
+});

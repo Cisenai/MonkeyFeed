@@ -17,6 +17,7 @@ const PORT = process.env.PORT || 3000;
 
 declare module 'express-session' {
 	interface SessionData {
+		uid: string | null;
 		name: string | null;
 		email: string | null;
 		image: string | null;

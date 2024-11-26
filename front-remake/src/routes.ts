@@ -34,6 +34,7 @@ router.post('/login', async (req: Request, res: Response) => {
 		if (response.data.message !== 'Error: Email or password incorrect') {
 			const { user, authToken } = response.data;
 
+			req.session.uid = user.id;
 			req.session.name = user.name;
 			req.session.email = user.email;
 			req.session.image = user.image;
@@ -81,21 +82,32 @@ router.get('/profile', (req: Request, res: Response) => {
 	});
 });
 
-router.post('/profile/update', async (req: Request, res: Response) => {
+router.patch('/profile/update', async (req: Request, res: Response) => {
 	try {
+		console.log(req.body);
+		if (req.body === undefined) {
+			throw Error('No data given to be updated');
+		}
+
 		for (const key in req.body) {
 			if (req.body[key] === undefined || req.body[key] === '') {
 				delete req.body[key];
 			}
 		}
 
-		console.log(req.body);
+		const response = await axios.patch(`${apiUrl}/client/${req.session.uid}`, req.body, {
+			headers: {
+				'Authorization': req.session.authToken!,
+			}
+		});
 
-		// const response = await axios.patch(`${apiUrl}/client`, req.body);
-
+		if (response.status === 200) {
+			req.session.name = req.body.name?? req.session.name;
+			req.session.email = req.body.email?? req.session.email;
+		}
 	} catch (err) {
 		console.log(err);
-		res.send(400).json({ message: `${err}` }).end();
+		res.status(400).json({ message: `${err}` }).end();
 	}
 });
 
@@ -107,4 +119,3 @@ router.all('*', (req: Request, res: Response) => {
 });
 
 module.exports = router;
-
