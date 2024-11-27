@@ -9,5 +9,10 @@
 </head>
 <body>
   <%- include('../views/partials/_navbar') %>
+  <main>
+    <% for (let i = 0; i < news.length; i++) { %>
+    <p><%= news[i].title %></p>
+    <% } %>
+  </main>
 </body>
 </html>

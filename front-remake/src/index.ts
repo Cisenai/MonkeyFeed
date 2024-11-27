@@ -22,6 +22,7 @@ declare module 'express-session' {
 		email: string | null;
 		image: string | null;
 		authToken: string | null;
+		currentFeed: String | null;
 		loggedIn: boolean;
 	}
 }

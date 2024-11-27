@@ -66,10 +66,12 @@ router.get('/signout', (req: Request, res: Response) => {
 	res.redirect('/login');
 });
 
-router.get('/home', (req: Request, res: Response) => {
+router.get('/home', async (req: Request, res: Response) => {
+	const news = await axios.get(`${apiUrl}/feed/diolinux`);
 	res.render('index', {
 		title: 'MonkeyFeed | Home',
 		username: req.session.name!,
+		news: news.data,
 	});
 });
 
@@ -84,7 +86,6 @@ router.get('/profile', (req: Request, res: Response) => {
 
 router.patch('/profile/update', async (req: Request, res: Response) => {
 	try {
-		console.log(req.body);
 		if (req.body === undefined) {
 			throw Error('No data given to be updated');
 		}
@@ -101,12 +102,12 @@ router.patch('/profile/update', async (req: Request, res: Response) => {
 			}
 		});
 
-		if (response.status === 200) {
+		if (response.status === 202) {
 			req.session.name = req.body.name?? req.session.name;
 			req.session.email = req.body.email?? req.session.email;
+			res.status(202).end();
 		}
 	} catch (err) {
-		console.log(err);
 		res.status(400).json({ message: `${err}` }).end();
 	}
 });

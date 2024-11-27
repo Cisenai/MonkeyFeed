@@ -50,6 +50,10 @@ $input-size: 0.65em 0.75em;
     }
   }
 
+  .eye:focus {
+    outline: none;
+  }
+
   input {
     border: 5px solid var(--yellow);
     border-right-width: 0px;

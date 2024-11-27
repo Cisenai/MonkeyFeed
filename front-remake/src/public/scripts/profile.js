@@ -15,6 +15,8 @@ form.addEventListener('submit', (event) => {
 		password: password,
 	};
 
+	console.log(apiUrl);
+
 	fetch(apiUrl, {
 		method: 'PATCH',
 		headers: {
@@ -22,7 +24,9 @@ form.addEventListener('submit', (event) => {
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify(data),
-	}).catch((err) => console.log(err));
+	})
+		.then((res) => window.location.href = '/profile')
+		.catch((err) => console.log(err));
 });
 
 cancelButton.addEventListener('click', (event) => {
