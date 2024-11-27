@@ -1,5 +1,6 @@
 import express, { Router, Request, Response } from "express";
 import dotenv from 'dotenv';
+import path = require("path");
 
 dotenv.config();
 
@@ -67,12 +68,17 @@ router.get('/signout', (req: Request, res: Response) => {
 });
 
 router.get('/home', async (req: Request, res: Response) => {
-	const news = await axios.get(`${apiUrl}/feed/diolinux`);
+	const response = await axios.get(`${apiUrl}/feed/diolinux`);
+	const news = response.data;
 	res.render('index', {
 		title: 'MonkeyFeed | Home',
 		username: req.session.name!,
 		news: news.data,
 	});
+});
+
+router.get('/menu', (req: Request, res: Response) => {
+	res.sendFile(path.join(__dirname, '/views/partials/_menu.ejs'));
 });
 
 router.get('/profile', (req: Request, res: Response) => {
