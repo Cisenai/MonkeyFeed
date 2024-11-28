@@ -15,6 +15,9 @@ img {
   color: white;
   font-size: 1.1em;
   font-weight: bold;
+  width: 88%;
+  position: fixed;
+  z-index: 2;
 }
 .navbar .menu {
   display: flex;
@@ -52,6 +55,18 @@ img {
 .navbar .profile img {
   width: 50px;
   height: auto;
+}
+
+.sidebar {
+  background-color: var(--blue);
+  position: fixed;
+  top: 0px;
+  z-index: 2;
+  height: 100vh;
+}
+.sidebar .sidebar-header {
+  background-color: var(--yellow);
+  display: flex;
 }
 
 /*# sourceMappingURL=navbar.css.map */
