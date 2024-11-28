@@ -1,24 +1,20 @@
 const body = document.querySelector('body');
-const openModalBtn = document.querySelector('.menu');
+const navbar = documnet.querySelector('.navbar');
 
-openModalBtn.addEventListener('click', async (event) => {
-    if (!document.querySelector('.sidebar')) {
-        console.log('open modal before fetch');
+const closeSidebar = (event) => {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.remove();
+}
+
+navbar.addEventListener('click', async (event) => {
+    const menuButton = document.querySelector('.menu-icon');
+    if (event.target.matches(menuButton)) {
         await fetch('/menu')
             .then((res) => res.text())
             .then((res) => body.innerHTML += res);
+        
+        const closeButton = document.querySelector('#closeSidebar');
+        closeButton.removeEventListener('click', closeSidebar);
+        closeButton.addEventListener('click', closeSidebar);
     }
 });
-
-const closeSideBar = (event) => {
-    const sidebar = document.querySelector('.sidebar');
-    sidebar.remove();
-    console.log('close sidebar');
-}
-
-body.addEventListener('click', (event) => {
-    if (event.target.matches('#closeSidebar')) {
-        closeSideBar(event);
-    }
-});
-

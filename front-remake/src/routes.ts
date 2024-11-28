@@ -68,13 +68,17 @@ router.get('/signout', (req: Request, res: Response) => {
 });
 
 router.get('/home', async (req: Request, res: Response) => {
-	const response = await axios.get(`${apiUrl}/feed/diolinux`);
-	const news = response.data;
-	res.render('index', {
-		title: 'MonkeyFeed | Home',
-		username: req.session.name!,
-		news: news.data,
-	});
+	try {
+		const response = await axios.get(`${apiUrl}/feed/diolinux`);
+		const news = response.data;
+		res.render('index', {
+			title: 'MonkeyFeed | Home',
+			username: req.session.name!,
+			news: news.data,
+		});
+	} catch (err) {
+		console.log(err);
+	}
 });
 
 router.get('/menu', (req: Request, res: Response) => {
