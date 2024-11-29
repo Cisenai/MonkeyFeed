@@ -81,10 +81,6 @@ router.get('/home', async (req: Request, res: Response) => {
 	}
 });
 
-router.get('/menu', (req: Request, res: Response) => {
-	res.sendFile(path.join(__dirname, '/views/partials/_menu.ejs'));
-});
-
 router.get('/profile', (req: Request, res: Response) => {
 	res.render('profile', {
 		title: 'MonkeyFeed | Profile',

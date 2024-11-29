@@ -78,6 +78,8 @@ img {
   position: fixed;
   top: 0px;
   z-index: 2;
+  width: 0px;
+  overflow: hidden;
 
   height: 100vh;
 
