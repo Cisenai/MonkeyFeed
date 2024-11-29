@@ -22,10 +22,12 @@ img {
   font-size: 1.1em;
   font-weight: bold;
 
-  width: 88%;
+  width: 92%;
 
   position: fixed;
   z-index: 2;
+
+  top: 0px;
 
   .menu {
     display: flex;

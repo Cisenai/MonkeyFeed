@@ -75,6 +75,7 @@ router.get('/home', async (req: Request, res: Response) => {
 			title: 'MonkeyFeed | Home',
 			username: req.session.name!,
 			news: news.data,
+			source: news.source,
 		});
 	} catch (err) {
 		console.log(err);

@@ -9,10 +9,18 @@
 </head>
 <body>
   <%- include('../views/partials/_navbar') %>
-  <%- include('../views/partials/_menu') %>
-  <main>
+  <main class="news-container">
+    <h1><%= source.title %></h1>
     <% for (let i = 0; i < news.length; i++) { %>
-      <p><%= news[i].title %></p>
+      <div class="new">
+        <h1><%= news[i].title %></h1>
+        <p><%= news[i].summary %></p>
+        <p class="date">
+          <%= 
+            `${news[i].isoDate.split('T')[0].split('-')[2]}/${news[i].isoDate.split('T')[0].split('-')[1]}/${news[i].isoDate.split('T')[0].split('-')[0]}` 
+          %>
+        </p>
+      </div>
     <% } %>
   </main>
 </body>
