@@ -119,6 +119,13 @@ router.patch('/profile/update', async (req: Request, res: Response) => {
 	}
 });
 
+router.get('/provider', (req: Request, res: Response) => {
+	res.render('provider', {
+		title: 'Monkeyfeed | Provedores',
+		username: req.session.name!,
+	});
+});
+
 // 404 Page
 router.all('*', (req: Request, res: Response) => {
 	res.status(404).render('not_found', {

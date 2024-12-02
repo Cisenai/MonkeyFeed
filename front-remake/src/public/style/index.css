@@ -136,6 +136,12 @@
   width: 50em;
   box-shadow: 0px -5px 2px var(--gray) inset;
 }
+.new a {
+  text-decoration: none;
+}
+.new h1:hover {
+  color: rgb(26.2962962963, 43.3888888889, 80.2037037037);
+}
 .new h1 {
   font-size: 1.5em;
   color: var(--blue);
@@ -149,11 +155,34 @@
   right: end;
 }
 
+::-webkit-scrollbar {
+  margin: 0px 2px;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--yellow);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--gray);
+}
+
 :root {
   --blue: #14213D;
   --yellow: #FCA311;
   --gray: #E5E5E5;
   --red: #E82A2A;
+}
+
+::-moz-selection { /* Code for Firefox */
+  color: var(--blue);
+  background: var(--gray);
+}
+
+::selection {
+  color: var(--blue);
+  background: var(--gray);
 }
 
 * {

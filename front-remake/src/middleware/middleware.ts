@@ -17,8 +17,7 @@ const checkLoggedIn = (req: Request, res: Response, next: NextFunction) => {
 					req.session.image = null;
 					req.session.authToken = null;
 					req.session.loggedIn = false;
-					res.redirect('/login');
-					// res.redirect('/signout');
+					res.redirect('/')
 				} else {
 					console.log(err);
 					next();
