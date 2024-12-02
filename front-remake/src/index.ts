@@ -33,7 +33,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(cookieSession({
 	name: 'user-session',
 	secret: process.env.SESSION_SECRET,
-	saveUninitialized: false,
+	skaveUninitialized: false,
 	cookie: {
 		secure: false,
 		httpOnly: true,
