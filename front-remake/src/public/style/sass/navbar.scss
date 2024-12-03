@@ -1,7 +1,9 @@
+@use 'sass:color';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 $blue: #14213D;
 $gray: #E5E5E5;
+$yellow: #FCA311;
 
 img {
   user-select: none;
@@ -84,9 +86,58 @@ img {
 
   height: 100vh;
 
+  box-shadow: -5px 0px 2px color.adjust($blue, $lightness: 20%) inset; 
+
   .sidebar-header {
     background-color: var(--yellow);
     display: flex;
+    gap: 1em;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 1em;
+
+    box-shadow: -5px 0px 2px color.adjust($yellow, $lightness: 15%) inset; 
+
+    h1 {
+      color: white;
+      font-weight: 900;
+    }
+
+    .monkey-icon {
+      width: 100px;
+      height: auto;
+    }
+
+    #closeSidebar {
+      width: 48px;
+      height: auto;
+      cursor: pointer;
+    }
+  }
+
+  .sidebar-body {
+    padding: 1.5em;
+
+    span {
+      display: flex;
+      justify-content: space-between;
+
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+
+      img {
+        background-color: $yellow;
+        border-radius: 5px;
+
+        width: 32px;
+        height: auto;
+
+        cursor: pointer;
+      }
+    }
   }
 }
 

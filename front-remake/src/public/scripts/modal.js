@@ -6,11 +6,13 @@ const openSidebar = () => {
     sidebar.classList.add('sidebar');
     sidebar.innerHTML += `
         <div class="sidebar-header">
-            <img src="/assets/icons/monkey-icon.png" alt="monkey-icon">
+            <img class="monkey-icon" src="/assets/icons/monkey-icon-white.png" alt="monkey-icon">
             <h1>MonkeyFeed</h1>
-            <img id="closeSidebar" src="/assets/icons/close.svg" alt="close-icon">
+            <img onclick="closeSidebar()" id="closeSidebar" src="/assets/icons/close.svg" alt="close-icon">
         </div>
-        <p>Menu</p>
+        <div class="sidebar-body">
+            <span>Suas Inscrições <img src="/assets/icons/add-white.svg" alt="add-icon"></span>
+        </div>
     `;
     body.append(sidebar);
 
