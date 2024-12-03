@@ -14,7 +14,7 @@
     <% for (let i = 0; i < news.length; i++) { %>
       <div class="new">
         <a href="<%= news[i].link %>" target="_blank"><h1><%= news[i].title %></h1></a>
-        <p><%= news[i].summary %></p>
+        <p class="content"><%= news[i].summary %></p>
         <p class="date">
           <%= 
             `${news[i].isoDate.split('T')[0].split('-')[2]}/${news[i].isoDate.split('T')[0].split('-')[1]}/${news[i].isoDate.split('T')[0].split('-')[0]}` 

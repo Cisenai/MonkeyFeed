@@ -7,7 +7,9 @@
 	<div class="sidebar-body">
 		<span>Suas Inscrições <img src="/assets/icons/add-white.svg" alt="add-icon"></span>
 		<div class="subscriptions">
-			
+			<% for (let i = 0; i < subscriptions.length; i++) { %>
+				<p><%= subscriptions[i].name %></p>
+			<% } %>
 		</div>
 	</div>
 </section>

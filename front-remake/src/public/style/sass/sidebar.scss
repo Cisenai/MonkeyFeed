@@ -1,0 +1,71 @@
+@use 'sass:color';
+
+$blue: #14213D;
+$gray: #E5E5E5;
+$yellow: #FCA311;
+
+.sidebar {
+  background-color: var(--blue);
+  position: fixed;
+  top: 0px;
+  z-index: 2;
+  overflow: hidden;
+
+  height: 100vh;
+  width: 0px;
+
+  box-shadow: -5px 0px 2px color.adjust($blue, $lightness: 20%) inset; 
+
+  .sidebar-header {
+    background-color: var(--yellow);
+    display: flex;
+    gap: 1em;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 1em;
+
+    box-shadow: -5px 0px 2px color.adjust($yellow, $lightness: 15%) inset; 
+
+    h1 {
+      color: white;
+      font-weight: 900;
+    }
+
+    .monkey-icon {
+      width: 75px;
+      height: auto;
+    }
+
+    #closeSidebar {
+      width: 38px;
+      height: auto;
+      cursor: pointer;
+    }
+  }
+
+  .sidebar-body {
+    padding: 1.5em;
+
+    span {
+      display: flex;
+      justify-content: space-between;
+
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+
+      img {
+        background-color: $yellow;
+        border-radius: 5px;
+
+        width: 32px;
+        height: auto;
+
+        cursor: pointer;
+      }
+    }
+  }
+}
+

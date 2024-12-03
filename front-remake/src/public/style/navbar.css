@@ -47,6 +47,10 @@ img {
 .navbar .links a:hover {
   color: #E5E5E5;
 }
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
 .navbar .profile {
   display: flex;
   align-items: center;
@@ -56,55 +60,6 @@ img {
 .navbar .profile img {
   width: 50px;
   height: auto;
-}
-
-.sidebar {
-  background-color: var(--blue);
-  position: fixed;
-  top: 0px;
-  z-index: 2;
-  overflow: hidden;
-  height: 100vh;
-  box-shadow: -5px 0px 2px rgb(45.1851851852, 74.5555555556, 137.8148148148) inset;
-}
-.sidebar .sidebar-header {
-  background-color: var(--yellow);
-  display: flex;
-  gap: 1em;
-  justify-content: center;
-  align-items: center;
-  padding: 1em;
-  box-shadow: -5px 0px 2px rgb(252.9522821577, 192.2033195021, 92.5477178423) inset;
-}
-.sidebar .sidebar-header h1 {
-  color: white;
-  font-weight: 900;
-}
-.sidebar .sidebar-header .monkey-icon {
-  width: 100px;
-  height: auto;
-}
-.sidebar .sidebar-header #closeSidebar {
-  width: 48px;
-  height: auto;
-  cursor: pointer;
-}
-.sidebar .sidebar-body {
-  padding: 1.5em;
-}
-.sidebar .sidebar-body span {
-  display: flex;
-  justify-content: space-between;
-  color: white;
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-.sidebar .sidebar-body span img {
-  background-color: #FCA311;
-  border-radius: 5px;
-  width: 32px;
-  height: auto;
-  cursor: pointer;
 }
 
 /*# sourceMappingURL=navbar.css.map */

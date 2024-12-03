@@ -119,10 +119,22 @@ router.patch('/profile/update', async (req: Request, res: Response) => {
 	}
 });
 
-router.get('/provider', (req: Request, res: Response) => {
+router.get('/provider', async (req: Request, res: Response) => {
+	let subscriptions = [];
+	try {
+		const response = await axios.get(`${apiUrl}/client/${req.session.uid!}`, {
+			headers: {
+				'Authorization': req.session.authToken!,
+			}
+		});
+		subscriptions = response.data;
+	} catch (err) {
+		console.log(err);
+	}
 	res.render('provider', {
 		title: 'Monkeyfeed | Provedores',
 		username: req.session.name!,
+		subscriptions: subscriptions,
 	});
 });
 

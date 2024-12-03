@@ -31,14 +31,14 @@
         color: var(--blue);
     }
 
-    p {
+    .content {
+        margin: 0.5em 0px;
         font-size: 1.25em;
     }
 
     .date {
-        position: relative;
         font-size: 1em;
-        right: end;
+        text-align: end;
     }
 }
 
