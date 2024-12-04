@@ -14,13 +14,44 @@
     height: 100%;
 
     z-index: 5;
-
+    
+    color: var(--blue);
+    border: 5px solid var(--blue);
+    // box-shadow: 0px -5px 2px var(--gray) inset
 
     .modalAddCenter {
         background-color: var(--yellow);
         width: 30%;
         height: 30%;
-        padding: 1em;
+        padding: 2em 2em 4em 2em;
         border-radius: 5px;
     }
+
+    span {
+        font-size: 22px;
+        font-weight: bold;
+    }
+    
+    #formAdd {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7em;
+        
+
+        input {
+            border-radius: 4px;
+            padding: 3px;
+            border: 5px solid var(--blue);
+            box-shadow: 0px -5px 2px var(--gray) inset
+        }
+
+        button {
+            border-radius: 4px;
+            padding: 3px;
+            border: 5px solid var(--blue);
+            box-shadow: 0px -5px 2px var(--gray) inset
+        }
+    }
+
 }
