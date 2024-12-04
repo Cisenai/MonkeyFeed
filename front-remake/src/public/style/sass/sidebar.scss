@@ -8,13 +8,15 @@ $yellow: #FCA311;
   background-color: var(--blue);
   position: fixed;
   top: 0px;
-  z-index: 2;
+  z-index: 3;
   overflow: hidden;
 
   height: 100vh;
   width: 0px;
 
   box-shadow: -5px 0px 2px color.adjust($blue, $lightness: 20%) inset; 
+
+  transition: width 200ms ease-in-out;
 
   .sidebar-header {
     background-color: var(--yellow);
@@ -39,7 +41,7 @@ $yellow: #FCA311;
     }
 
     #closeSidebar {
-      width: 38px;
+      width: 36px;
       height: auto;
       cursor: pointer;
     }
@@ -60,7 +62,7 @@ $yellow: #FCA311;
         background-color: $yellow;
         border-radius: 5px;
 
-        width: 32px;
+        width: 28px;
         height: auto;
 
         cursor: pointer;
