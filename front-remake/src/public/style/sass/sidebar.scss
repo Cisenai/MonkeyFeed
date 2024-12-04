@@ -55,8 +55,23 @@ $yellow: #FCA311;
 
     .subscriptions {
       background-color: var(--gray);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+
+      padding: 1em;
       border-radius: 5px;
-      height: 10vh;
+
+      .sub {
+        color: var(--blue);
+        font-weight: 500;
+        text-transform: capitalize;
+        color: var(--blue);
+      }
+
+      img {
+        background-color: transparent;
+      }
     }
 
     span {
@@ -81,7 +96,26 @@ $yellow: #FCA311;
 
   .sidebar-footer {
     position: relative;
-    top: 60vh;
+    padding: 1.5em;
+    top: 50vh;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      width: fit-content;
+      cursor: pointer;
+
+      text-decoration: none;
+
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+
+      img {
+        width: 28px;
+      }
+    }
   }
 }
 

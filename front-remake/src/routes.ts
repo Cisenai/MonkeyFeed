@@ -127,10 +127,11 @@ router.get('/provider', async (req: Request, res: Response) => {
 				'Authorization': req.session.authToken!,
 			}
 		});
-		subscriptions = response.data;
+		subscriptions = response.data.subscriptions;
 	} catch (err) {
 		console.log(err);
 	}
+	console.log(subscriptions);
 	res.render('provider', {
 		title: 'Monkeyfeed | Provedores',
 		username: req.session.name!,

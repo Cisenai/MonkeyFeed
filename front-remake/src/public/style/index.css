@@ -209,8 +209,20 @@
 }
 .sidebar .sidebar-body .subscriptions {
   background-color: var(--gray);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 1em;
   border-radius: 5px;
-  height: 10vh;
+}
+.sidebar .sidebar-body .subscriptions .sub {
+  color: var(--blue);
+  font-weight: 500;
+  text-transform: capitalize;
+  color: var(--blue);
+}
+.sidebar .sidebar-body .subscriptions img {
+  background-color: transparent;
 }
 .sidebar .sidebar-body span {
   display: flex;
@@ -228,7 +240,22 @@
 }
 .sidebar .sidebar-footer {
   position: relative;
-  top: 60vh;
+  padding: 1.5em;
+  top: 50vh;
+}
+.sidebar .sidebar-footer a {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  width: fit-content;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.sidebar .sidebar-footer a img {
+  width: 28px;
 }
 
 :root {

@@ -8,16 +8,12 @@
 		<span>Suas Inscrições <img src="/assets/icons/add-white.svg" alt="add-icon"></span>
 		<div class="subscriptions">
 			<% for (let i = 0; i < subs.length; i++) { %>
-				<p>subs</p>
-				<p><%= subs[i].link %></p>
-				<script>
-					console.log('<%= subs %>');
-				</script>
+				<span class="sub"><%= subs[i].name %> <img src="/assets/icons/more_vert.svg" alt="more-icon"></span>
 			<% } %>
 		</div>
 	</div>
 	<div class="sidebar-footer">
-		<span class="logout"><img src="/assets/icons/logout.svg" alt="logout-icon">Sair</span>
+		<a href="/signout"><img src="/assets/icons/logout.svg" alt="logout-icon">Sair</a>
 	</div>
 	<script src="/scripts/modal.js"></script>
 </section>
