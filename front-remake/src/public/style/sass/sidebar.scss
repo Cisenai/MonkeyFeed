@@ -48,7 +48,16 @@ $yellow: #FCA311;
   }
 
   .sidebar-body {
+    display: flex;
+    flex-direction: column;
     padding: 1.5em;
+    gap: 1em;
+
+    .subscriptions {
+      background-color: var(--gray);
+      border-radius: 5px;
+      height: 10vh;
+    }
 
     span {
       display: flex;
@@ -68,6 +77,11 @@ $yellow: #FCA311;
         cursor: pointer;
       }
     }
+  }
+
+  .sidebar-footer {
+    position: relative;
+    top: 60vh;
   }
 }
 

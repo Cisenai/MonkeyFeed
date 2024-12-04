@@ -202,7 +202,15 @@
   cursor: pointer;
 }
 .sidebar .sidebar-body {
+  display: flex;
+  flex-direction: column;
   padding: 1.5em;
+  gap: 1em;
+}
+.sidebar .sidebar-body .subscriptions {
+  background-color: var(--gray);
+  border-radius: 5px;
+  height: 10vh;
 }
 .sidebar .sidebar-body span {
   display: flex;
@@ -217,6 +225,10 @@
   width: 28px;
   height: auto;
   cursor: pointer;
+}
+.sidebar .sidebar-footer {
+  position: relative;
+  top: 60vh;
 }
 
 :root {

@@ -1,7 +1,6 @@
 const sidebar = document.querySelector('.sidebar');
 
 const openSidebar = () => {
-    console.log(sidebar);
     sidebar.style = 'width: fit-content';
     const closeBtn = document.getElementById('closeSidebar');
     closeBtn.removeEventListener('click', closeSidebar);
