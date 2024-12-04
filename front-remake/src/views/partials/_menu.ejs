@@ -5,7 +5,7 @@
 		<img onclick="closeSidebar()" id="closeSidebar" src="/assets/icons/close.svg" alt="close-icon">
 	</div>
 	<div class="sidebar-body">
-		<span>Suas Inscrições <img src="/assets/icons/add-white.svg" alt="add-icon"></span>
+		<span>Suas Inscrições <img onclick="openModalAdd()" src="/assets/icons/add-white.svg" alt="add-icon"></span>
 		<div class="subscriptions">
 			<% for (let i = 0; i < subs.length; i++) { %>
 				<span class="sub"><%= subs[i].name %> <img src="/assets/icons/more_vert.svg" alt="more-icon"></span>
