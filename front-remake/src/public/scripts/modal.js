@@ -14,7 +14,7 @@ const closeSidebar = (event) => {
 
 modalAdd.style.display = 'none';
 
-const openModalAdd = () => {
+const toggleModalAdd = () => {
     if (modalAdd.style.display == 'none') {
         modalAdd.style.display = 'flex';
     } else {

@@ -1,12 +1,14 @@
 <div id="modalAdd">
     <div class="modalAddCenter">
-        <span>inscrição</span>
+        <span>Adicione sua Inscrição</span>
         <form action="" id="formAdd">
-            <label for="">Nome</label>
-            <input type="text" name="name" required>
-            <label for="">Link</label>
-            <input type="name" name="link" required>
-            <button type="submit">Enviar</button>
+            <input class="text-input" type="text" name="name" placeholder="Nome" required>
+            <input class="text-input" type="name" name="link" placeholder="Link" required>
+			<div class="actions">
+            	<button onclick="toggleModalAdd()" class="primary-btn red" type="button">Cancelar</button>
+            	<button class="primary-btn" type="submit">Adicionar</button>
+			</div>
         </form>
     </div>
+	<script src="/scripts/add_modal.js"></script>
 </div>

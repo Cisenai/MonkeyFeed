@@ -121,6 +121,7 @@ router.patch('/profile/update', async (req: Request, res: Response) => {
 
 router.get('/provider', async (req: Request, res: Response) => {
 	let subscriptions = [];
+
 	try {
 		const response = await axios.get(`${apiUrl}/client/${req.session.uid!}`, {
 			headers: {
@@ -131,12 +132,24 @@ router.get('/provider', async (req: Request, res: Response) => {
 	} catch (err) {
 		console.log(err);
 	}
-	console.log(subscriptions);
+
 	res.render('provider', {
 		title: 'Monkeyfeed | Provedores',
 		username: req.session.name!,
 		subscriptions: subscriptions,
 	});
+});
+
+router.post('/sub', async (req: Request, res: Resopnse) => {
+	try {
+		if (req.body === undefined) {
+			throw Exeception('Could not add sub, empty body.');
+		}
+		const resonse = await axios.post(`${apiUrl}/sub`, req.body);
+		res.status(201).json(response.data).end();
+	} catch (err) {
+		res.status(401).json({ message: `${err}` }).end();
+	}
 });
 
 // 404 Page
