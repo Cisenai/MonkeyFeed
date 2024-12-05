@@ -67,6 +67,7 @@ $yellow: #FCA311;
         font-weight: 500;
         text-transform: capitalize;
         color: var(--blue);
+        cursor: pointer;
       }
 
       img {
@@ -95,9 +96,9 @@ $yellow: #FCA311;
   }
 
   .sidebar-footer {
-    position: relative;
+    position: absolute;
     padding: 1.5em;
-    top: 50vh;
+    bottom: 0%;
 
     a {
       display: flex;
@@ -115,6 +116,7 @@ $yellow: #FCA311;
       img {
         width: 28px;
       }
+      
     }
   }
 }

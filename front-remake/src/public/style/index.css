@@ -220,6 +220,7 @@
   font-weight: 500;
   text-transform: capitalize;
   color: var(--blue);
+  cursor: pointer;
 }
 .sidebar .sidebar-body .subscriptions img {
   background-color: transparent;
@@ -239,9 +240,9 @@
   cursor: pointer;
 }
 .sidebar .sidebar-footer {
-  position: relative;
+  position: absolute;
   padding: 1.5em;
-  top: 50vh;
+  bottom: 0%;
 }
 .sidebar .sidebar-footer a {
   display: flex;

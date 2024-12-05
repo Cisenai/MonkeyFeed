@@ -10,7 +10,7 @@ const News = require('./controllers/new');
 
 const midleware = require('./middleware/middleware');
 
-router.get('/feed/:feed', Feed.getFeed);
+router.get('/feed/:id', Feed.getFeed);
 
 router.post('/login', Client.login);
 router.get('/client', midleware.validateAccess, Client.get);

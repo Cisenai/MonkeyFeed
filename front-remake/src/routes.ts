@@ -1,7 +1,6 @@
 import express, { Router, Request, Response } from "express";
 import dotenv from 'dotenv';
 import path = require("path");
-import { Exception } from "sass";
 
 dotenv.config();
 
@@ -70,7 +69,7 @@ router.get('/signout', (req: Request, res: Response) => {
 
 router.get('/home', async (req: Request, res: Response) => {
 	try {
-		const response = await axios.get(`${apiUrl}/feed/diolinux`);
+		const response = await axios.get(`${apiUrl}/feed/${req.session.currentFeed}`);
 		const news = response.data;
 		res.render('index', {
 			title: 'MonkeyFeed | Home',
@@ -146,7 +145,13 @@ router.post('/sub', async (req: Request, res: Response) => {
 		if (req.body === undefined) {
 			throw Error('Could not add sub, empty body.');
 		}
-		const response = await axios.post(`${apiUrl}/sub`, req.body);
+		req.body.idClient = req.session.uid;
+		console.log(req.body);
+		const response = await axios.post(`${apiUrl}/subs`, req.body, {
+			headers: {
+				'Authorization': req.session.authToken!,
+			}
+		});
 		res.status(201).json(response.data).end();
 	} catch (err) {
 		res.status(401).json({ message: `${err}` }).end();

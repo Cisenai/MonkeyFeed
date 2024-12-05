@@ -7,8 +7,12 @@
 	<div class="sidebar-body">
 		<span>Suas Inscrições <img onclick="toggleModalAdd()" src="/assets/icons/add-white.svg" alt="add-icon"></span>
 		<div class="subscriptions">
-			<% for (let i = 0; i < subs.length; i++) { %>
-				<span class="sub"><%= subs[i].name %> <img src="/assets/icons/more_vert.svg" alt="more-icon"></span>
+			<% if (subs.length === 0) { %>
+				<span class="sub">Adicione uma Inscrição</span>
+			<% } else { %>
+				<% for (let i = 0; i < subs.length; i++) { %>
+					<span class="sub"><%= subs[i].name %> <img src="/assets/icons/more_vert.svg" alt="more-icon"></span>
+				<% } %>
 			<% } %>
 		</div>
 	</div>
