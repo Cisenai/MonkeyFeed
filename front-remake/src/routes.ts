@@ -1,6 +1,7 @@
 import express, { Router, Request, Response } from "express";
 import dotenv from 'dotenv';
 import path = require("path");
+import { Exception } from "sass";
 
 dotenv.config();
 
@@ -140,12 +141,12 @@ router.get('/provider', async (req: Request, res: Response) => {
 	});
 });
 
-router.post('/sub', async (req: Request, res: Resopnse) => {
+router.post('/sub', async (req: Request, res: Response) => {
 	try {
 		if (req.body === undefined) {
-			throw Exeception('Could not add sub, empty body.');
+			throw Error('Could not add sub, empty body.');
 		}
-		const resonse = await axios.post(`${apiUrl}/sub`, req.body);
+		const response = await axios.post(`${apiUrl}/sub`, req.body);
 		res.status(201).json(response.data).end();
 	} catch (err) {
 		res.status(401).json({ message: `${err}` }).end();
