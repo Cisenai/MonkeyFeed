@@ -12,6 +12,21 @@ const PORT = process.env.PORT || 3000;
 const appUrl = `http://localhost:${PORT}`;
 const apiUrl = 'http://localhost:3001';
 
+const getSubs = async (req: Request, res: Response) => {
+	let subscriptions = Array<string>();
+	try {
+		const response = await axios.get(`${apiUrl}/client/${req.session.uid!}`, {
+			headers: {
+				'Authorization': req.session.authToken!,
+			}
+		});
+		subscriptions = response.data.subscriptions;
+	} catch (err) {
+		console.log(err);
+	}
+	return subscriptions;
+}
+
 router.get('/', (req: Request, res: Response) => {
 	if (req.session.loggedIn) {
 		res.redirect('/home');
@@ -68,26 +83,46 @@ router.get('/signout', (req: Request, res: Response) => {
 });
 
 router.get('/home', async (req: Request, res: Response) => {
+	const subscriptions = await getSubs(req, res);
+	let news = Object();
 	try {
+		if (req.session.currentFeed === undefined) {
+			const feedRes = await axios.get(`${apiUrl}/client/${req.session.uid}/feed`, {
+				headers: {
+					'Authorization': req.session.authToken!,
+				}
+			});
+
+			if (feedRes.data.currentFeed === null) {
+				throw Error('Feed not selected');
+			}
+
+			req.session.currentFeed = feedRes.data.currentFeed;
+		}
+
 		const response = await axios.get(`${apiUrl}/feed/${req.session.currentFeed}`);
-		const news = response.data;
-		res.render('index', {
-			title: 'MonkeyFeed | Home',
-			username: req.session.name!,
-			news: news.data,
-			source: news.source,
-		});
+		news = response.data;
 	} catch (err) {
 		console.log(err);
 	}
+
+	res.render('index', {
+		title: 'MonkeyFeed | Home',
+		username: req.session.name!,
+		news: news.data ?? [],
+		source: news.source?? '',
+		subscriptions: subscriptions,
+	});
 });
 
-router.get('/profile', (req: Request, res: Response) => {
+router.get('/profile', async (req: Request, res: Response) => {
+	const subscriptions = await getSubs(req, res);
 	res.render('profile', {
 		title: 'MonkeyFeed | Profile',
 		username: req.session.name!,
 		email: req.session.email!,
 		userImage: req.session.image?? '/assets/icons/account_circle_blue.svg',
+		subscriptions: subscriptions,
 	});
 });
 
@@ -120,19 +155,7 @@ router.patch('/profile/update', async (req: Request, res: Response) => {
 });
 
 router.get('/provider', async (req: Request, res: Response) => {
-	let subscriptions = [];
-
-	try {
-		const response = await axios.get(`${apiUrl}/client/${req.session.uid!}`, {
-			headers: {
-				'Authorization': req.session.authToken!,
-			}
-		});
-		subscriptions = response.data.subscriptions;
-	} catch (err) {
-		console.log(err);
-	}
-
+	const subscriptions = await getSubs(req, res);
 	res.render('provider', {
 		title: 'Monkeyfeed | Provedores',
 		username: req.session.name!,
@@ -145,16 +168,36 @@ router.post('/sub', async (req: Request, res: Response) => {
 		if (req.body === undefined) {
 			throw Error('Could not add sub, empty body.');
 		}
+
 		req.body.idClient = req.session.uid;
-		console.log(req.body);
 		const response = await axios.post(`${apiUrl}/subs`, req.body, {
 			headers: {
 				'Authorization': req.session.authToken!,
 			}
 		});
+
 		res.status(201).json(response.data).end();
 	} catch (err) {
 		res.status(401).json({ message: `${err}` }).end();
+	}
+});
+
+router.post('/feed', async (req: Request, res: Response) => {
+	try {
+		const { feed } = req.body;
+		
+		await axios.patch(`${apiUrl}/client/${req.session.uid}/feed/${feed}`, {
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': req.session.authToken!,
+			},
+		});
+
+		req.session.currentFeed = feed;
+		res.status(200).end();
+	} catch (err) {
+		console.log(err);
+		res.status(400).json({ message: `${err}` }).end();
 	}
 });
 

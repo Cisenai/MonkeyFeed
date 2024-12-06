@@ -11,9 +11,10 @@
 				<span class="sub">Adicione uma Inscrição</span>
 			<% } else { %>
 				<% for (let i = 0; i < subs.length; i++) { %>
-					<span class="sub"><%= subs[i].name %> <img src="/assets/icons/more_vert.svg" alt="more-icon"></span>
+					<span onclick="changeFeed('<%= subs[i].id %>')" class="sub"><%= subs[i].name %> <img src="/assets/icons/more_vert.svg" alt="more-icon"></span>
 				<% } %>
 			<% } %>
+			<script src="/scripts/change_feed.js"></script>
 		</div>
 	</div>
 	<div class="sidebar-footer">
