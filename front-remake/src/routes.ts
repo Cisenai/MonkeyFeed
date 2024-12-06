@@ -57,6 +57,8 @@ router.post('/login', async (req: Request, res: Response) => {
 			req.session.authToken = authToken;
 			req.session.loggedIn = true;
 
+			axios.defaults.headers.common['Authorization'] = authToken;
+
 			res.status(200).json({ message: 'Login successful', redirect: '/home', }).end();
 		} else {
 			throw Error(response.data.message);
@@ -100,7 +102,7 @@ router.get('/home', async (req: Request, res: Response) => {
 			req.session.currentFeed = feedRes.data.currentFeed;
 		}
 
-		const response = await axios.get(`${apiUrl}/feed/${req.session.currentFeed}`);
+		const response = await axios.get(`${apiUrl}/feed/${req.session.currentFeed!}`);
 		news = response.data;
 	} catch (err) {
 		console.log(err);
@@ -186,7 +188,7 @@ router.post('/feed', async (req: Request, res: Response) => {
 	try {
 		const { feed } = req.body;
 		
-		await axios.patch(`${apiUrl}/client/${req.session.uid}/feed/${feed}`, {
+		await axios.patch(`${apiUrl}/client/${req.session.uid}/feed`, { feed: feed }, {
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': req.session.authToken!,

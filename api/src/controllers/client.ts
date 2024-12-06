@@ -137,7 +137,8 @@ const getCurrentFeed = async (req: Request, res: Response) => {
 
 const updateCurrentFeed = async (req: Request, res: Response) => {
     try {
-        const { id, feed } = req.params;
+        const { id } = req.params;
+        const { feed } = req.body;
 
         const user = await prisma.user.update({
             where: { id: id },

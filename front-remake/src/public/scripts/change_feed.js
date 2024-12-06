@@ -5,5 +5,7 @@ const changeFeed = (id) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ feed: id }),
-    }).catch((err) => console.error(err));
+    })
+        .then((res) => window.location.reload())
+        .catch((err) => console.error(err));
 }

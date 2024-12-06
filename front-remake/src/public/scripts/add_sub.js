@@ -5,7 +5,7 @@ form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const name = event.target.name.value;
-    const link = event.target.name.value;
+    const link = event.target.link.value;
 
     const data = {
         name: name,

@@ -39,7 +39,7 @@ const getFeed = async (req: Request, res: Response) => {
             }
         });
 
-        const feedContent = await parser.parseURL(sub?.link!);
+        const feedContent = await parser.parseURL(`${sub?.link!}/feed`);
 
         const response: Data = {
             source: {
