@@ -122,11 +122,41 @@ const del = async (req: Request, res: Response) => {
     }
 }
 
+const getCurrentFeed = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        const feed = await prisma.user.findUnique({
+            where: { id: id },
+            select: { currentFeed: true, },
+        });
+        res.status(200).json(feed).end();
+    } catch (err) {
+        res.status(404).json({ message: `${err}` }).end();
+    }
+}
+
+const updateCurrentFeed = async (req: Request, res: Response) => {
+    try {
+        const { id, feed } = req.params;
+
+        const user = await prisma.user.update({
+            where: { id: id },
+            data: { currentFeed: feed },
+        });
+
+        res.status(201).json(user).end();
+    } catch (err) {
+        res.status(404).json({ message: `${err}` }).end();
+    }
+}
+
 module.exports = {
     get,
     create,
     update,
     del,
     login,
+    getCurrentFeed,
+    updateCurrentFeed,
 }
 
