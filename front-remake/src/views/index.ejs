@@ -9,18 +9,24 @@
 </head>
 <body>
   <%- include('../views/partials/_navbar') %>
+  <%- include('../views/partials/_modal_add_sub') %>
+  <%- include('../views/partials/_menu', { subs: subscriptions }) %>
   <main class="news-container">
     <h1><%= source.title %></h1>
-    <% for (let i = 0; i < news.length; i++) { %>
-      <div class="new">
-        <a href="<%= news[i].link %>" target="_blank"><h1><%= news[i].title %></h1></a>
-        <p class="content"><%= news[i].summary %></p>
-        <p class="date">
-          <%= 
-            `${news[i].isoDate.split('T')[0].split('-')[2]}/${news[i].isoDate.split('T')[0].split('-')[1]}/${news[i].isoDate.split('T')[0].split('-')[0]}` 
-          %>
-        </p>
-      </div>
+    <% if (news.length !== 0) { %>
+      <% for (let i = 0; i < news.length; i++) { %>
+        <div class="new">
+          <a href="<%= news[i].link %>" target="_blank"><h1><%= news[i].title %></h1></a>
+          <p class="content"><%= news[i].summary %></p>
+          <p class="date">
+            <%= 
+              `${news[i].isoDate.split('T')[0].split('-')[2]}/${news[i].isoDate.split('T')[0].split('-')[1]}/${news[i].isoDate.split('T')[0].split('-')[0]}` 
+            %>
+          </p>
+        </div>
+      <% } %>
+    <% } else { %>
+      <p>Nenhuma inscrição selecionada.</p>
     <% } %>
   </main>
 </body>

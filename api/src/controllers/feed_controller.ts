@@ -29,17 +29,17 @@ interface Data {
 };
 
 const getFeed = async (req: Request, res: Response) => {
-    const feed: string = req.params.feed;
+    const id: string = req.params.id;
     try {
         const articles = <any>[];
 
         const sub = await prisma.subscription.findFirst({
             where: {
-                name: feed
+                id: id 
             }
         });
 
-        const feedContent = await parser.parseURL(sub?.link!);
+        const feedContent = await parser.parseURL(`${sub?.link!}/feed`);
 
         const response: Data = {
             source: {

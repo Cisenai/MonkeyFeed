@@ -10,7 +10,7 @@ const News = require('./controllers/new');
 
 const midleware = require('./middleware/middleware');
 
-router.get('/feed/:feed', Feed.getFeed);
+router.get('/feed/:id', Feed.getFeed);
 
 router.post('/login', Client.login);
 router.get('/client', midleware.validateAccess, Client.get);
@@ -18,6 +18,8 @@ router.get('/client/(:id)', midleware.validateAccess, Client.get);
 router.post('/client', Client.create);
 router.patch('/client/(:id)', midleware.validateAccess, Client.update);
 router.delete('/client/(:id)', midleware.validateAccess, Client.del);
+router.get('/client/(:id)/feed', midleware.validateAccess, Client.getCurrentFeed);
+router.patch('/client/(:id)/feed', midleware.validateAccess, Client.updateCurrentFeed);
 
 router.get('/subs', midleware.validateAccess, Sub.get);
 router.get('/subs/(:id)', midleware.validateAccess, Sub.get);

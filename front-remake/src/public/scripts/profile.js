@@ -1,9 +1,9 @@
-const form = document.querySelector('.edit-info');
+const formProfile = document.querySelector('.edit-info');
 const cancelButton = document.querySelector('.red');
-const apiUrl = 'http://localhost:3000/profile/update';
 
-form.addEventListener('submit', (event) => {
+formProfile.addEventListener('submit', (event) => {
 	event.preventDefault();
+	const apiUrl = 'http://localhost:3000/profile/update';
 
 	const name = event.target.name.value;
 	const email = event.target.email.value;
