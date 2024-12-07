@@ -216,23 +216,28 @@
   border-radius: 5px;
 }
 .sidebar .sidebar-body .subscriptions .sub {
+  display: flex;
+  justify-content: space-between;
   color: var(--blue);
   font-weight: 500;
   text-transform: capitalize;
   color: var(--blue);
+}
+.sidebar .sidebar-body .subscriptions .sub p {
   cursor: pointer;
 }
-.sidebar .sidebar-body .subscriptions img {
+.sidebar .sidebar-body .subscriptions .sub img {
+  cursor: pointer;
   background-color: transparent;
 }
-.sidebar .sidebar-body span {
+.sidebar .sidebar-body .header {
   display: flex;
   justify-content: space-between;
   color: white;
   font-weight: 700;
   font-size: 1.1rem;
 }
-.sidebar .sidebar-body span img {
+.sidebar .sidebar-body .header img {
   background-color: #FCA311;
   border-radius: 5px;
   width: 28px;

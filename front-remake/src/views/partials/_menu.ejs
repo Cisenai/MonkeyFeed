@@ -5,13 +5,16 @@
 		<img onclick="closeSidebar()" id="closeSidebar" src="/assets/icons/close.svg" alt="close-icon">
 	</div>
 	<div class="sidebar-body">
-		<span>Suas Inscrições <img onclick="toggleModalAdd()" src="/assets/icons/add-white.svg" alt="add-icon"></span>
+		<span class="header">Suas Inscrições <img onclick="toggleModalAdd()" src="/assets/icons/add-white.svg" alt="add-icon"></span>
 		<div class="subscriptions">
 			<% if (subs.length === 0) { %>
 				<span class="sub">Adicione uma Inscrição</span>
 			<% } else { %>
 				<% for (let i = 0; i < subs.length; i++) { %>
-					<span onclick="changeFeed('<%= subs[i].id %>')" class="sub"><%= subs[i].name %> <img src="/assets/icons/more_vert.svg" alt="more-icon"></span>
+					<span class="sub">
+						<p onclick="changeFeed('<%= subs[i].id %>')"><%= subs[i].name %></p>
+						<img onclick="openMore()" src="/assets/icons/more_vert.svg" alt="more-icon">
+					</span>
 				<% } %>
 			<% } %>
 			<script src="/scripts/change_feed.js"></script>
