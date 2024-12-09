@@ -299,6 +299,18 @@
   width: 100%;
 }
 
+.modal-more {
+  position: fixed;
+  background-color: var(--yellow);
+  color: white;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+.modal-more p {
+  font-weight: 600;
+  cursor: pointer;
+}
+
 :root {
   --blue: #14213D;
   --yellow: #FCA311;
@@ -331,6 +343,10 @@ img {
 
 h1 {
   color: var(--blue);
+}
+
+.hidden {
+  display: none;
 }
 
 .container {

@@ -13,7 +13,11 @@
 				<% for (let i = 0; i < subs.length; i++) { %>
 					<span class="sub">
 						<p onclick="changeFeed('<%= subs[i].id %>')"><%= subs[i].name %></p>
-						<img onclick="openMore()" src="/assets/icons/more_vert.svg" alt="more-icon">
+						<img onclick="openMore(this)" src="/assets/icons/more_vert.svg" alt="more-icon">
+						<div class="modal-more hidden">
+							<p onclick="">Editar</p>
+							<p onclick="deleteSub('<%= subs[i].id %>')">Excluir</p>
+						</div>
 					</span>
 				<% } %>
 			<% } %>
