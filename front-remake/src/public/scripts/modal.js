@@ -35,8 +35,14 @@ const openMore = (element) => {
     more.style.left = `${elementRect.left}px`;
 }
 
-const deleteSub = () => {
-    
+const deleteSub = (subId) => {
+    fetch(`http://localhost:3000/feed/${subId}`, {
+        method: "DELETE",
+    })
+        .then((res) => window.location.reload())
+        .catch((err) => {
+            console.log(err);
+        });
 }
 
 window.onclick = (event) => {

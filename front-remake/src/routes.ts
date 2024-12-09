@@ -203,6 +203,22 @@ router.post('/feed', async (req: Request, res: Response) => {
 	}
 });
 
+router.delete('/feed/:id', async (req: Request, res: Response) => {
+	try {
+		const { id } = req.params;
+
+		await axios.delete(`${apiUrl}/subs/${id}`, {
+			headers: {
+				'Authorization': req.session.authToken!,
+			}
+		});
+
+		res.status(202).end();
+	} catch (err) {
+		res.status(404).json({ message: `${err}` }).end();
+	}
+});
+
 // 404 Page
 router.all('*', (req: Request, res: Response) => {
 	res.status(404).render('not_found', {
