@@ -81,6 +81,7 @@ router.get('/signout', (req: Request, res: Response) => {
 	req.session.image = null;
 	req.session.authToken = null;
 	req.session.loggedIn = false;
+	req.session.currentFeed = null;
 	res.redirect('/login');
 });
 
@@ -158,10 +159,24 @@ router.patch('/profile/update', async (req: Request, res: Response) => {
 
 router.get('/provider', async (req: Request, res: Response) => {
 	const subscriptions = await getSubs(req, res);
+	let providers = <Object>[];
+
+	try {
+		const response = await axios.get(`${apiUrl}/provider`, {
+			headers: {
+				'Authorization': req.session.authToken!,
+			}
+		});
+		providers = response.data;
+	} catch (err) {
+		console.log(err);
+	}
+
 	res.render('provider', {
 		title: 'Monkeyfeed | Provedores',
 		username: req.session.name!,
 		subscriptions: subscriptions,
+		providers: providers,
 	});
 });
 
