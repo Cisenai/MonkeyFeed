@@ -1,6 +1,7 @@
 const sidebar = document.querySelector('.sidebar');
 const modalAdd = document.querySelector('#modalAdd');
-const mores = document.querySelectorAll('.modal-more');
+const modalEdit = document.querySelector('#modalEdit');
+const modalMore = document.querySelector('.modal-more');
 
 const openSidebar = () => {
     sidebar.style = 'width: fit-content';
@@ -11,26 +12,29 @@ const openSidebar = () => {
 
 const closeSidebar = (event) => {
     sidebar.style = 'width: 0px';
-    mores.forEach((more) => {
-        if (!more.classList.contains('hidden')) {
-            more.classList.add('hidden');
-        }
-    });
+    if (!modalMore.classList.contains('hidden')) {
+        modalMore.classList.add('hidden');
+    }
 };
 
-modalAdd.style.display = 'none';
-
 const toggleModalAdd = () => {
-    if (modalAdd.style.display == 'none') {
-        modalAdd.style.display = 'flex';
+    if (modalAdd.classList.contains('hidden')) {
+        modalAdd.classList.remove('hidden');
     } else {
-        modalAdd.style.display = 'none';
+        modalAdd.classList.add('hidden');
+    }
+};
+
+const toggleModalEdit = () => {
+    if (modalEdit.classList.contains('hidden')) {
+        modalEdit.classList.remove('hidden');
+    } else {
+        modalEdit.classList.add('hidden');
     }
 };
 
 const openMore = (element, subId) => {
     const elementRect = element.getBoundingClientRect();
-    const modalMore = element.parentElement.querySelector('.modal-more');
 
     modalMore.classList.remove('hidden');
     modalMore.style.top = `${elementRect.top}px`;
@@ -51,10 +55,7 @@ const deleteSub = (subId) => {
 }
 
 document.addEventListener('click', (event) => {
-    mores.forEach((more) => {
-        if (event.target.contains(more) && event.target !== more) {
-            more.classList.add('hidden');
-        }
-    });
+    if (event.target.contains(modalMore) && event.target !== modalMore) {
+        modalMore.classList.add('hidden');
+    }
 });
-

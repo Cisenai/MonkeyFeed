@@ -1,4 +1,4 @@
-const form = document.querySelector('#modalAdd');
+const form = document.querySelector('#formAdd');
 const apiUrl = 'http://localhost:3000/sub';
 
 form.addEventListener('submit', (event) => {

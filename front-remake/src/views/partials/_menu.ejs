@@ -14,13 +14,13 @@
 					<span class="sub">
 						<p onclick="changeFeed('<%= subs[i].id %>')"><%= subs[i].name %></p>
 						<img onclick="openMore(this, '<%= subs[i].id %>')" src="/assets/icons/more_vert.svg" alt="more-icon">
-						<div class="modal-more hidden">
-							<p>Editar</p>
-							<p id="deleteSub">Excluir</p>
-						</div>
 					</span>
 				<% } %>
 			<% } %>
+			<div class="modal-more hidden">
+				<p id="editSub" onclick="toggleModalEdit()">Editar</p>
+				<p id="deleteSub">Excluir</p>
+			</div>
 			<script src="/scripts/change_feed.js"></script>
 		</div>
 	</div>
