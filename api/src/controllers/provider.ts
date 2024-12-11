@@ -33,6 +33,12 @@ const create = async (req: Request, res: Response) => {
         const provider = await prisma.provider.create({
             data: req.body,
         });
+
+        await prisma.user.update({
+            where: { id: provider.idClient, },
+            data: { provider: { connect: { id: provider.id } } },
+        });
+
         res.status(202).json(provider).end();
     } catch (e) {
         res.status(400).json({ message: `${e}`}).end();
