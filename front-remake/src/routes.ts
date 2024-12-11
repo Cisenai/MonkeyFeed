@@ -27,6 +27,21 @@ const getSubs = async (req: Request, res: Response) => {
 	return subscriptions;
 }
 
+const getProvider = async (req: Request, res: Response) => {
+	let provider = null;
+	try {
+		const response = await axios.get(`${apiUrl}/client/${req.session.uid!}/provider`, {
+			headers: {
+				'Authorization': req.session.authToken!,
+			}
+		});
+		provider = response.data.provider;
+	} catch (err) {
+		console.log(err);
+	}
+	return provider;
+}
+
 router.get('/', (req: Request, res: Response) => {
 	if (req.session.loggedIn) {
 		res.redirect('/home');
@@ -87,6 +102,8 @@ router.get('/signout', (req: Request, res: Response) => {
 
 router.get('/home', async (req: Request, res: Response) => {
 	const subscriptions = await getSubs(req, res);
+	let provider = await getProvider(req, res);
+
 	let news = Object();
 	try {
 		if (req.session.currentFeed === undefined) {
@@ -115,17 +132,21 @@ router.get('/home', async (req: Request, res: Response) => {
 		news: news.data ?? [],
 		source: news.source?? '',
 		subscriptions: subscriptions,
+		provider: provider,
 	});
 });
 
 router.get('/profile', async (req: Request, res: Response) => {
 	const subscriptions = await getSubs(req, res);
+	let provider = await getProvider(req, res);
+
 	res.render('profile', {
 		title: 'MonkeyFeed | Profile',
 		username: req.session.name!,
 		email: req.session.email!,
 		userImage: req.session.image?? '/assets/icons/account_circle_blue.svg',
 		subscriptions: subscriptions,
+		provider: provider,
 	});
 });
 
@@ -159,8 +180,10 @@ router.patch('/profile/update', async (req: Request, res: Response) => {
 
 router.get('/provider', async (req: Request, res: Response) => {
 	const subscriptions = await getSubs(req, res);
-	let providers = <Object>[];
+	let provider = await getProvider(req, res);
 
+	let providers = <Object>[];
+  
 	try {
 		const response = await axios.get(`${apiUrl}/provider`, {
 			headers: {
@@ -177,6 +200,19 @@ router.get('/provider', async (req: Request, res: Response) => {
 		username: req.session.name!,
 		subscriptions: subscriptions,
 		providers: providers,
+		provider: provider,
+	});
+});
+
+router.get('/provider/register', async (req: Request, res: Response) => {
+	const subscriptions = await getSubs(req, res);
+	let provider = await getProvider(req, res);
+
+	res.render('provider_register', {
+		title: 'Monkeyfeed | Registro',
+		username: req.session.name!,
+		subscriptions: subscriptions,
+		provider: provider,
 	});
 });
 

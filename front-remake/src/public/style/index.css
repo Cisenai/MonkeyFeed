@@ -256,6 +256,7 @@
   width: fit-content;
   cursor: pointer;
   text-decoration: none;
+  margin-top: 0.5em;
   color: white;
   font-weight: 700;
   font-size: 1.1rem;

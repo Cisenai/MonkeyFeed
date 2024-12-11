@@ -13,10 +13,10 @@
 				<% for (let i = 0; i < subs.length; i++) { %>
 					<span class="sub">
 						<p onclick="changeFeed('<%= subs[i].id %>')"><%= subs[i].name %></p>
-						<img onclick="openMore(this)" src="/assets/icons/more_vert.svg" alt="more-icon">
+						<img onclick="openMore(this, '<%= subs[i].id %>')" src="/assets/icons/more_vert.svg" alt="more-icon">
 						<div class="modal-more hidden">
-							<p onclick="">Editar</p>
-							<p onclick="deleteSub('<%= subs[i].id %>')">Excluir</p>
+							<p>Editar</p>
+							<p id="deleteSub">Excluir</p>
 						</div>
 					</span>
 				<% } %>
@@ -25,6 +25,11 @@
 		</div>
 	</div>
 	<div class="sidebar-footer">
+		<% if (provider === null) { %>
+			<a href="/provider/register">Deseja publicar notícias?</a>
+		<% } else { %>
+			<a href="/">Suas notícias publicadas</a>
+		<% } %>
 		<a href="/signout"><img src="/assets/icons/logout.svg" alt="logout-icon">Sair</a>
 	</div>
 	<script src="/scripts/modal.js"></script>

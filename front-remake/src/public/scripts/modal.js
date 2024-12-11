@@ -1,6 +1,6 @@
 const sidebar = document.querySelector('.sidebar');
 const modalAdd = document.querySelector('#modalAdd');
-const more = document.querySelector('.modal-more');
+const mores = document.querySelectorAll('.modal-more');
 
 const openSidebar = () => {
     sidebar.style = 'width: fit-content';
@@ -11,10 +11,11 @@ const openSidebar = () => {
 
 const closeSidebar = (event) => {
     sidebar.style = 'width: 0px';
-
-    if (!more.classList.contains('hidden')) {
-        more.classList.add('hidden');
-    }
+    mores.forEach((more) => {
+        if (!more.classList.contains('hidden')) {
+            more.classList.add('hidden');
+        }
+    });
 };
 
 modalAdd.style.display = 'none';
@@ -27,12 +28,16 @@ const toggleModalAdd = () => {
     }
 };
 
-const openMore = (element) => {
+const openMore = (element, subId) => {
     const elementRect = element.getBoundingClientRect();
+    const modalMore = element.parentElement.querySelector('.modal-more');
 
-    more.classList.remove('hidden');
-    more.style.top = `${elementRect.top}px`;
-    more.style.left = `${elementRect.left}px`;
+    modalMore.classList.remove('hidden');
+    modalMore.style.top = `${elementRect.top}px`;
+    modalMore.style.left = `${elementRect.left}px`;
+
+    modalMore.querySelector('#deleteSub').removeEventListener('click', () => deleteSub(subId));
+    modalMore.querySelector('#deleteSub').addEventListener('click', () => deleteSub(subId));
 }
 
 const deleteSub = (subId) => {
@@ -45,8 +50,11 @@ const deleteSub = (subId) => {
         });
 }
 
-window.onclick = (event) => {
-    if (event.target.contains(more) && event.target !== more) {
-        more.classList.add('hidden');
-    }
-}
+document.addEventListener('click', (event) => {
+    mores.forEach((more) => {
+        if (event.target.contains(more) && event.target !== more) {
+            more.classList.add('hidden');
+        }
+    });
+});
+
