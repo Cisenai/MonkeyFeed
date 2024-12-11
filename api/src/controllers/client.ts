@@ -161,9 +161,9 @@ const getProvider = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
 
-        const provider = await prisma.user.findUnique({
-            where: { id: id },
-            select: { provider: true },
+        const provider = await prisma.provider.findUnique({
+            where: { idClient: id },
+            include: { news: true },
         });
 
         res.status(200).json(provider).end();

@@ -4,7 +4,7 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
-generator client {2
+generator client {
   provider = "prisma-client-js"
   previewFeatures = ["omitApi"]
 }
@@ -49,4 +49,5 @@ model New {
   title       String
   text        String
   image       String?
+  pubDate     DateTime @default(now())
 }
