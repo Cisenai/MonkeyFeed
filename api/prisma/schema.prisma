@@ -21,6 +21,7 @@ model User {
   password      String @db.VarChar(255)
   image         String?
   currentFeed   String?
+  provider      Provider?
   subscriptions Subscription[]
 }
 
@@ -36,6 +37,8 @@ model Provider {
   id        String  @id @default(uuid())
   name      String  @unique
   link      String? @unique
+  idClient  String  @unique
+  user      User    @relation(fields: [idClient], references: [id])
   news      New[]
 }
 
