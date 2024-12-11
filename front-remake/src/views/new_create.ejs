@@ -12,12 +12,7 @@
   <%- include('../views/partials/_modal_add_sub') %>
   <%- include('../views/partials/_modal_edit_sub') %>
   <%- include('../views/partials/_menu', { subs: subscriptions }) %>
-  <main class="providers-container">
-    <% if (providers.length !== 0) { %>
-      <% for (let i = 0; i < providers.length; i++) { %>
-        <a href="/provider/<%= providers[i].id %>/news"><%= providers[i].name %></a>
-      <% } %>
-    <% } %>
+  <main class="">
   </main>
 </body>
 </html>

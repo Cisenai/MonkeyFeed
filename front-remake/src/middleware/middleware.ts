@@ -3,7 +3,10 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+const axios = require('axios');
+
 const jwt = require('jsonwebtoken');
+const apiUrl = 'http://localhost:3001';
 
 const checkLoggedIn = (req: Request, res: Response, next: NextFunction) => {
 	if (req.session.loggedIn) {
@@ -38,7 +41,28 @@ const checkLoggedIn = (req: Request, res: Response, next: NextFunction) => {
 	}
 }
 
+const checkUserProvider = async (req: Request, res: Response, next: NextFunction) => {
+	let provider = null;
+	try {
+		const response = await axios.get(`${apiUrl}/client/${req.session.uid!}/provider`, {
+			headers: {
+				'Authorization': req.session.authToken!,
+			}
+		});
+		provider = response.data.provider;
+	} catch (err) {
+		console.log(err);
+	}
+
+	if (provider === null) {
+		next();
+	} else {
+		res.redirect('/provider/profile');
+	}
+}
+
 module.exports = { 
 	checkLoggedIn,
+	checkUserProvider,
 };
 

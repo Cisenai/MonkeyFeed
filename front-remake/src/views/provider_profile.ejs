@@ -12,8 +12,35 @@
   <%- include('../views/partials/_modal_add_sub') %>
   <%- include('../views/partials/_modal_edit_sub') %>
   <%- include('../views/partials/_menu', { subs: subscriptions }) %>
-  <main class="providers-container">
-    <p>Provider Perfil</p>
+  <main class="provider-profile">
+    <section class="edit-profile">
+      <button class="primary-btn" type="button">+ Nova notícia</button>
+      <form autocomplete="off">
+        <input class="text-input" type="text" name="name" placeholder="<%= provider.name %>">
+        <% if (provider.link === null) { %>
+          <input class="text-input" type="text" name="link" placeholder="Adicione um link">
+        <% } else { %>
+          <input class="text-input" type="text" name="link" placeholder="<%= provider.link %>">
+        <% } %>
+        <div class="actions">
+          <button class="primary-btn red" type="button">Cancelar</button>
+          <button class="primary-btn" type="submit">Aplicar</button>
+        </div>
+      </form>
+    </section>
+    <section class="news">
+      <% if (news.length === 0) { %>
+        <h1>Nenhuma nóticia publicada</h1>
+      <% } else { %>
+        <h1>Notícias Publicadas</h1>
+        <% for (let i = 0; i < news.length; i++) { %>
+          <div class="new">
+            <h1><%= news[i].title %></h1>
+            <p class="content"><%= news[i].text %></p>
+          </div>
+        <% } %>
+      <% } %>
+    </section>
   </main>
 </body>
 </html>
