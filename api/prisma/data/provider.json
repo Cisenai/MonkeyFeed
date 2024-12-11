@@ -1,14 +1,17 @@
 [
   {
     "name": "Jaguariúna Novidades",
+    "idClient": "2afe1208-426e-475a-b255-ac717f31f358",
     "link": null
   },
   {
     "name": "SRTV Pedreira",
+    "idClient": "915cc325-3700-46e0-9c3a-406597fb9df2",
     "link": null
   },
   {
     "name": "Monca Novidades na Mão",
+    "idClient": "a6dbc4a3-f196-4d20-bd5e-c4f8099a7ebe",
     "link": null
   }
 ]
