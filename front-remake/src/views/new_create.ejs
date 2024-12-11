@@ -12,7 +12,17 @@
   <%- include('../views/partials/_modal_add_sub') %>
   <%- include('../views/partials/_modal_edit_sub') %>
   <%- include('../views/partials/_menu', { subs: subscriptions }) %>
-  <main class="">
+  <main class="create-new">
+    <h1>Publique sua Notícia</h1>
+    <form autocomplete="off" id="new-form">
+      <input class="text-input" type="text" name="title" placeholder="Manchete" required>
+      <textarea class="textarea-input" rows="5" name="text" placeholder="Conteúdo" required></textarea>
+      <div class="actions">
+        <button class="primary-btn red" type="button">Descartar</button>
+        <button class="primary-btn" type="submit">Publicar</button>
+      </div>
+    </form>
   </main>
 </body>
+<script src="/scripts/pub_new.js"></script>
 </html>

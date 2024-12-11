@@ -14,7 +14,7 @@
   <%- include('../views/partials/_menu', { subs: subscriptions }) %>
   <main class="provider-profile">
     <section class="edit-profile">
-      <button class="primary-btn" type="button">+ Nova notícia</button>
+      <button onclick="location.href = '/new/create'" class="primary-btn" type="button">+ Nova notícia</button>
       <form autocomplete="off">
         <input class="text-input" type="text" name="name" placeholder="<%= provider.name %>">
         <% if (provider.link === null) { %>

@@ -296,7 +296,20 @@ router.get('/new/create', async (req: Request, res: Response) => {
 });
 
 router.post('/new/create', async (req: Request, res: Response) => {
+	try {
+		const userProvider = await getUserProvider(req, res);
 
+		req.body.idProvider = userProvider.id;
+		await axios.post(`${apiUrl}/news`, req.body, {
+			headers: {
+				'Authorization': req.session.authToken!,
+			}
+		});
+
+		res.status(201).json({ message: 'success' }).end();
+	} catch (err) {
+		res.status(400).json({ message: `${err}` }).end();
+	}
 });
 
 router.post('/sub', async (req: Request, res: Response) => {
