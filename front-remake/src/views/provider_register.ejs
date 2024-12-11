@@ -12,8 +12,18 @@
   <%- include('../views/partials/_modal_add_sub') %>
   <%- include('../views/partials/_modal_edit_sub') %>
   <%- include('../views/partials/_menu', { subs: subscriptions }) %>
-  <main>
+  <main class="container">
+    <form class="form-provider" autocomplete="off">
+      <div class="greetings">
+        <img class="monkey-icon" src="/assets/icons/monkey-icon.png" alt="MonkeyFeed Logo">
+        <p>Torne-se um publicador!</p>
+      </div>
+      <input class="text-input" type="text" name="name" placeholder="Nome" required>
+      <input class="text-input" type="text" name="link" placeholder="Link (opcional)">
+      <button class="primary-btn" type="submit">Cadastrar</button>
+    </form>
   </main>
 </body>
+<script src="/scripts/add_provider.js"></script>
 </html>
 

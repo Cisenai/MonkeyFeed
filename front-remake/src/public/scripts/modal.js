@@ -3,6 +3,8 @@ const modalAdd = document.querySelector('#modalAdd');
 const modalEdit = document.querySelector('#modalEdit');
 const modalMore = document.querySelector('.modal-more');
 
+let currentSub = '';
+
 const openSidebar = () => {
     sidebar.style = 'width: fit-content';
     const closeBtn = document.getElementById('closeSidebar');
@@ -27,7 +29,12 @@ const toggleModalAdd = () => {
 
 const toggleModalEdit = () => {
     if (modalEdit.classList.contains('hidden')) {
+        modalMore.classList.add('hidden');
         modalEdit.classList.remove('hidden');
+
+        const form = document.querySelector('#formEdit');
+
+        form.addEventListener('submit', () => editSub(event, currentSub));
     } else {
         modalEdit.classList.add('hidden');
     }
@@ -36,12 +43,16 @@ const toggleModalEdit = () => {
 const openMore = (element, subId) => {
     const elementRect = element.getBoundingClientRect();
 
+    const delBtn = modalMore.querySelector('#deleteSub');
+
     modalMore.classList.remove('hidden');
     modalMore.style.top = `${elementRect.top}px`;
     modalMore.style.left = `${elementRect.left}px`;
 
-    modalMore.querySelector('#deleteSub').removeEventListener('click', () => deleteSub(subId));
-    modalMore.querySelector('#deleteSub').addEventListener('click', () => deleteSub(subId));
+    currentSub = subId;
+
+    delBtn.removeEventListener('click', () => deleteSub(subId));
+    delBtn.addEventListener('click', () => deleteSub(subId));
 }
 
 const deleteSub = (subId) => {
@@ -52,6 +63,28 @@ const deleteSub = (subId) => {
         .catch((err) => {
             console.log(err);
         });
+}
+
+const editSub = (event, subId) => {
+    event.preventDefault();
+
+    const name = event.target.name.value;
+    const link = event.target.name.link;
+
+    const data = {
+        name: name,
+        link: link,
+    };
+
+    fetch(`http://localhost:3000/feed/${subId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+        .then((res) => window.location.reload())
+        .catch((err) => console.log(err));
 }
 
 document.addEventListener('click', (event) => {

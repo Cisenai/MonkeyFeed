@@ -49,6 +49,31 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 90vh;
+}
+
+.form-provider {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  .greetings {
+    display: flex;
+    align-items: center;
+    gap: 1.5em;
+    margin-bottom: 1em;
+
+    p {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--blue);
+    }
+
+    .monkey-icon {
+      width: 125px;
+      height: 125px;
+    }
+  }
 }
 
 .login-form {
@@ -110,5 +135,10 @@ h1 {
     gap: 0.5em;
     width: 100%;
   }
+}
+
+.providers-container {
+  display: flex;
+  margin: 7em 0px;
 }
 
