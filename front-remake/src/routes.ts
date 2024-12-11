@@ -241,6 +241,32 @@ router.post('/provider/register', async (req: Request, res: Response) => {
 	}
 });
 
+router.patch('/provider/profile', async (req: Request, res: Response) => {
+	try {
+		const userProvider = await getUserProvider(req, res);
+
+		for (const key in req.body) {
+			if (req.body[key] === undefined || req.body[key] === '') {
+				delete req.body[key];
+			}
+		}
+
+		if (req.body === undefined) {
+			throw Error('No given data');
+		}
+
+		await axios.patch(`${apiUrl}/provider/${userProvider.id}`, req.body, {
+			headers: {
+				'Authorization': req.session.authToken!,
+			}
+		});
+
+		res.status(202).json({ message: 'success' }).end();
+	} catch (err) {
+		res.status(404).json({ message: `${err}` }).end();
+	}
+});
+
 router.get('/provider/:id/news', async (req: Request, res: Response) => {
 	const subscriptions = await getSubs(req, res);
 	const userProvider = await getUserProvider(req, res);

@@ -15,7 +15,7 @@
   <main class="provider-profile">
     <section class="edit-profile">
       <button onclick="location.href = '/new/create'" class="primary-btn" type="button">+ Nova notícia</button>
-      <form autocomplete="off">
+      <form autocomplete="off" id="edit-provider">
         <input class="text-input" type="text" name="name" placeholder="<%= provider.name %>">
         <% if (provider.link === null) { %>
           <input class="text-input" type="text" name="link" placeholder="Adicione um link">
@@ -43,4 +43,5 @@
     </section>
   </main>
 </body>
+<script src="/scripts/edit_provider.js"></script>
 </html>
