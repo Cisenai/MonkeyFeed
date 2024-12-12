@@ -1,0 +1,13 @@
+.modal-more {
+    position: fixed;
+    background-color: var(--yellow);
+    color: white;
+
+    border-radius: 5px;
+    padding: 0.5em;
+
+    p {
+        font-weight: 600;
+        cursor: pointer;
+    }
+}

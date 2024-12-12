@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/style/index.css">
+  <title><%= title %></title>
+</head>
+<body>
+  <%- include('../views/partials/_navbar') %>
+  <%- include('../views/partials/_modal_add_sub') %>
+  <%- include('../views/partials/_modal_edit_sub') %>
+  <%- include('../views/partials/_menu', { subs: subscriptions }) %>
+  <main class="provider-profile">
+    <section class="edit-profile">
+      <button onclick="location.href = '/new/pub'" class="primary-btn" type="button">+ Nova notícia</button>
+      <form autocomplete="off" id="edit-provider">
+        <input class="text-input" type="text" name="name" placeholder="<%= provider.name %>">
+        <% if (provider.link === null) { %>
+          <input class="text-input" type="text" name="link" placeholder="Adicione um link">
+        <% } else { %>
+          <input class="text-input" type="text" name="link" placeholder="<%= provider.link %>">
+        <% } %>
+        <div class="actions">
+          <button class="primary-btn red" type="button">Cancelar</button>
+          <button class="primary-btn" type="submit">Aplicar</button>
+        </div>
+      </form>
+    </section>
+    <section class="news">
+      <% if (news.length === 0) { %>
+        <h1>Nenhuma nóticia publicada</h1>
+      <% } else { %>
+        <h1>Notícias Publicadas</h1>
+        <% for (let i = 0; i < news.length; i++) { %>
+          <div class="new">
+            <h1><%= news[i].title %></h1>
+            <p class="content"><%= news[i].text %></p>
+            <div class='options'>
+              <img onclick="editNew('<%= news[i].id %>')" src="/assets/icons/edit.svg" alt="edit-icon">
+              <img onclick="deleteNew('<%= news[i].id %>')" src="/assets/icons/delete.svg" alt="delete-icon">
+            </div>
+          </div>
+        <% } %>
+      <% } %>
+    </section>
+  </main>
+</body>
+<script src="/scripts/edit_provider.js"></script>
+</html>

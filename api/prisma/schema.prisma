@@ -4,7 +4,7 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
-generator client {2
+generator client {
   provider = "prisma-client-js"
   previewFeatures = ["omitApi"]
 }
@@ -21,6 +21,7 @@ model User {
   password      String @db.VarChar(255)
   image         String?
   currentFeed   String?
+  provider      Provider?
   subscriptions Subscription[]
 }
 
@@ -36,6 +37,8 @@ model Provider {
   id        String  @id @default(uuid())
   name      String  @unique
   link      String? @unique
+  idClient  String  @unique
+  user      User    @relation(fields: [idClient], references: [id])
   news      New[]
 }
 
@@ -46,4 +49,5 @@ model New {
   title       String
   text        String
   image       String?
+  pubDate     DateTime @default(now())
 }

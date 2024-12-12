@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/style/index.css">
+  <title><%= title %></title>
+</head>
+<body>
+  <%- include('../views/partials/_navbar') %>
+  <%- include('../views/partials/_modal_add_sub') %>
+  <%- include('../views/partials/_modal_edit_sub') %>
+  <%- include('../views/partials/_menu', { subs: subscriptions }) %>
+  <main class="container">
+    <form class="form-provider" autocomplete="off">
+      <div class="greetings">
+        <img class="monkey-icon" src="/assets/icons/monkey-icon.png" alt="MonkeyFeed Logo">
+        <p>Torne-se um publicador!</p>
+      </div>
+      <input class="text-input" type="text" name="name" placeholder="Nome" required>
+      <input class="text-input" type="text" name="link" placeholder="Link (opcional)">
+      <button class="primary-btn" type="submit">Cadastrar</button>
+    </form>
+  </main>
+</body>
+<script src="/scripts/add_provider.js"></script>
+</html>
+

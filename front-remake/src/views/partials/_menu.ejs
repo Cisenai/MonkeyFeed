@@ -5,19 +5,31 @@
 		<img onclick="closeSidebar()" id="closeSidebar" src="/assets/icons/close.svg" alt="close-icon">
 	</div>
 	<div class="sidebar-body">
-		<span>Suas Inscrições <img onclick="toggleModalAdd()" src="/assets/icons/add-white.svg" alt="add-icon"></span>
+		<span class="header">Suas Inscrições <img onclick="toggleModalAdd()" src="/assets/icons/add-white.svg" alt="add-icon"></span>
 		<div class="subscriptions">
 			<% if (subs.length === 0) { %>
 				<span class="sub">Adicione uma Inscrição</span>
 			<% } else { %>
 				<% for (let i = 0; i < subs.length; i++) { %>
-					<span onclick="changeFeed('<%= subs[i].id %>')" class="sub"><%= subs[i].name %> <img src="/assets/icons/more_vert.svg" alt="more-icon"></span>
+					<span class="sub">
+						<p onclick="changeFeed('<%= subs[i].id %>')"><%= subs[i].name %></p>
+						<img onclick="openMore(this, '<%= subs[i].id %>')" src="/assets/icons/more_vert.svg" alt="more-icon">
+					</span>
 				<% } %>
 			<% } %>
+			<div class="modal-more hidden">
+				<p id="editSub" onclick="toggleModalEdit()">Editar</p>
+				<p id="deleteSub">Excluir</p>
+			</div>
 			<script src="/scripts/change_feed.js"></script>
 		</div>
 	</div>
 	<div class="sidebar-footer">
+		<% if (provider === null) { %>
+			<a href="/provider/register">Deseja publicar notícias?</a>
+		<% } else { %>
+			<a href="/provider/profile">Suas notícias publicadas</a>
+		<% } %>
 		<a href="/signout"><img src="/assets/icons/logout.svg" alt="logout-icon">Sair</a>
 	</div>
 	<script src="/scripts/modal.js"></script>

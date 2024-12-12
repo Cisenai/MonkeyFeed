@@ -1,10 +1,12 @@
 @use 'sass:color';
 
-#modalAdd {
+.modal {
     display: flex;
     align-items: center;
     justify-content: center;
     position: fixed;
+
+    background-color: rgba($color: #14213D, $alpha: 0.5);
 
     top: 0;
     left: 0;
@@ -15,15 +17,13 @@
     z-index: 5;
     // box-shadow: 0px -5px 2px var(--gray) inset
 
-    .modalAddCenter {
+    .modalCenter {
         background-color: var(--gray);
 
         padding: 1.5em 1.75em;
 
         border-radius: 5px;
         border: 5px solid var(--blue);    
-
-        box-shadow: 5px 5px 2px var(--gray);
     }
 
     span {
@@ -32,7 +32,7 @@
         color: var(--blue);
     }
     
-    #formAdd {
+    .form-modal {
         display: flex;
         flex-direction: column;
         gap: 0.75em;

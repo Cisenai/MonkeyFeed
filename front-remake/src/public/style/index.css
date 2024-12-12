@@ -56,6 +56,19 @@
   outline: none;
 }
 
+.textarea-input {
+  border: 5px solid var(--yellow);
+  border-radius: 5px;
+  padding: 0.65em 0.75em;
+  font-size: 1rem;
+  box-shadow: 0px -5px 2px var(--gray) inset;
+  resize: vertical;
+}
+
+.textarea-input:focus {
+  outline: none;
+}
+
 .primary-btn {
   background-color: var(--blue);
   width: inherit;
@@ -126,7 +139,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5em;
-  margin-top: 7em;
+  margin: 7em 0px;
 }
 
 .new {
@@ -216,23 +229,28 @@
   border-radius: 5px;
 }
 .sidebar .sidebar-body .subscriptions .sub {
+  display: flex;
+  justify-content: space-between;
   color: var(--blue);
   font-weight: 500;
   text-transform: capitalize;
   color: var(--blue);
+}
+.sidebar .sidebar-body .subscriptions .sub p {
   cursor: pointer;
 }
-.sidebar .sidebar-body .subscriptions img {
+.sidebar .sidebar-body .subscriptions .sub img {
+  cursor: pointer;
   background-color: transparent;
 }
-.sidebar .sidebar-body span {
+.sidebar .sidebar-body .header {
   display: flex;
   justify-content: space-between;
   color: white;
   font-weight: 700;
   font-size: 1.1rem;
 }
-.sidebar .sidebar-body span img {
+.sidebar .sidebar-body .header img {
   background-color: #FCA311;
   border-radius: 5px;
   width: 28px;
@@ -251,6 +269,7 @@
   width: fit-content;
   cursor: pointer;
   text-decoration: none;
+  margin-top: 0.5em;
   color: white;
   font-weight: 700;
   font-size: 1.1rem;
@@ -259,39 +278,51 @@
   width: 28px;
 }
 
-#modalAdd {
+.modal {
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
+  background-color: rgba(20, 33, 61, 0.5);
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 5;
 }
-#modalAdd .modalAddCenter {
+.modal .modalCenter {
   background-color: var(--gray);
   padding: 1.5em 1.75em;
   border-radius: 5px;
   border: 5px solid var(--blue);
-  box-shadow: 5px 5px 2px var(--gray);
 }
-#modalAdd span {
+.modal span {
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--blue);
 }
-#modalAdd #formAdd {
+.modal .form-modal {
   display: flex;
   flex-direction: column;
   gap: 0.75em;
   margin-top: 1em;
 }
-#modalAdd #formAdd .actions {
+.modal .form-modal .actions {
   display: flex;
   gap: 0.5em;
   width: 100%;
+}
+
+.modal-more {
+  position: fixed;
+  background-color: var(--yellow);
+  color: white;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+.modal-more p {
+  font-weight: 600;
+  cursor: pointer;
 }
 
 :root {
@@ -328,10 +359,36 @@ h1 {
   color: var(--blue);
 }
 
+.hidden {
+  display: none;
+}
+
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 90vh;
+}
+
+.form-provider {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.form-provider .greetings {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+  margin-bottom: 1em;
+}
+.form-provider .greetings p {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--blue);
+}
+.form-provider .greetings .monkey-icon {
+  width: 125px;
+  height: 125px;
 }
 
 .login-form {
@@ -382,10 +439,90 @@ h1 {
   gap: 1em;
   width: 30%;
 }
-.edit-info .actions {
+
+.actions {
   display: flex;
   gap: 0.5em;
   width: 100%;
+}
+
+.providers-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 7em 0px;
+}
+.providers-container a {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+  cursor: pointer;
+  border: 5px solid var(--blue);
+  border-radius: 10px;
+  padding: 0.5em;
+  width: 50vw;
+  box-shadow: 0px -5px 2px var(--gray) inset;
+}
+
+.provider-profile {
+  display: flex;
+  margin: 7em 2.5em;
+  gap: 2.5em;
+}
+.provider-profile .edit-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  position: fixed;
+}
+.provider-profile .edit-profile button {
+  width: 100%;
+}
+.provider-profile .edit-profile form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+.provider-profile .news {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding-left: 25em;
+}
+.provider-profile .news .new {
+  width: inherit;
+}
+.provider-profile .news .new .options {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5em;
+}
+.provider-profile .news .new .options img {
+  border: 3px solid var(--gray);
+  border-radius: 5px;
+  padding: 0.25em;
+  width: 28px;
+  height: auto;
+  cursor: pointer;
+}
+
+.create-new {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  margin: 7em 0px;
+}
+.create-new form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 50vw;
+  height: 50vh;
 }
 
 /*# sourceMappingURL=index.css.map */

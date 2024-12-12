@@ -20,6 +20,7 @@ router.patch('/client/(:id)', midleware.validateAccess, Client.update);
 router.delete('/client/(:id)', midleware.validateAccess, Client.del);
 router.get('/client/(:id)/feed', midleware.validateAccess, Client.getCurrentFeed);
 router.patch('/client/(:id)/feed', midleware.validateAccess, Client.updateCurrentFeed);
+router.get('/client/(:id)/provider', midleware.validateAccess, Client.getProvider);
 
 router.get('/subs', midleware.validateAccess, Sub.get);
 router.get('/subs/(:id)', midleware.validateAccess, Sub.get);

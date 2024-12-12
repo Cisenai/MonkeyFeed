@@ -53,14 +53,20 @@ const get = async (req: Request, res: Response) => {
     if (req.params.id === undefined) {
         const user = await prisma.user.findMany({ 
             omit: { password: true, },
-            include: { subscriptions: true } 
+            include: { 
+                subscriptions: true,
+                provider: true,
+            },
         });
         res.status(200).json(user).end();
     } else {
         const user = await prisma.user.findFirst({
             omit: { password: true, },
             where: { id: req.params.id, },
-            include: { subscriptions: true, }
+            include: { 
+                subscriptions: true,
+                provider: true,
+            },
         });
         res.status(200).json(user).end();
     }
@@ -151,6 +157,21 @@ const updateCurrentFeed = async (req: Request, res: Response) => {
     }
 }
 
+const getProvider = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+
+        const provider = await prisma.provider.findUnique({
+            where: { idClient: id },
+            include: { news: true },
+        });
+
+        res.status(200).json(provider).end();
+    } catch (err) {
+        res.status(404).json({ message: `${err}` }).end();
+    }
+}
+
 module.exports = {
     get,
     create,
@@ -159,5 +180,6 @@ module.exports = {
     login,
     getCurrentFeed,
     updateCurrentFeed,
+    getProvider,
 }
 

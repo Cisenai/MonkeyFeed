@@ -10,13 +10,14 @@
 <body>
   <%- include('../views/partials/_navbar') %>
   <%- include('../views/partials/_modal_add_sub') %>
+  <%- include('../views/partials/_modal_edit_sub') %>
   <%- include('../views/partials/_menu', { subs: subscriptions }) %>
   <main class="container" style="height: 80vh">
     <section class="profile-image">
       <img src="<%= userImage %>" alt="image-profile">
       <input class="outlined-btn file-btn" type="file" name="image-file" value="Mudar Imagem">
     </section>
-    <form class="edit-info">
+    <form autocomplete="off" class="edit-info">
       <input class="text-input" type="text" name="name" placeholder="<%= username %>">
       <input class="text-input" type="email" name="email" placeholder="<%= email %>">
       <div class="toggle-eye">

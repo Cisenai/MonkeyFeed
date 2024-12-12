@@ -39,6 +39,7 @@ const create = async (req: Request, res: Response) => {
 const update = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
+        console.log(req.body);
         const news = await prisma.new.update({
             where: { id: id },
             data: req.body,
