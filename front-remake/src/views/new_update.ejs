@@ -13,16 +13,18 @@
   <%- include('../views/partials/_modal_edit_sub') %>
   <%- include('../views/partials/_menu', { subs: subscriptions }) %>
   <main class="create-new">
-    <h1>Publique sua Notícia</h1>
-    <form autocomplete="off" id="new-form">
-      <input class="text-input" type="text" name="title" placeholder="Manchete" required>
-      <textarea class="textarea-input" rows="5" name="text" placeholder="Conteúdo" required></textarea>
+    <h1>Editando notícia</h1>
+    <form autocomplete="off" id="new-update-form">
+      <input class="text-input" type="text" name="title" value="<%= newTitle %>" placeholder="Manchete" required>
+      <textarea class="textarea-input" rows="5" name="text" placeholder="Conteúdo" required>
+        <%= newText.trim() %>
+      </textarea>
       <div class="actions">
         <button onclick="location.href = '/provider/profile'" class="primary-btn red" type="button">Descartar</button>
-        <button class="primary-btn" type="submit">Publicar</button>
+        <button class="primary-btn" type="submit">Aplicar</button>
       </div>
     </form>
   </main>
 </body>
-<script src="/scripts/pub_new.js"></script>
+<script src="/scripts/new_update.js"></script>
 </html>

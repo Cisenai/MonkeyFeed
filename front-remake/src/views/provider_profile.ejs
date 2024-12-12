@@ -14,7 +14,7 @@
   <%- include('../views/partials/_menu', { subs: subscriptions }) %>
   <main class="provider-profile">
     <section class="edit-profile">
-      <button onclick="location.href = '/new/create'" class="primary-btn" type="button">+ Nova notícia</button>
+      <button onclick="location.href = '/new/pub'" class="primary-btn" type="button">+ Nova notícia</button>
       <form autocomplete="off" id="edit-provider">
         <input class="text-input" type="text" name="name" placeholder="<%= provider.name %>">
         <% if (provider.link === null) { %>
@@ -37,6 +37,10 @@
           <div class="new">
             <h1><%= news[i].title %></h1>
             <p class="content"><%= news[i].text %></p>
+            <div class='options'>
+              <img onclick="editNew('<%= news[i].id %>')" src="/assets/icons/edit.svg" alt="edit-icon">
+              <img onclick="deleteNew('<%= news[i].id %>')" src="/assets/icons/delete.svg" alt="delete-icon">
+            </div>
           </div>
         <% } %>
       <% } %>

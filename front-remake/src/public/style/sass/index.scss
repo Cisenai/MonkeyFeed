@@ -195,6 +195,21 @@ h1 {
 
     .new {
       width: inherit;
+
+      .options {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5em;
+
+        img {
+          border: 3px solid var(--gray);
+          border-radius: 5px;
+          padding: 0.25em;
+          width: 28px;
+          height: auto;
+          cursor: pointer;
+        }
+      }
     }
   }
 }

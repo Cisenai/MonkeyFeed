@@ -309,7 +309,7 @@ router.get('/provider/profile', async (req: Request, res: Response) => {
 	});
 });
 
-router.get('/new/create', async (req: Request, res: Response) => {
+router.get('/new/pub', async (req: Request, res: Response) => {
 	const subscriptions = await getSubs(req, res);
 	const userProvider = await getUserProvider(req, res);
 
@@ -319,6 +319,22 @@ router.get('/new/create', async (req: Request, res: Response) => {
 		subscriptions: subscriptions,
 		provider: userProvider,
 	});
+});
+
+router.delete('/new/delete/:id', async (req: Request, res: Response) => {
+	try {
+		const { id } = req.params;
+
+		await axios.delete(`${apiUrl}/news/${id}`, {
+			headers: {
+				'Authorization': req.session.authToken!,
+			}
+		});
+
+		res.status(201).json({ message: 'success' }).end();
+	} catch (err) {
+		res.status(404).json({ message: `${err}` }).end();
+	}
 });
 
 router.post('/new/create', async (req: Request, res: Response) => {
@@ -335,6 +351,49 @@ router.post('/new/create', async (req: Request, res: Response) => {
 		res.status(201).json({ message: 'success' }).end();
 	} catch (err) {
 		res.status(400).json({ message: `${err}` }).end();
+	}
+});
+
+router.get('/new/update/:id', async (req: Request, res: Response) => {
+	const subscriptions = await getSubs(req, res);
+	const userProvider = await getUserProvider(req, res);
+	let news = Object();
+
+	try {
+		const { id } = req.params;
+		const response = await axios.get(`${apiUrl}/news/${id}`, {
+			headers: {
+				'Authorization': req.session.authToken!,
+			}
+		});
+		news = response.data;
+	} catch (err) {
+		console.log(err);
+	}
+
+	res.render('new_update', {
+		title: 'MonkeyFeed | Editar Notícia',
+		username: req.session.name!,
+		subscriptions: subscriptions,
+		provider: userProvider,
+		newTitle: news.title,
+		newText: news.text,
+	});
+});
+
+router.patch('/new/update/:id', async (req: Request, res: Response) => {
+	try {
+		const { id } = req.params;
+
+		await axios.patch(`${apiUrl}/news/${id}`, req.body, {
+			headers: {
+				'Authorization': req.session.authToken!,
+			}
+		});
+
+		res.status(201).json({ message: 'success' }).end();
+	} catch (err) {
+		res.status(404).json({ message: `${err}` }).end();
 	}
 });
 

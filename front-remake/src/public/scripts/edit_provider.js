@@ -1,5 +1,17 @@
 const provForm = document.querySelector('#edit-provider');
 
+const editNew = (newId) => {
+    window.location.href = `/new/update/${newId}`;
+}
+
+const deleteNew = (newId) => {
+    fetch(`http://localhost:3000/new/delete/${newId}`, {
+        method: 'DELETE',
+    })
+        .then((res) => window.location.reload())
+        .catch((err) => console.log(err));
+}
+
 provForm.addEventListener('submit', (event) => {
     event.preventDefault();
 

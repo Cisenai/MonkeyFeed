@@ -88,3 +88,7 @@ $input-size: 0.65em 0.75em;
   resize: vertical;
 }
 
+.textarea-input:focus {
+  outline: none;
+}
+

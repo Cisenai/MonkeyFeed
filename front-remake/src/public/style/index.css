@@ -65,6 +65,10 @@
   resize: vertical;
 }
 
+.textarea-input:focus {
+  outline: none;
+}
+
 .primary-btn {
   background-color: var(--blue);
   width: inherit;
@@ -490,6 +494,19 @@ h1 {
 }
 .provider-profile .news .new {
   width: inherit;
+}
+.provider-profile .news .new .options {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5em;
+}
+.provider-profile .news .new .options img {
+  border: 3px solid var(--gray);
+  border-radius: 5px;
+  padding: 0.25em;
+  width: 28px;
+  height: auto;
+  cursor: pointer;
 }
 
 .create-new {
