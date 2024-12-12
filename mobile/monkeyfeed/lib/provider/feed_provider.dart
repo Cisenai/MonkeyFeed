@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FeedProvider with ChangeNotifier {
-  String _feed = 'diolinux';
+  String _feed = '';
 
   String get feed => _feed.toLowerCase();
 

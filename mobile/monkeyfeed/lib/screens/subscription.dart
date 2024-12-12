@@ -30,13 +30,13 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
   void _addFeed() async {
     final Map<String, dynamic> data = {
       'idClient': user!.id,
-      'nome': _nameController.text,
+      'name': _nameController.text,
       'link': _siteController.text,
     };
 
     try {
       final User newUser =
-          await SubscriptionsService.addSubscription(data: data);
+          await SubscriptionsService.addSubscription(data: data, authToken: user!.authToken!);
 
       setState(() {
         Provider.of<UserProvider>(context, listen: false).user = newUser;
@@ -52,11 +52,12 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
     }
   }
 
-  void _deleteSub(int subId) async {
+  void _deleteSub(String subId) async {
     try {
       final User newUser = await SubscriptionsService.removeSubscription(
         userId: user!.id,
         subId: subId,
+        authToken: user!.authToken!,
       );
 
       setState(() {
@@ -180,7 +181,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                     child: ListTile(
                       onTap: () {
                         Provider.of<FeedProvider>(context, listen: false).feed =
-                            sub.nome;
+                            sub.id;
                         setState(() {
                           Provider.of<NavigationProvider>(context,
                                   listen: false)

@@ -34,7 +34,7 @@ class _FeedScreenState extends State<FeedScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         child: FutureBuilder(
           future: NewsService.getNews(
-            feed: Provider.of<FeedProvider>(context, listen: false).feed,
+            subId: Provider.of<FeedProvider>(context, listen: false).feed,
           ),
           builder: (context, snapshot) {
             if (snapshot.connectionState != ConnectionState.done) {

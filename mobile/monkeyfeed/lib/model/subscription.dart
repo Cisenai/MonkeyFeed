@@ -6,18 +6,18 @@ class Subscription {
     required this.nome,
   });
 
-  final int id;
-  final int idClient;
+  final String id;
+  final String idClient;
   final String link;
   final String nome;
 
   factory Subscription.fromJson(Map<String, dynamic> json) {
     return switch (json) {
       {
-        'id': int id,
-        'idClient': int idClient,
+        'id': String id,
+        'idClient': String idClient,
         'link': String link,
-        'nome': String nome,
+        'name': String nome,
       } =>
         Subscription(
           id: id,

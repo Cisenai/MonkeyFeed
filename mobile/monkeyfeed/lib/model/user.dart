@@ -4,17 +4,19 @@ class User {
     required this.nome,
     required this.email,
     required this.subscriptions,
+    required this.authToken,
   });
 
-  final int id;
+  final String id;
   final String nome;
   final String email;
   final List subscriptions;
+  final String? authToken;
 
   factory User.fromJson(Map<String, dynamic> json) {
-    return switch (json) {
+    return switch (json['user']) {
       {
-        'id': int id,
+        'id': String id,
         'name': String nome,
         'email': String email,
         'subscriptions': List subscriptions,
@@ -24,6 +26,7 @@ class User {
           nome: nome,
           email: email,
           subscriptions: subscriptions,
+          authToken: json['authToken'],
         ),
       _ => throw const FormatException('Could not get User.'),
     };

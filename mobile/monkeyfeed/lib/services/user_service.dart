@@ -24,6 +24,8 @@ class UserService {
       headers: headers,
     );
 
+    print(response.body);
+
     if (response.statusCode == 200) {
       return User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
     } else {
@@ -32,7 +34,7 @@ class UserService {
   }
 
   static Future<User> updateUser({
-    required int id,
+    required String id,
     required Map<String, dynamic> data,
   }) async {
     final response = await http.patch(

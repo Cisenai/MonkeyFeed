@@ -5,8 +5,8 @@ import 'package:monkeyfeed/model/new.dart';
 import 'package:http/http.dart' as http;
 
 class NewsService {
-  static Future<List<New>> getNews({ required String feed }) async {
-    final response = await http.get(Uri.parse('$apiUrl/feed/$feed'));
+  static Future<List<New>> getNews({ required String subId }) async {
+    final response = await http.get(Uri.parse('$apiUrl/feed/$subId'));
 
     if (response.statusCode == 200) {
       final body = jsonDecode(response.body) as Map<String, dynamic>;
