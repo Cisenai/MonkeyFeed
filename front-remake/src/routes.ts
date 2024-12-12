@@ -226,13 +226,11 @@ router.post('/provider/register', async (req: Request, res: Response) => {
 		}
 
 		req.body.idClient = req.session.uid;
-		const response = await axios.post(`${apiUrl}/provider`, req.body, {
+		await axios.post(`${apiUrl}/provider`, req.body, {
 			headers: {
 				'Authorization': req.session.authToken!,
 			}
 		});
-
-		console.log(response);
 
 		res.status(201).json({ message: 'sucess' }).end();
 	} catch (err) {

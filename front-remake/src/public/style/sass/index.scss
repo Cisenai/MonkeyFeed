@@ -142,6 +142,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1em;
 
   margin: 7em 0px;
 
@@ -172,6 +173,7 @@ h1 {
     flex-direction: column;
     gap: 1em;
     position: fixed;
+    width: 30vw;
 
     button {
       width: 100%;
@@ -180,8 +182,6 @@ h1 {
     form {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
       gap: 0.5em;
     }
   }
@@ -191,7 +191,7 @@ h1 {
     flex-direction: column;
     gap: 1em;
 
-    padding-left: 25em;
+    padding-left: 40em;
 
     .new {
       width: inherit;

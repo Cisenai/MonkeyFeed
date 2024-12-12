@@ -450,6 +450,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1em;
   margin: 7em 0px;
 }
 .providers-container a {
@@ -475,6 +476,7 @@ h1 {
   flex-direction: column;
   gap: 1em;
   position: fixed;
+  width: 30vw;
 }
 .provider-profile .edit-profile button {
   width: 100%;
@@ -482,15 +484,13 @@ h1 {
 .provider-profile .edit-profile form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 0.5em;
 }
 .provider-profile .news {
   display: flex;
   flex-direction: column;
   gap: 1em;
-  padding-left: 25em;
+  padding-left: 40em;
 }
 .provider-profile .news .new {
   width: inherit;
